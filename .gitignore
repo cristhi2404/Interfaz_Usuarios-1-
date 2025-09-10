@@ -1,0 +1,38 @@
+# --------------------------
+# Ignorar dependencias PHP
+# --------------------------
+/vendor/
+
+# --------------------------
+# Archivos sensibles
+# --------------------------
+config.php
+.env
+
+# --------------------------
+# Logs, cachés y temporales
+# --------------------------
+*.log
+*.cache
+*.tmp
+*.bak
+*.swp
+
+# --------------------------
+# Archivos del sistema (Windows y Mac)
+# --------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# --------------------------
+# Configuración de editores (VS Code, PhpStorm)
+# --------------------------
+.vscode/
+.idea/
+
+# --------------------------
+# Carpeta temporal de XAMPP (por si la tuvieras en el repo)
+# --------------------------
+/tmp/
