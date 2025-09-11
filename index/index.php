@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="i" href="img/logosolo-nofondo.png">
+    <link rel="icon" type="i" href="../img/logosolo-nofondo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         <div class="divthead">
             <div class="file1">
                 <div class="divfile1">
-                    <img  src="img/LogoWebsite.png" alt="" class="imglogo">
+                    <img  src="../img/LogoWebsite.png" alt="" class="imglogo">
                 </div>
             </div>
             <div class="file2">
@@ -118,7 +118,7 @@
                                     </svg>
                                 </button>
                                 <button class="button flex-center">
-                                    <img style="width: 70%;" src="/img/x_vector.png" alt="">
+                                    <img style="width: 70%;" src="../img/x_vector.png" alt="">
                                 </button>
                                 <button class="button flex-center">
                                     
@@ -195,7 +195,7 @@
                     <div class="divparte1">
                         <h1 style=" color: var(); font-size: 2.5vh; margin-right: 500px;" > Digite el Nombre o el ID para Enconntrar Usuario  </h1>
                         <div class="divimagentitulo">
-                            <img class="img" src="/img/Buscar_users-removebg-.png" alt="">
+                            <img class="img" src="../img/Buscar_users-removebg-.png" alt="">
                         </div>
                         
                     </div>
@@ -216,7 +216,7 @@
                     <div class="users">
                         <div class="titulousers">
                             <div style="margin-left: 10vh;" class="divimagentitulo">
-                                <img class="img2" src="/img/usuarios_img.png" alt="">
+                                <img class="img2" src="../img/usuarios_img.png" alt="">
                             </div>
                         </div>
                         <div class="divcontenidousers">
