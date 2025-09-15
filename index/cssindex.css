@@ -352,6 +352,11 @@ h1{
     display: flex;
 }
 
+*{
+    outline: 1px solid;
+}
+
+
 
 
 
