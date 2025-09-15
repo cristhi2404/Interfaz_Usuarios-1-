@@ -190,7 +190,7 @@ nav{
     height: 113.5vh;
     min-height: 70vh;
     max-height: 100%;
-    background: rgb(235, 235, 235);
+    background: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -344,7 +344,15 @@ h1{
     overflow-y: auto;
     background: #ffffff;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.7));
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
+}
+.divcuadrito{
+    width: 20px;
+    height: 20px;
+    background: #000;
 }
 /*---------------------------------------------------Botones_ paginacion--------*/
 .botones_paginacion{
@@ -352,9 +360,7 @@ h1{
     display: flex;
 }
 
-*{
-   outline: 1px solid;
-}
+
 
 
 
