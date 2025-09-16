@@ -227,8 +227,8 @@
                                 <div class="cuadro">Acciones </div>
                             </div>
                             <div class="contenido_tabla">
-                                <div class="divcuadrito">hola</div>
-                            </div>
+                                
+                            </div> 
                             
                         </div>
                         <div class="botones_paginacion">
