@@ -233,6 +233,9 @@
                         </div>
                         <div class="botones_paginacion">
                             <div class="divbotonpaginacion">
+                                <div class="divanterior centrado"><img class="flecha" src="../img/flecha-izquierda-removebg-preview.png" alt=""></div>
+                                <div class="paginasusers centrado"></div>
+                                <div class="siguiente centrado"></div> 
                             </div>
                         </div>
                     </div>

@@ -354,10 +354,27 @@ h1{
 }
 
 /*---------------------------------------------------Botones_ paginacion--------*/
-.botones_paginacion{
-    height: 5vh;
+.centrado{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3d222b;
+    
 }
+.botones_paginacion{
+    height: 6vh;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.divbotonpaginacion{
+    width: 40vh;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+
 *{
     box-sizing: border-box;
     outline: 1px solid;
