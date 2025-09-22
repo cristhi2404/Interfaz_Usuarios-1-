@@ -233,9 +233,46 @@
                         </div>
                         <div class="botones_paginacion">
                             <div class="divbotonpaginacion">
-                                <div class="divanterior centrado"><img class="flecha" src="../img/flecha-izquierda-removebg-preview.png" alt=""></div>
+                                <div class="divanterior centrado">
+                                    <button class="button-paginacion">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                            width="20.000000pt" height="20.000000pt" viewBox="0 0 500.000000 500.000000"
+                                            preserveAspectRatio="xMidYMid meet">
+
+                                            <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
+                                            fill="#000000" stroke="none">
+                                            <path d="M1995 4567 c-16 -7 -43 -20 -60 -29 -44 -25 -1890 -1877 -1911 -1918
+                                            -14 -26 -19 -57 -19 -120 0 -74 3 -91 27 -130 40 -67 1882 -1902 1933 -1926
+                                            53 -24 146 -24 210 0 38 14 77 46 163 130 144 140 167 181 166 291 0 57 -5 90
+                                            -18 115 -10 19 -263 281 -563 581 -416 417 -541 548 -528 553 9 3 777 6 1706
+                                            6 1887 0 1725 -7 1807 73 24 23 55 64 68 90 25 48 25 53 22 237 l-3 188 -40
+                                            58 c-28 40 -57 67 -95 88 l-55 31 -1697 -4 c-933 -2 -1702 0 -1708 4 -8 5 179
+                                            199 523 544 466 466 539 543 562 593 32 69 35 133 10 208 -15 48 -34 72 -149
+                                            186 -108 108 -140 134 -180 148 -57 18 -128 20 -171 3z"/>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
                                 <div class="paginasusers centrado"></div>
-                                <div class="siguiente centrado"></div> 
+                                <div class="siguiente centrado">
+                                    <button class="button-paginacion">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                            width="20.000000pt" height="20.000000pt" viewBox="0 0 500.000000 500.000000"
+                                            preserveAspectRatio="xMidYMid meet">
+                                            <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
+                                                fill="#000000" stroke="none">
+                                                <path d="M2877 4569 c-71 -11 -121 -46 -237 -165 -119 -122 -142 -162 -148
+                                                -251 -4 -51 0 -71 22 -120 24 -52 87 -118 574 -600 l547 -542 -1710 -3 -1710
+                                                -3 -46 -21 c-59 -27 -116 -85 -143 -143 -18 -39 -21 -69 -24 -203 -3 -121 0
+                                                -169 12 -211 19 -67 76 -133 142 -167 l49 -25 1703 -3 c936 -1 1702 -5 1702
+                                                -9 0 -4 -245 -253 -544 -553 -511 -512 -545 -548 -561 -598 -21 -65 -17 -150
+                                                10 -207 11 -22 68 -91 129 -153 131 -134 182 -165 279 -164 124 0 71 -48 1089
+                                                969 671 671 934 940 955 977 23 42 28 63 28 121 0 132 48 78 -982 1106 -510
+                                                510 -943 934 -961 944 -46 22 -117 32 -175 24z"/>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div> 
                             </div>
                         </div>
                     </div>
