@@ -94,22 +94,22 @@ body{
 }
 /* el siguiente es el css del boton de las redes sociales */
 .button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .button {
-  cursor: pointer;
-  text-decoration: none;
-  color: #2d2e32;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: var(--color_primario_comfanorte);
-  border: 2px solid var(--color_terciario_comfanorte);
-  transition: all 0.45s;
+    cursor: pointer;
+    text-decoration: none;
+    color: #2d2e32;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--color_primario_comfanorte);
+    border: 2px solid var(--color_terciario_comfanorte);
+    transition: all 0.45s;
   
   
 }
@@ -309,6 +309,7 @@ h1{
     overflow: hidden;
     align-items: center;
     height: 7vh;
+    
 }
 .divcontenidousers{
     border: 4px solid;
@@ -327,7 +328,7 @@ h1{
     background: #a8a8a8;
     display: grid;
     grid-template-columns: 5fr 5fr 1fr 1fr;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.7));
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
 }
 
 .cuadro{
@@ -340,16 +341,16 @@ h1{
     
 }
 .contenido_tabla{
-    padding-top: 5px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 5px;
     overflow-y: auto;
     background: #ffffff;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.7));
+    
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
     
 }
 
@@ -382,11 +383,22 @@ h1{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    
 }
 *{
     box-sizing: border-box;
     
+
 }
+.filas{
+    background: rgb(246, 175, 175);
+
+}
+.filas:hover{
+    background: #f9bdbd;
+    cursor: pointer;
+}
+
 
 
 

@@ -227,7 +227,38 @@
                                 <div class="cuadro">Acciones </div>
                             </div>
                             <div class="contenido_tabla">
-                                
+                                <div style="height: 3.5vh; width:100%; display:grid; grid-template-columns: 5.5fr 5.6fr 1.1fr 1fr;  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.2)); border-radius: 3px; " class="filas">
+                                    <div style="display:flex;">
+                                        <div style="height: 100%; width: 8%; display: flex; justify-content:center; align-items:center;margin-right:5px ; ">
+                                            <img style="width: 13px; height:  13px;" src="../img/usuario.svg" alt="">
+                                            
+                                        </div>
+                                        <div style="width: 100%; font-size:11px; display: flex; align-items: center; font-weight:600;" class="nameuser">
+                                            <span>Cristhian Manuel Ferrer Ortega</span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div style="display:flex;">
+                                        <div style="height: 100%; width: 8%; display: flex; justify-content:center; align-items:center;margin-right:5px ; ">
+                                            <img style="width: 19px; height:  17px;" src="../img/tarjeta-de-identificacion-removebg-preview_1.svg" alt="">
+                                            
+                                        </div>
+                                        <div style="width: 100%; font-size:11px; display: flex; align-items: center; font-weight:600;" class="nameuser">
+                                            <span>1005026389</span>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; justify-content:center; align-items:center">
+                                        <div style="width: 10px; height: 10px; border-radius:50%; outline:1.5px solid" class="bolita"></div>
+                                    </div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                                        <div style="display: flex; justify-content:center; align-items:center;" class="divborrar">
+                                            <img style="width: 13px; height:  13px; cursor:pointer;" src="../img/tacho-de-reciclaje.svg" alt="">
+                                        </div>
+                                        <div style="display: flex; justify-content:center; align-items:center;" class="diveditar">
+                                            <img style="width: 18px; height:  16px; cursor:pointer;" src="../img/ojo-abierto.svg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
                             </div> 
                             
                         </div>
