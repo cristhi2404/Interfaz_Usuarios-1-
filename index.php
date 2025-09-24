@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caja De Compensacion Familiar - COMFANORTE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cssindex.css">
+    <link rel="stylesheet" href="index/cssindex.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="i" href="../img/logosolo-nofondo.png">
+    <link rel="icon" type="i" href="img/logosolo-nofondo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         <div class="divthead">
             <div class="file1">
                 <div class="divfile1">
-                    <img  src="../img/LogoWebsite.png" alt="" class="imglogo">
+                    <img  src="img/LogoWebsite.png" alt="" class="imglogo">
                 </div>
             </div>
             <div class="file2">
@@ -118,7 +118,7 @@
                                     </svg>
                                 </button>
                                 <button class="button flex-center">
-                                    <img style="width: 70%;" src="../img/x_vector.png" alt="">
+                                    <img style="width: 70%;" src="img/x_vector.png" alt="">
                                 </button>
                                 <button class="button flex-center">
                                     
@@ -195,7 +195,7 @@
                     <div class="divparte1">
                         <h1 style=" color: var(); font-size: 2.5vh; margin-right: 500px;" > Digite el Nombre o el ID para Enconntrar Usuario  </h1>
                         <div class="divimagentitulo">
-                            <img class="img" src="../img/Buscar_users-removebg-.png" alt="">
+                            <img class="img" src="img/Buscar_users-removebg-.png" alt="">
                         </div>
                         
                     </div>
@@ -216,7 +216,7 @@
                     <div class="users">
                         <div class="titulousers">
                             <div style="margin-left: 10vh;" class="divimagentitulo">
-                                <img class="img2" src="../img/usuarios_img.png" alt="">
+                                <img class="img2" src="img/usuarios_img.png" alt="">
                             </div>
                         </div>
                         <div class="divcontenidousers">
@@ -230,7 +230,7 @@
                                 <div style="height: 3.5vh; width:100%; display:grid; grid-template-columns: 5.5fr 5.6fr 1.1fr 1fr;  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.2)); border-radius: 3px; " class="filas">
                                     <div style="display:flex;">
                                         <div style="height: 100%; width: 8%; display: flex; justify-content:center; align-items:center;margin-right:5px ; ">
-                                            <img style="width: 13px; height:  13px;" src="../img/usuario.svg" alt="">
+                                            <img style="width: 13px; height:  13px;" src="img/usuario.svg" alt="">
                                             
                                         </div>
                                         <div style="width: 100%; font-size:11px; display: flex; align-items: center; font-weight:600;" class="nameuser">
@@ -240,7 +240,7 @@
                                     </div>
                                     <div style="display:flex;">
                                         <div style="height: 100%; width: 8%; display: flex; justify-content:center; align-items:center;margin-right:5px ; ">
-                                            <img style="width: 19px; height:  17px;" src="../img/tarjeta-de-identificacion-removebg-preview_1.svg" alt="">
+                                            <img style="width: 19px; height:  17px;" src="img/tarjeta-de-identificacion-removebg-preview_1.svg" alt="">
                                             
                                         </div>
                                         <div style="width: 100%; font-size:11px; display: flex; align-items: center; font-weight:600;" class="nameuser">
@@ -252,10 +252,10 @@
                                     </div>
                                     <div style="display: grid; grid-template-columns: 1fr 1fr;">
                                         <div style="display: flex; justify-content:center; align-items:center;" class="divborrar">
-                                            <img style="width: 13px; height:  13px; cursor:pointer;" src="../img/tacho-de-reciclaje.svg" alt="">
+                                            <img style="width: 13px; height:  13px; cursor:pointer;" src="img/tacho-de-reciclaje.svg" alt="">
                                         </div>
                                         <div style="display: flex; justify-content:center; align-items:center;" class="diveditar">
-                                            <img style="width: 18px; height:  16px; cursor:pointer;" src="../img/ojo-abierto.svg" alt="">
+                                            <img style="width: 18px; height:  16px; cursor:pointer;" src="img/ojo-abierto.svg" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -316,6 +316,6 @@
     <footer>
 
     </footer>
-    <script src="jsindex.js"></script>
+    <script src="/index/jsindex.js"></script>
 </body>
 </html>

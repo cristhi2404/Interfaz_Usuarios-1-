@@ -95,11 +95,11 @@ function cargarUsuarios(Listausers) {
                 divbotones.style.gridTemplateColumns = "1fr 1fr";
                 fila.appendChild(divbotones);
                 const botoneditar = document.createElement("button");
-                botoneditar.innerHTML = '<img src="../img/ojo-abierto.svg" alt="Editar" style="width:18px; height:16px; cursor:pointer;">';
+                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:18px; height:16px; cursor:pointer;">';
                 botoneditar.classList.add("botoneditar");
                 divbotones.appendChild(botoneditar);
                 const botoneliminar = document.createElement("button");
-                botoneliminar.innerHTML = '<img src="../img/editar.svg" alt="Eliminar" style="width: 13px; height:13px; cursor:pointer;">';
+                botoneliminar.innerHTML = '<img src="img/editar.svg" alt="Eliminar" style="width: 13px; height:13px; cursor:pointer;">';
                 botoneliminar.classList.add("botoneliminar");
                 divbotones.appendChild(botoneliminar);
                 tablaContenido.appendChild(fila);
