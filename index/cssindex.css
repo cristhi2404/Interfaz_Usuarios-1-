@@ -271,11 +271,7 @@ nav{
     justify-content: center;
     align-items: center;
 }
-.img{
-    
-    height: 150%;
-    
-}
+
 h1{
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
@@ -319,11 +315,7 @@ h1{
     grid-template-rows: 1fr 7fr;
 
 }
-.img2{
-    
-    height: 150%;
-    
-}
+
 .encabezado_tabla{
     background: #a8a8a8;
     display: grid;
@@ -387,11 +379,19 @@ h1{
 }
 *{
     box-sizing: border-box;
-    
+    outline: 1px solid;
 
 }
 .filas{
     background: rgb(246, 175, 175);
+    display: grid;
+    grid-template-columns: 5.5fr 5.6fr 1.1fr 1fr; /* nombre - cedula - estado - botones */
+    height: 4vh;
+    border-radius: 3px;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.2));
+    margin-bottom: 10px;
+    padding: 0;
+    width: 100%;
 
 }
 .filas:hover{
@@ -400,8 +400,71 @@ h1{
 }
 /*------------------ clases del javascript ---------------------*/
 .cedula{display:flex;}
-.nombre{display:flex;}
-.Indicacdor{display:flex; justify-content:center; align-items:center;}
+.imgcedula{
+    width: 8%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.textcedula{
+    height: 100%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+
+}
+.nombre{display:flex;
+align-items: center; justify-content: flex-start;}
+.imgnombre{
+    width: 8%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.textnombre{
+    height: 100%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+.Indicador{
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+
+}
+.indicadoraccion{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    outline: 1px solid;
+}
+/*------------------ clases de la bolita ---------------------*/
+.activo {
+    background-color: rgb(86, 197, 86);
+    outline-color: rgb(0, 0, 0);
+}
+.inactivo {
+    background-color: rgb(218, 77, 77);
+    outline-color: rgb(0, 0, 0);
+}
+.img {
+    height: 150%;
+    max-width: 100%;
+    object-fit: contain;
+}
+.img2 {
+    height: 150%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
 
 
 

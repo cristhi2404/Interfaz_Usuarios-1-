@@ -11,82 +11,57 @@ const inputBuscar = document.querySelector(".inputbuscar");
 //cargar usersrs________________________________________________
 
 function cargarUsuarios(Listausers) {
-    tablaContenido.innerHTML = ""; // Limpiar el contenido anterior
+        tablaContenido.innerHTML = ""; // Limpiar el contenido anterior
         Listausers.forEach(usuario => {
                 const fila = document.createElement("div");
                 fila.classList.add("filas");
-                fila.style.width = "100%"
-                fila.style.height = "3.5vh"
-                fila.style.display = "grid"
-                fila.style.gridTemplateColumns = "5.5fr 5.6fr 1.1fr 1fr"
-                fila.style.filter = "drop-shadow(0px 4px 6px rgba(0,0,0,0.2))"
-                fila.style.borderRadius = "3px";
         //------------------ div nombre ---------------------
                 const divnombre = document.createElement("div");
                 divnombre.classList.add("nombre");
-                divnombre.style.display = "flex";
                 //  div iamgen-------------------------------------------------
                 const imgnombre = document.createElement("div");
-                imgnombre.style.width = "8%";
-                imgnombre.style.height = "100%";
-                imgnombre.display = "flex";
-                imgnombre.style.justifyContent = "center";
-                imgnombre.style.alignItems = "center";
-                imgnombre.style.marginRight = "5px";
+                imgnombre.classList.add("imgnombre");
                 const nombreimg = document.createElement("img");
-                nombreimg.src = "../img/user.png";
+                nombreimg.src = "img/usuario.svg";
+                nombreimg.alt = "Usuario";
                 nombreimg.style.width = "13px";
                 nombreimg.style.height = "13px";
                 imgnombre.appendChild(nombreimg);
                 divnombre.appendChild(imgnombre);
                 // div nombre-------------------------------------------------
                 const textnombre = document.createElement("div");
-                textnombre.height = "100%";
-                textnombre.style.fontSize = "11px";
-                textnombre.style.display = "flex";
-                textnombre.style.alignItems = "center";
-                textnombre.style.fontWeight = "600";
+                textnombre.classList.add("textnombre");
                 textnombre.textContent = usuario.nombre;
                 divnombre.appendChild(textnombre);
                 fila.appendChild(divnombre);
         //------------------ div cedula ----------------------
                 const divcedula = document.createElement("div");
                 divcedula.classList.add("cedula");
-                divcedula.style.display = "flex";
                 const imgcedula = document.createElement("div");
-                imgnombre.style.width = "8%";
-                imgnombre.style.height = "100%";
-                imgnombre.display = "flex";
-                imgnombre.style.justifyContent = "center";
-                imgnombre.style.alignItems = "center";
-                imgnombre.style.marginRight = "5px";
+                imgcedula.classList.add("imgcedula");
                 const cedulaimg = document.createElement("img");
-                nombreimg.src = "../img/user.png";
-                nombreimg.style.width = "13px";
-                nombreimg.style.height = "13px";
+                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview_1.svg";
+                cedulaimg.alt = "Cédula";
+                cedulaimg.style.width = "13px";
+                cedulaimg.style.height = "13px";
                 imgcedula.appendChild(cedulaimg);
                 divcedula.appendChild(imgcedula);
                 const textcedula = document.createElement("div");
-                textcedula.height = "100%";
-                textcedula.style.fontSize = "11px";
-                textcedula.style.display = "flex";
-                textcedula.style.alignItems = "center";
-                textcedula.style.fontWeight = "600";
+                textcedula.classList.add("textcedula");
                 textcedula.textContent = usuario.cedula;
                 divcedula.appendChild(textcedula);
                 fila.appendChild(divcedula);
         //------------------ div Indicador de accion ----------------------
                 const divIndicador = document.createElement("div");
-                divIndicador.classList.add("Indicacdor");
-                divIndicador.style.display = "flex";
-                divIndicador.style.justifyContent = "center";
-                divIndicador.style.alignItems = "center";
+                divIndicador.classList.add("Indicador");
                 const indicadoraccion = document.createElement("div");
-                indicadoraccion.style.width = "10px";
-                indicadoraccion.style.height = "10px";
-                indicadoraccion.style.borderRadius = "50%";
-                indicadoraccion.style.outline ="1px solid"
-                indicadoraccion.style.background = usuario.estado === "Activo" ? "green" : "red";
+                indicadoraccion.classList.add("indicadoraccion");
+                // Cambia la clase según el estado
+                if (usuario.estado === "Activo") {
+                        indicadoraccion.classList.add("activo");
+                } else {
+                        indicadoraccion.classList.add("inactivo");
+                }
                 divIndicador.appendChild(indicadoraccion);
                 fila.appendChild(divIndicador);
         //------------------ div botones ----------------------
@@ -95,13 +70,14 @@ function cargarUsuarios(Listausers) {
                 divbotones.style.gridTemplateColumns = "1fr 1fr";
                 fila.appendChild(divbotones);
                 const botoneditar = document.createElement("button");
-                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:18px; height:16px; cursor:pointer;">';
+                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; cursor:pointer;">';
                 botoneditar.classList.add("botoneditar");
                 divbotones.appendChild(botoneditar);
                 const botoneliminar = document.createElement("button");
-                botoneliminar.innerHTML = '<img src="img/editar.svg" alt="Eliminar" style="width: 13px; height:13px; cursor:pointer;">';
+                botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px; cursor:pointer;">';
                 botoneliminar.classList.add("botoneliminar");
                 divbotones.appendChild(botoneliminar);
                 tablaContenido.appendChild(fila);
         })
 }    
+cargarUsuarios(usuarios);
