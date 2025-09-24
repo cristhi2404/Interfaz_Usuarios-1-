@@ -1,8 +1,8 @@
 // simulacion de los divs 
 const usuarios = [
-    { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Activo" },
-    { nombre: "María González", cedula: "1001234567", estado: "Inactivo" },
-    { nombre: "Pedro Ramírez", cedula: "1007654321", estado: "Activo" }
+        { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Activo" },
+        { nombre: "María González", cedula: "1001234567", estado: "Inactivo" },
+        { nombre: "Pedro Ramírez", cedula: "1007654321", estado: "Activo" }
 ];
 const tablaContenido = document.querySelector(".contenido_tabla");
 const inputBuscar = document.querySelector(".inputbuscar");
@@ -95,11 +95,11 @@ function cargarUsuarios(Listausers) {
                 divbotones.style.gridTemplateColumns = "1fr 1fr";
                 fila.appendChild(divbotones);
                 const botoneditar = document.createElement("button");
-                botoneditar.innerHTML = '<img src="../img/tacho-de-reciclaje.svg" alt="Editar" style="width:13px; height:13px;">';
+                botoneditar.innerHTML = '<img src="../img/ojo-abierto.svg" alt="Editar" style="width:18px; height:16px; cursor:pointer;">';
                 botoneditar.classList.add("botoneditar");
                 divbotones.appendChild(botoneditar);
                 const botoneliminar = document.createElement("button");
-                botoneliminar.innerHTML = '<img src="../img/editar.svg" alt="Eliminar" style="width:13px; height:13px;">';
+                botoneliminar.innerHTML = '<img src="../img/editar.svg" alt="Eliminar" style="width: 13px; height:13px; cursor:pointer;">';
                 botoneliminar.classList.add("botoneliminar");
                 divbotones.appendChild(botoneliminar);
                 tablaContenido.appendChild(fila);
