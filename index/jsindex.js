@@ -103,6 +103,5 @@ function cargarUsuarios(Listausers) {
         botoneliminar.classList.add("botoneliminar");
         divbotones.appendChild(botoneliminar);
         tablaContenido.appendChild(fila);
-
-    })
+})
 }    
