@@ -398,6 +398,10 @@ h1{
     background: #f9bdbd;
     cursor: pointer;
 }
+/*------------------ clases del javascript ---------------------*/
+.cedula{display:flex;}
+.nombre{display:flex;}
+.Indicacdor{display:flex; justify-content:center; align-items:center;}
 
 
 

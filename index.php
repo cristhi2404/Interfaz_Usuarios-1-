@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caja De Compensacion Familiar - COMFANORTE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/index/cssindex.css">
+    <link rel="stylesheet" href="cssindex.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -316,6 +316,6 @@
     <footer>
 
     </footer>
-    <script src="/index/jsindex.js"></script>
+    <script src="jsindex.js"></script>
 </body>
 </html>
