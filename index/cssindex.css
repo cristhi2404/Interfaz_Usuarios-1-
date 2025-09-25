@@ -379,7 +379,7 @@ h1{
 }
 *{
     box-sizing: border-box;
-    outline: 1px solid;
+    
 }
 .filas{
     background: rgb(246, 175, 175);
@@ -447,8 +447,45 @@ align-items: center; justify-content: flex-start;}
 .divbotones{
 
     display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    
     grid-template-columns: 1fr 1fr;
 }
+.botoneditar{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 70%;
+    border-radius: 40%;
+    transition: background 0.5s ease;
+}
+.botoneliminar{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 70%;
+    border-radius: 40%;
+    transition: background 0.5s ease;
+}
+.botoneditar:hover{
+    background: #ff8787;
+}
+.botoneliminar:hover{
+    background: #ff8787;
+}
+
 
 /*------------------ clases de la bolita ---------------------*/
 .activo {

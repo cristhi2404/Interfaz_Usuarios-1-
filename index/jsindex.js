@@ -1,6 +1,6 @@
 // simulacion de los divs 
 const usuarios = [
-        { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Activo" },
+        { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Inactivo" },
         { nombre: "María González", cedula: "1001234567", estado: "Inactivo" },
         { nombre: "Pedro Ramírez", cedula: "1007654321", estado: "Activo" }
 ];
@@ -40,7 +40,7 @@ function cargarUsuarios(Listausers) {
                 const imgcedula = document.createElement("div");
                 imgcedula.classList.add("imgcedula");
                 const cedulaimg = document.createElement("img");
-                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview....._1.svg";
+                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview_1.svg";
                 cedulaimg.alt = "Cédula";
                 cedulaimg.style.width = "13px";
                 cedulaimg.style.height = "13px";
@@ -66,18 +66,22 @@ function cargarUsuarios(Listausers) {
                 fila.appendChild(divIndicador);
         //------------------ div botones ----------------------
                 const divbotones = document.createElement("div");
-                divbotones.classList.add("divbotones");.
+                divbotones.classList.add("divbotones");
                 fila.appendChild(divbotones);
-                const botoneditar = document.createElement("button");.
+                const botoneditar = document.createElement("button");
                 botoneditar.classList.add("botoneditar");
-                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; cursor:pointer;">';
+                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; ">';
                 botoneditar.classList.add("botoneditar");
                 divbotones.appendChild(botoneditar);
                 const botoneliminar = document.createElement("button");
-                botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px; cursor:pointer;">';
                 botoneliminar.classList.add("botoneliminar");
+                botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px;">';
+                
                 divbotones.appendChild(botoneliminar);
                 tablaContenido.appendChild(fila);
         })
 }    
 cargarUsuarios(usuarios);
+// funciones de los Botones---------------------------------------
+const botonesEditar = document.querySelectorAll(".botoneditar");
+const botonesEliminar = document.querySelectorAll(".botoneliminar");
