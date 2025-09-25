@@ -40,7 +40,7 @@ function cargarUsuarios(Listausers) {
                 const imgcedula = document.createElement("div");
                 imgcedula.classList.add("imgcedula");
                 const cedulaimg = document.createElement("img");
-                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview_1.svg";
+                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview....._1.svg";
                 cedulaimg.alt = "Cédula";
                 cedulaimg.style.width = "13px";
                 cedulaimg.style.height = "13px";
@@ -66,10 +66,10 @@ function cargarUsuarios(Listausers) {
                 fila.appendChild(divIndicador);
         //------------------ div botones ----------------------
                 const divbotones = document.createElement("div");
-                divbotones.style.display = "grid";
-                divbotones.style.gridTemplateColumns = "1fr 1fr";
+                divbotones.classList.add("divbotones");.
                 fila.appendChild(divbotones);
-                const botoneditar = document.createElement("button");
+                const botoneditar = document.createElement("button");.
+                botoneditar.classList.add("botoneditar");
                 botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; cursor:pointer;">';
                 botoneditar.classList.add("botoneditar");
                 divbotones.appendChild(botoneditar);

@@ -380,7 +380,6 @@ h1{
 *{
     box-sizing: border-box;
     outline: 1px solid;
-
 }
 .filas{
     background: rgb(246, 175, 175);
@@ -445,6 +444,12 @@ align-items: center; justify-content: flex-start;}
     border-radius: 50%;
     outline: 1px solid;
 }
+.divbotones{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 /*------------------ clases de la bolita ---------------------*/
 .activo {
     background-color: rgb(86, 197, 86);
