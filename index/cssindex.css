@@ -521,8 +521,8 @@ align-items: center; justify-content: flex-start;}
     align-items: center;
 }
 
-/* Caja del modal */
-.modal-contenido {
+/* Caja del modal eliminar */
+.modal-contenidoEliminar {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -553,7 +553,43 @@ align-items: center; justify-content: flex-start;}
     background: gray;
     color: white;
 }
+/*-------------CLASES DE LOS MODALES DE LOS BOTONES -------------------*/
+.modal-contenido {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 900px;
+    height: 60vh;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
 
+.modal-botones {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.modal-botones button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirmarEliminar {
+    background: red;
+    color: white;
+}
+
+#cancelarEliminar {
+    background: gray;
+    color: white;
+}
+*{
+    outline: 1px solid;
+}
 
 
 

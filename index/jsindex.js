@@ -73,6 +73,10 @@ function cargarUsuarios(Listausers) {
                 botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; ">';
                 botoneditar.classList.add("botoneditar");
                 divbotones.appendChild(botoneditar);
+                botoneditar.addEventListener("click", () => {
+                        usuarioaeliminar = index;
+                        document.getElementById("modaleditar").style.display = "flex";
+                });
                 const botoneliminar = document.createElement("button");
                 botoneliminar.classList.add("botoneliminar");
                 botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px;">';
@@ -102,4 +106,12 @@ document.getElementById("confirmarEliminar").addEventListener("click", () => {
         usuarioaeliminar = null;
         }
         document.getElementById("modalEliminar").style.display = "none";
+});
+document.getElementById("cancelarEliminar").addEventListener("click", () => {
+        usuarioaeliminar = null; // olvidamos el índice seleccionado
+        document.getElementById("modalEliminar").style.display = "none"; // cerramos el modal
+});
+//Funcion boton editar perfil------------------------------------------
+document.getElementById("confirmareditar").addEventListener("click", () => { 
+        
 });

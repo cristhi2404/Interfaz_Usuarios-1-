@@ -229,9 +229,9 @@
                             <div class="contenido_tabla">
                                 
                             </div> 
-<!--            MODAL DE DESACTIVAR USER           -->
+<!--            MODAL DE DESACTIVAR Trabajador         -->
 <div id="modalEliminar" class="modal">
-    <div class="modal-contenido">
+    <div class="modal-contenidoEliminar">
         <p>¿Seguro que deseas cambiar el estado de este usuario?</p>
         <div class="modal-botones">
             <button id="confirmarEliminar">Sí, confirmar</button>
@@ -239,7 +239,41 @@
         </div>
     </div>
 </div>
-                        </div>
+<!--            MODAL DE Editar Trabajador          -->
+<div id="modaleditar" class="modal">
+    <div class="modal-contenido">
+        <p>¿Seguro que deseas cambiar el estado de este usuario?</p>
+        <div class="divcontenidotrabajador">
+            <div class="divimagentrabajador">
+                <img class="imgtrabajador" src="img/usuario1.png" alt="">
+            </div>
+            <div class="divinfotrabajador">
+                <div class="infotrabajador">
+                    <h2 class="h2trabajador">Nombre:</h2>
+                    <p class="ptrabajador">Juan Perez</p>
+                </div>
+                <div class="infotrabajador">
+                    <h2 class="h2trabajador">Cedula:</h2>
+                    <p class="ptrabajador">123456789</p>
+                </div>
+                <div class="infotrabajador">
+                    <h2 class="h2trabajador">Estado:</h2>
+                    <p class="ptrabajador">Activo</p>
+                </div>
+                <div class="infotrabajador">
+                    <h2 class="h2trabajador">Correo:</h2>
+                    <p class="ptrabajador">
+                </div>
+            </div>        
+            <div class="modal-botones">
+                <button id="confirmareditar">Sí, confirmar</button>
+                <button id="cancelareditar">Cancelar</button>
+            </div>
+        </div>
+    </div>   
+</div>        
+<!--    --------------------------------------------------------      -->
+                        
                         <div class="botones_paginacion">
                             <div class="divbotonpaginacion">
                                 <div class="divanterior centrado">
