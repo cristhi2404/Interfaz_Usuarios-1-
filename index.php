@@ -229,7 +229,16 @@
                             <div class="contenido_tabla">
                                 
                             </div> 
-                            
+<!--            MODAL DE DESACTIVAR USER           -->
+<div id="modalEliminar" class="modal">
+    <div class="modal-contenido">
+        <p>¿Seguro que deseas cambiar el estado de este usuario?</p>
+        <div class="modal-botones">
+            <button id="confirmarEliminar">Sí, confirmar</button>
+            <button id="cancelarEliminar">Cancelar</button>
+        </div>
+    </div>
+</div>
                         </div>
                         <div class="botones_paginacion">
                             <div class="divbotonpaginacion">

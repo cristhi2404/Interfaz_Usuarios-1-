@@ -1,18 +1,18 @@
 // simulacion de los divs 
 const usuarios = [
-        { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Inactivo" },
-        { nombre: "María González", cedula: "1001234567", estado: "Inactivo" },
+        { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Activo" },
+        { nombre: "María González", cedula: "1001234567", estado: "Activo" },
         { nombre: "Pedro Ramírez", cedula: "1007654321", estado: "Activo" }
 ];
 const tablaContenido = document.querySelector(".contenido_tabla");
 const inputBuscar = document.querySelector(".inputbuscar");
 
-
+let usuarioaeliminar= null;
 //cargar usersrs________________________________________________
 
 function cargarUsuarios(Listausers) {
         tablaContenido.innerHTML = ""; // Limpiar el contenido anterior
-        Listausers.forEach(usuario => {
+        Listausers.forEach((usuario, index) => {
                 const fila = document.createElement("div");
                 fila.classList.add("filas");
         //------------------ div nombre ---------------------
@@ -78,6 +78,10 @@ function cargarUsuarios(Listausers) {
                 botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px;">';
                 
                 divbotones.appendChild(botoneliminar);
+                botoneliminar.addEventListener("click", () => {
+                        usuarioaeliminar = index;
+                        document.getElementById("modalEliminar").style.display = "flex";
+                });
                 tablaContenido.appendChild(fila);
         })
 }    
@@ -85,3 +89,17 @@ cargarUsuarios(usuarios);
 // funciones de los Botones---------------------------------------
 const botonesEditar = document.querySelectorAll(".botoneditar");
 const botonesEliminar = document.querySelectorAll(".botoneliminar");
+//funbcion boton eliminar---------------------------------------
+document.getElementById("confirmarEliminar").addEventListener("click", () => {
+        if (usuarioaeliminar !== null) {
+                if (usuarios[usuarioaeliminar].estado === "Activo") {
+                        usuarios[usuarioaeliminar].estado = "Inactivo";
+                } else {
+                        usuarios[usuarioaeliminar].estado = "Activo";
+                }
+
+        cargarUsuarios(usuarios); // recargamos la tabla
+        usuarioaeliminar = null;
+        }
+        document.getElementById("modalEliminar").style.display = "none";
+});
