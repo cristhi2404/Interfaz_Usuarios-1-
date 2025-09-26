@@ -111,6 +111,10 @@ document.getElementById("cancelarEliminar").addEventListener("click", () => {
         usuarioaeliminar = null; // olvidamos el índice seleccionado
         document.getElementById("modalEliminar").style.display = "none"; // cerramos el modal
 });
+document.getElementById("cancelareditar").addEventListener("click", () => {
+         // olvidamos el índice seleccionado
+        document.getElementById("modaleditar").style.display = "none"; // cerramos el modal
+});
 //Funcion boton editar perfil------------------------------------------
 document.getElementById("confirmareditar").addEventListener("click", () => { 
         
