@@ -1,8 +1,16 @@
 // simulacion de los divs 
 const usuarios = [
-        { nombre: "Cristhian Manuel Ferrer Ortega", cedula: "1005026389", estado: "Activo" },
-        { nombre: "María González", cedula: "1001234567", estado: "Activo" },
-        { nombre: "Pedro Ramírez", cedula: "1007654321", estado: "Activo" }
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"1", id_proceso:"1",cargo:"Aprendiz", nombre: "Cristhian Manuel Ferrer Ortega",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" },
+        { id_empleado:"2", id_proceso:"2",cargo:"Admin", nombre: "Evaristo Fuentes",id_tipodocumento:"1", cedula: "1005026389",correo:"cristhianferrer24@gmail.com",celular:"3213625488",linea_fija:"123",Ubicacion:"Edificio Sede",Ubi_foto:"", estado: "Activo" }
 ];
 const tablaContenido = document.querySelector(".contenido_tabla");
 const inputBuscar = document.querySelector(".inputbuscar");
@@ -118,4 +126,11 @@ document.getElementById("cancelareditar").addEventListener("click", () => {
 //Funcion boton editar perfil------------------------------------------
 document.getElementById("confirmareditar").addEventListener("click", () => { 
         
+});
+//Funcion toggle de atributos------------------------------------------
+const card = document.querySelectorAll('.card');
+card.forEach(card => {
+        card.addEventListener('click', () => {
+                card.classList.toggle('active');
+        });        
 });

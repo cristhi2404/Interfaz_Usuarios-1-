@@ -243,17 +243,97 @@
 <!--            MODAL DE Editar Trabajador          -->
 <div id="modaleditar" class="modal">
     <div class="modal-contenido">
-        <p>¿Seguro que deseas cambiar el estado de este usuario?</p>
+        <div class="divtitulousermodal">
+            <p>Vista de Usuario</p>
+        </div>
         <div class="divcontenidotrabajador">
             <div class="divatributos">
-                
-            </div>
-            <div class="modal-botones">
-                <button id="confirmareditar">Sí, confirmar</button>
-                <button id="cancelareditar">Cancelar</button>
+                <div class="column1usuario">
+                    <div class="divimagenuser"></div>
+                    <div class="atributo">
+                        <p>Cambiar Imagen de user?</p>
+                        <button class="cambiarimagen">Click aqui</button>
+                    </div>    
+                </div>
+                <div class="column2usuario">
+                    <div class="divtodosatributos">
+                        <h1>Datos de Usuario:</h1>
+                        <div class="divdatosusuarios">
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div>    
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Cargo</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div style="gap: 370px;" class="atributoyflecha">
+                                    <span style="width: 120px;">Tipo de Documento</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card" >
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card" >
+                                <div class="atributoyflecha">
+                                    <span>Nombre</span>
+                                    <span class="flecha">▶</span>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
+        <div class="modal-botones">
+                <button id="confirmareditar">Sí, confirmar</button>
+                <button id="cancelareditar">Cancelar</button>
+        </div>
     </div>   
 </div>        
 <!--    --------------------------------------------------------      -->
@@ -313,5 +393,15 @@
 
     </footer>
     <script src="index/jsindex.js"></script>
+    <script>
+document.querySelectorAll('.divcadaatributo').forEach(function(card) {
+    card.addEventListener('click', function() {
+        var info = card.querySelector('.info');
+        if (info) {
+            info.style.display = (info.style.display === 'block') ? 'none' : 'block';
+        }
+    });
+});
+</script>
 </body>
 </html>
