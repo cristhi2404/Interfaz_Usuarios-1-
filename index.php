@@ -201,8 +201,8 @@
                     </div>
                     <div class="divparte2">
                         
-                        <input style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar...">
-                        <button style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" class="btnbuscar">
+                        <input style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
+                        <button style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" id="btnbuscar" class="btnbuscar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                                 <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  
                                         s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  
@@ -259,72 +259,104 @@
                     <div class="divtodosatributos">
                         <h1>Datos de Usuario:</h1>
                         <div class="divdatosusuarios">
+                            <div class="vista-previa">
+                                <h2>Vista Previa del Usuario</h2>
+                                <div class="dato"><strong>Nombre:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-nombre">---</span></div>
+                                <div class="dato"><strong>Cargo:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-cargo">---</span></div>
+                                <div class="datosuser_compartidos">
+                                    <div class="dato1"><strong>Tipo de Documento:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-tipoDoc">---</span></div>
+                                    <div class="dato2"><strong>Documento ID:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-docId">---</span></div>
+                                </div>
+                                <div class="datosuser_compartidos">
+                                    <div class="dato1"><strong>Linea Fija:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-lineafija">---</span></div>
+                                    <div class="dato2"><strong>Celular:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-celular">---</span></div>
+                                </div>
+                                <div class="dato"><strong>Correo:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-correo">---</span></div>
+                                <div class="dato"><strong>Ubicación:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-ubicacion">---</span></div>
+                            </div>
+
+
                             <div class="divcadaatributo card">
                                 <div class="atributoyflecha">
                                     <span>Nombre</span>
                                     <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-nombre">
                                 </div>    
                             </div>
                             <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
+                                <div style="gap: 460px;" class="atributoyflecha">
                                     <span>Cargo</span>
                                     <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-cargo">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
                                 <div style="gap: 370px;" class="atributoyflecha">
                                     <span style="width: 120px;">Tipo de Documento</span>
                                     <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-tipoDoc">
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div style="gap: 370px;" class="atributoyflecha">
+                                    <span style="width: 120px;" >Documento Id</span>
+                                    <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-docId">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
                                 <div class="atributoyflecha">
-                                    <span>Nombre</span>
+                                    <span>Correo</span>
                                     <span class="flecha">▶</span>
-                                </div> 
-                            </div>
-                            <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Nombre</span>
-                                    <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-correo">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card" >
                                 <div class="atributoyflecha">
-                                    <span>Nombre</span>
+                                    <span>Celular</span>
                                     <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-celular">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Nombre</span>
+                                <div style="gap: 370px;" class="atributoyflecha">
+                                    <span style="width: 120px;" >Linea Fija</span>
                                     <span class="flecha">▶</span>
                                 </div> 
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-lineafija">
+                                </div>
                             </div>
                             <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Nombre</span>
+                                <div style="gap: 435px;" class="atributoyflecha">
+                                    <span>Ubicacion</span>
                                     <span class="flecha">▶</span>
                                 </div> 
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input type="text" placeholder="Nuevo valor" id="input-ubicacion">
+                                </div>
                             </div>
-                            <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Nombre</span>
-                                    <span class="flecha">▶</span>
-                                </div> 
-                            </div>
-                            <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Nombre</span>
-                                    <span class="flecha">▶</span>
-                                </div> 
-                            </div>
-                            <div class="divcadaatributo card" >
-                                <div class="atributoyflecha">
-                                    <span>Nombre</span>
-                                    <span class="flecha">▶</span>
-                                </div> 
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

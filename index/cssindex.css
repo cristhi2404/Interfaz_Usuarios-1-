@@ -57,6 +57,7 @@ body{
     --color_primario_comfanorte: rgb(237,50,55);
     --color_secundario_comfanorte:#0d0e0e;
     --color_terciario_comfanorte: rgb(255,255,255);
+    --color_cuaternario_comfanorte: rgb(151, 34, 38);
 }
 .colum-red{
     background: var(--color_primario_comfanorte);
@@ -567,7 +568,7 @@ align-items: center; justify-content: flex-start;}
 }
 
 .modal-botones {
-    margin-top: 0px;
+    margin-top: 15px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -696,14 +697,14 @@ align-items: center; justify-content: flex-start;}
     display: grid;
     grid-template-rows: repeat (12, 3fr);
     max-height: 40vh;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .divcadaatributo{
     width: 100%;
     height: 3.5vh;
     margin-bottom: 8px;
-    background: rgb(87, 87, 87);
+    background: var(--color_secundario_comfanorte);
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
@@ -711,8 +712,11 @@ align-items: center; justify-content: flex-start;}
     cursor: pointer;
     overflow: hidden;
     align-items: center;
-    transition: height 0.3s ease;
+    transition: all 0.3s ease;
     color: var(--color_terciario_comfanorte);
+}
+.divcadaatributo:hover{
+    background: #484848;
 }
 .info {
     margin-top: 20px;
@@ -721,8 +725,11 @@ align-items: center; justify-content: flex-start;}
     height: 50px;
     width: 80%;
 }
-.divcadaatributo.active{
-    height: 20vh;
+.card.active{
+    height: 15vh;
+}
+.card.seleccionada{
+    background: #484848;
 }
 .flecha {
     transition: transform 0.3s ease;
@@ -744,6 +751,97 @@ align-items: center; justify-content: flex-start;}
     margin-top: 3px;
     font-size: 1.8vh;
 }
+/* css de la vista previa de usuario*/
+.vista-previa {
+    background-color: var(--color_secundario_comfanorte);
+    border-radius: 2px;
+    padding: 5px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
+    font-size: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 20vh;
+    overflow-y:scroll;
+}
+
+.vista-previa h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--color_terciario_comfanorte);
+}
+.datosuser_compartidos{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+}
+.dato1{
+    margin-bottom: 8px;
+    background: #ddd;
+    padding: 8px 10px;
+    border-radius: 6px;
+    width: 25%;
+    height: 4vh;
+}
+.dato2{
+    margin-bottom: 8px;
+    background: #ddd;
+    padding: 8px 10px;
+    border-radius: 6px;
+    width: 40%;
+    height: 4vh;
+}
+.dato {
+    margin-bottom: 8px;
+    background: #ddd;
+    padding: 8px 10px;
+    border-radius: 6px;
+    width: 70%;
+    height: 4vh;
+} 
+
+.dato strong {
+    color: #222;
+}
+/* css de cada div de ingresar valor nuevo a cada atributo*/
+.div-expandido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 10px;
+}
+
+.div-expandido p {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+.div-expandido input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #cacaca;
+    color: rgb(53, 53, 53);
+    
+}
+.div-expandido input::placeholder {
+    color: #383838;
+}
+
+
 
 
 
