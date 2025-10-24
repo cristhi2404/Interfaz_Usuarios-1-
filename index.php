@@ -201,7 +201,7 @@
                     </div>
                     <div class="divparte2">
                         
-                        <input style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
+                        <input style="border-radius: 3px 3px 3px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
                         <button style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" id="btnbuscar" class="btnbuscar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                                 <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  
@@ -224,7 +224,7 @@
                                 <div class="cuadro">Nombre</div>
                                 <div class="cuadro">Cedula </div>
                                 <div class="cuadro">Estado</div>
-                                <div class="cuadro">Acciones </div>
+                                <div class="cuadro1">Acciones </div>
                             </div>
                             <div class="contenido_tabla">
                                 
@@ -253,6 +253,7 @@
                     <div class="atributo">
                         <p>Cambiar Imagen de user?</p>
                         <button class="cambiarimagen">Click aqui</button>
+                        
                     </div>    
                 </div>
                 <div class="column2usuario">
@@ -375,7 +376,7 @@
                                 <div class="divanterior centrado">
                                     <button class="button-paginacion">
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                                            width="20.000000pt" height="20.000000pt" viewBox="0 0 500.000000 500.000000"
+                                            width="60.000000pt" height="60.000000pt" viewBox="0 0 500.000000 500.000000"
                                             preserveAspectRatio="xMidYMid meet">
 
                                             <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
@@ -396,7 +397,7 @@
                                 <div class="siguiente centrado">
                                     <button class="button-paginacion">
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                                            width="20.000000pt" height="20.000000pt" viewBox="0 0 500.000000 500.000000"
+                                            width="60.000000pt" height="60.000000pt" viewBox="0 0 500.000000 500.000000"
                                             preserveAspectRatio="xMidYMid meet">
                                             <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
                                                 fill="#000000" stroke="none">
