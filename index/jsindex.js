@@ -51,6 +51,7 @@ function cargarUsuarios(Listausers) {
         usuariosPagina.forEach((usuario, index) => {
                 const fila = document.createElement("div");
                 fila.classList.add("filas");
+                fila.setAttribute("data-id", usuario.id_empleado);
         //------------------ div nombre ---------------------
                 const divnombre = document.createElement("div");
                 divnombre.classList.add("nombre");
@@ -205,18 +206,7 @@ cargarUsuarios(usuarios);
 const botonesEditar = document.querySelectorAll(".botoneditar");
 const botonesEliminar = document.querySelectorAll(".botoneliminar");
 //funbcion boton eliminar---------------------------------------
-document.getElementById("confirmarEliminar").addEventListener("click", () => {
-        if (usuarioaeliminar) {
-                usuarioaeliminar.estado = 
-                        usuarioaeliminar.estado?.toString().trim().toLowerCase() === "activo"
-                                ? "inactivo"
-                                : "activo";
 
-                cargarUsuarios(usuarios); // recargamos la tabla
-                usuarioaeliminar = null;
-        }
-        document.getElementById("modalEliminar").style.display = "none";
-});
 document.getElementById("cancelarEliminar").addEventListener("click", () => {
         usuarioaeliminar = null; // olvidamos el índice seleccionado
         document.getElementById("modalEliminar").style.display = "none"; // cerramos el modal
@@ -240,7 +230,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
         formData.append("celular", document.getElementById("input-celular").value);
         formData.append("linea_fija", document.getElementById("input-lineafija").value);
         formData.append("ubicacion", document.getElementById("input-ubicacion").value);
-        formData.append("estado", usuarioEditando.estado || "Activo" );
+        
 
         fetch("/Interfaz_Usuarios-1-/actualizar_usuario.php", {
                 method: "POST",
@@ -250,29 +240,71 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
         .then(data => {
                 console.log("Respuesta cruda:", data);
                 if (data.ok) {
-                        alert("✅ Cambios guardados correctamente");
-
-                        // 🔄 Actualizar el usuario en el array sin recargar
-                        const actualizado = data.usuario;
-                        const index = usuarios.findIndex(
-                                u => String(u.id_empleado) === String(actualizado.id_empleado)
-                        );
-                        if (index !== -1) {
-                        usuarios[index] = { ...usuarios[index], ...actualizado };
-                        usuariosFiltrados = [...usuarios];
-                        cargarUsuarios(usuariosFiltrados);
-                        }
-
-                        // Cerrar el modal
-                        document.getElementById("modaleditar").style.display = "none";
-                        usuarioEditando = null;
+                        alert(`✅ Usuario ${nuevoEstado === "activo" ? "activado" : "inactivado"} correctamente`);
+                        usuarioaeliminar.estado = nuevoEstado;
+                        cargarUsuarios(usuarios);
 
                 } else {
-                        alert("⚠️ " + data.msg);
+                        alert("⚠️ Error al actualizar el estado: " + data.msg)
                 }
         })
         .catch(err => console.error("Error al guardar cambios:", err));
 
+});
+document.getElementById("confirmarEliminar").addEventListener("click", () => {
+        if (!usuarioaeliminar) return;
+
+        const idEmpleado = usuarioaeliminar.id_empleado;
+
+    // Normalizamos el estado actual
+        const estadoActual = (usuarioaeliminar.estado || "").toString().trim().toLowerCase();
+        const nuevoEstado = estadoActual === "activo" ? "inactivo" : "activo";
+
+        const formData = new FormData();
+        formData.append("id_empleado", idEmpleado);
+        formData.append("estado", nuevoEstado);
+
+        fetch("actualizar_usuario.php", {
+                method: "POST",
+                body: formData
+        })
+        .then((response) => response.json())
+        .then((data) => {
+                console.log("Respuesta del servidor:", data);
+                if (data.ok) {
+            // Actualizamos el usuario en el arreglo local
+                        usuarioaeliminar.estado = nuevoEstado;
+                        const index = usuarios.findIndex(u => u.id_empleado === idEmpleado);
+                        if (index !== -1) {
+                                usuarios[index].estado = nuevoEstado;
+                        }
+
+                // Actualizamos visualmente en la tabla sin recargar
+                        const fila = document.querySelector(`[data-id="${idEmpleado}"]`);
+                        if (fila) {
+                                const indicador = fila.querySelector(".indicadoraccion");
+                                indicador.classList.remove("activo", "inactivo");
+                                indicador.classList.add(nuevoEstado);
+                        }
+
+                // Mostrar alerta o modal de éxito
+                        
+
+
+                } else {
+                        alert("Error al actualizar el estado: " + data.msg);
+                }
+        })
+        .catch(err => {
+                console.error("Error al enviar estado:", err);
+                
+                alert("Error en la conexión con el servidor");
+        })
+        .finally(() => {
+                document.getElementById("modalEliminar").style.display = "none";
+                usuarioaeliminar = null;
+        });
+        
 });
 //Funcion toggle de atributos------------------------------------------
 const atributos = document.querySelectorAll('.divcadaatributo');
