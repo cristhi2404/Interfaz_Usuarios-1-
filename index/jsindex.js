@@ -313,16 +313,12 @@ const atributos = document.querySelectorAll('.divcadaatributo');
 atributos.forEach(div => {
         div.addEventListener('click', () => {
                 const abierto = div.classList.toggle('abierto');
+                const flecha = div.querySelector('.flecha');
 
                 if (abierto) {
-                        div.style.height = "20vh";
-                        div.style.backgroundColor = "var(--color_primario_comfanorte)";
-                        const flecha = div.querySelector('.flecha');
+                        
                         if (flecha) flecha.style.transform = "rotate(90deg)";
                 } else {
-                        div.style.height = "3.5vh";
-                        div.style.backgroundColor = "black";
-                        const flecha = div.querySelector('.flecha');
                         if (flecha) flecha.style.transform = "rotate(0deg)";
                 }
         });
