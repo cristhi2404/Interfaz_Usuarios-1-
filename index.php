@@ -241,7 +241,7 @@
     </div>
 </div>
 <!--            MODAL DE Editar Trabajador          -->
-<div id="modaleditar" class="modal">
+<div id="modaleditar" class="modal" aria-modal="true" aria-labelledby="tituloeditar " role="dialog">
     <div class="modal-contenido">
         <div class="divtitulousermodal">
             <p>Vista de Usuario</p>
@@ -249,11 +249,11 @@
         <div class="divcontenidotrabajador">
             <div class="divatributos">
                 <div class="column1usuario">
-                    <div class="divimagenuser"></div>
+                    <div style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));" class="divimagenuser"></div>
                     <div class="atributo">
                         <p>Cambiar Imagen de user?</p>
                         <button class="cambiarimagen">Click aqui</button>
-                        
+                        <input type="file" id="input-imagen" accept="image/*" style="display:none;">
                     </div>    
                 </div>
                 <div class="column2usuario">
@@ -284,7 +284,7 @@
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-nombre">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-nombre">
                                 </div>    
                             </div>
                             <div class="divcadaatributo card">
@@ -294,7 +294,7 @@
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-cargo">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-cargo">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
@@ -304,7 +304,7 @@
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-tipoDoc">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-tipoDoc">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
@@ -314,7 +314,7 @@
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-docId">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-docId">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
@@ -324,7 +324,7 @@
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-correo">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-correo">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card" >
@@ -334,7 +334,7 @@
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-celular">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-celular">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
@@ -344,7 +344,7 @@
                                 </div> 
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-lineafija">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-lineafija">
                                 </div>
                             </div>
                             <div class="divcadaatributo card">
@@ -354,7 +354,7 @@
                                 </div> 
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input type="text" placeholder="Nuevo valor" id="input-ubicacion">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-ubicacion">
                                 </div>
                             </div>
                             

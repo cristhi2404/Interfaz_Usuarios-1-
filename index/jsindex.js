@@ -1,6 +1,8 @@
 let usuarios = [];
 let usuariosFiltrados = [];
 const tablaContenido = document.querySelector(".contenido_tabla");
+let ultimoFoco = null;
+
 
 let paginaActual = 1;
 const usuariosPorPagina = 50;
@@ -9,7 +11,7 @@ let usuarioEditando= null;
 const inputBuscar = document.querySelector(".inputbuscar") || document.getElementById("inputbuscar");
 const btnBuscar = document.querySelector(".btnbuscar") || document.getElementById("btnbuscar");
 // 🔻 Cargar los usuarios desde PHP/MySQL
-fetch("/Interfaz_Usuarios-1-/obtener_users.php")
+fetch("obtener_users.php")
         .then(response => response.json())
         .then(data => {
                 usuarios = data;
@@ -34,12 +36,26 @@ function abrirModalEdicion(usuario) {
         // Actualizar la vista previa arriba
         document.getElementById('vp-nombre').textContent = usuario.nombre;
         document.getElementById('vp-cargo').textContent = usuario.cargo;
-        document.getElementById('vp-tipoDoc').textContent = usuario.id_tipodocumento;
+        document.getElementById('vp-tipoDoc').textContent = usuario.id_tipo_documento;
         document.getElementById('vp-docId').textContent = usuario.numero_documento;
         document.getElementById('vp-correo').textContent = usuario.correo;
         document.getElementById('vp-celular').textContent = usuario.celular;
         document.getElementById('vp-lineafija').textContent = usuario.linea_fija;
         document.getElementById('vp-ubicacion').textContent = usuario.ubicacion;
+        const divimagenuser = document.querySelector(".divimagenuser");
+
+        if (divimagenuser) {
+                if (usuario.imagen && usuario.imagen.trim() !== "") {
+                        // Asegura la ruta correcta
+                        divimagenuser.style.backgroundImage = `url('./${usuario.imagen}')`;
+                } else {
+                        // Imagen por defecto
+                        divimagenuser.style.backgroundImage = "url('img/sinfoto.png')";
+                }
+
+                divimagenuser.style.backgroundSize = "cover";
+                divimagenuser.style.backgroundPosition = "center";
+        }
 }
 //cargar usersrs________________________________________________
 
@@ -52,6 +68,7 @@ function cargarUsuarios(Listausers) {
                 const fila = document.createElement("div");
                 fila.classList.add("filas");
                 fila.setAttribute("data-id", usuario.id_empleado);
+                fila.setAttribute("tabindex", "0"); // para accesibilidad
         //------------------ div nombre ---------------------
                 const divnombre = document.createElement("div");
                 divnombre.classList.add("nombre");
@@ -105,30 +122,41 @@ function cargarUsuarios(Listausers) {
         //------------------ div botones ----------------------
                 const divbotones = document.createElement("div");
                 divbotones.classList.add("divbotones");
+                 // para accesibilidad
                 fila.appendChild(divbotones);
                 const botoneditar = document.createElement("button");
+                botoneditar.setAttribute("tabindex", "0");
                 botoneditar.classList.add("botoneditar");
                 botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; ">';       
                 divbotones.appendChild(botoneditar);
                 
                 botoneditar.addEventListener("click", () => {
-                        
+                        ultimoFoco = document.activeElement;
                         abrirModalEdicion(usuario);
-                        document.getElementById("modaleditar").style.display = "flex";
+                        const modal=document.getElementById("modaleditar");
+                        modal.style.display = "flex";
+                        modal.scrollTop = 0;
+                        const primerElemento = modal.querySelector("input, button, select, textarea, [tabindex]:not([tabindex='-1'])");
+                        if (primerElemento) primerElemento.focus();
+                        trapFocus(modal);
 
                 });
                 const botoneliminar = document.createElement("button");
+                botoneliminar.setAttribute("tabindex", "0");
                 botoneliminar.classList.add("botoneliminar");
                 botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px;">';
                 
                 divbotones.appendChild(botoneliminar);
                 botoneliminar.addEventListener("click", () => {
+                        ultimoFoco = document.activeElement;
                         usuarioaeliminar = usuario;
-                        document.getElementById("modalEliminar").style.display = "flex";
+                        const modaleliminar=document.getElementById("modalEliminar");
+                        modaleliminar.style.display = "flex";
+                        const primerElemento = modaleliminar.querySelector("input, button, select, textarea, [tabindex]:not([tabindex='-1'])");
+                        if (primerElemento) primerElemento.focus();
+                        trapFocus(modaleliminar);
                 });
-                divbotones.appendChild(botoneditar);
-                divbotones.appendChild(botoneliminar);
-                fila.appendChild(divbotones);
+                
                 tablaContenido.appendChild(fila);
         })
 
@@ -177,79 +205,128 @@ function renderPaginacion(Listausers) {
         }
 } 
 
-// cuando el usuario presione “Sí, confirmar”
-document.getElementById('confirmareditar').addEventListener('click', () => {
-        if (!usuarioEditando) return;
+// funcion filtrar usuarios ____________________________________________
+function filtrarUsuarios() {
+        const texto = inputBuscar.value.toLowerCase().trim();
 
-    // obtener nuevos valores desde los inputs
-        const nuevosDatos = {
-                nombre: document.getElementById('input-nombre').value,
-                cargo: document.getElementById('input-cargo').value,
-                id_tipodocumento: document.getElementById('input-tipoDoc').value,
-                cedula: document.getElementById('input-docId').value,
-                correo: document.getElementById('input-correo').value,
-                celular: document.getElementById('input-celular').value,
-                linea_fija: document.getElementById('input-lineafija').value,
-                Ubicacion: document.getElementById('input-ubicacion').value
-        };
+    // Filtramos el array completo, no las filas actuales
+        usuariosFiltrados = usuarios.filter(usuario =>
+                usuario.nombre.toLowerCase().includes(texto) ||
+                usuario.numero_documento.toLowerCase().includes(texto)
+        );
+    // Reiniciamos la paginación
+        paginaActual = 1;
 
-    // aplicar los cambios al objeto original
-        Object.assign(usuarioEditando, nuevosDatos);
-        // cerrar el modal
-        document.getElementById('modaleditar').style.display = "none";
+    // Volvemos a cargar la tabla con los usuarios filtrados
+        cargarUsuarios(usuariosFiltrados);
+}
+btnBuscar.addEventListener("click", filtrarUsuarios);
+inputBuscar.addEventListener("keyup", filtrarUsuarios);
 
-    // si tienes una función que refresca la tabla, llámala aquí
-    // actualizarTablaUsuarios();
-});
 cargarUsuarios(usuarios);
+
 // funciones de los Botones---------------------------------------
 const botonesEditar = document.querySelectorAll(".botoneditar");
 const botonesEliminar = document.querySelectorAll(".botoneliminar");
 //funbcion boton eliminar---------------------------------------
 
 document.getElementById("cancelarEliminar").addEventListener("click", () => {
-        usuarioaeliminar = null; // olvidamos el índice seleccionado
-        document.getElementById("modalEliminar").style.display = "none"; // cerramos el modal
+        usuarioEditando = null;
+        const modal = document.getElementById("modalEliminar");
+        modal.style.display = "none";
+        modal.scrollTop = 0;
+
+  // 🔹 Reinicia los divs de atributos
+        resetAtributos(); // cerramos el modal
 });
 document.getElementById("cancelareditar").addEventListener("click", () => {
-         // olvidamos el índice seleccionado
-        document.getElementById("modaleditar").style.display = "none"; // cerramos el modal
+        usuarioEditando = null;
+        const modal=document.getElementById("modaleditar")
+        modal .style.display = "none";
+        resetAtributos();
+        modal.scrollTop = 0;
+         // cerramos el modal
 });
 //Funcion boton editar perfil------------------------------------------
 document.getElementById("confirmareditar").addEventListener("click", () => { 
-        if (usuarioEditando === null) return;
-
+        if (!usuarioEditando) return;
+        const nombre = document.getElementById("input-nombre").value.trim();
+        const documento = document.getElementById("input-docId").value.trim();
+        const correo = document.getElementById("input-correo").value.trim();
+        if (!nombre) {
+                alert("⚠️ El nombre no puede estar vacío");
+                return;
+        }
+        if (!documento) {
+                alert("⚠️ El número de documento es obligatorio");
+                return;
+        }
+        if (!correo.includes("@")) {
+                alert("⚠️ Ingrese un correo electrónico válido");
+                return;
+        }
+    // Tomar valores del formulario
         const formData = new FormData();
         formData.append("id_empleado", usuarioEditando.id_empleado);
         formData.append("id_proceso", usuarioEditando.id_proceso || 1);
-        formData.append("nombre", document.getElementById("input-nombre").value);
+        formData.append("nombre", nombre);
         formData.append("cargo", document.getElementById("input-cargo").value);
         formData.append("id_tipo_documento", document.getElementById("input-tipoDoc").value);
-        formData.append("numero_documento", document.getElementById("input-docId").value);
-        formData.append("correo", document.getElementById("input-correo").value);
+        formData.append("numero_documento", documento);
+        formData.append("correo", correo);
         formData.append("celular", document.getElementById("input-celular").value);
         formData.append("linea_fija", document.getElementById("input-lineafija").value);
         formData.append("ubicacion", document.getElementById("input-ubicacion").value);
-        
+        // 🔹 Adjuntar la imagen si el usuario seleccionó una
+        const inputImagen = document.getElementById("input-imagen");
+        if (inputImagen && inputImagen.files[0]) {
+                formData.append("imagen", inputImagen.files[0]);
+        }
 
-        fetch("/Interfaz_Usuarios-1-/actualizar_usuario.php", {
+        fetch("actualizar_usuario.php", {
                 method: "POST",
                 body: formData
         })
-        .then(res => res.json())
-        .then(data => {
-                console.log("Respuesta cruda:", data);
-                if (data.ok) {
-                        alert(`✅ Usuario ${nuevoEstado === "activo" ? "activado" : "inactivado"} correctamente`);
-                        usuarioaeliminar.estado = nuevoEstado;
-                        cargarUsuarios(usuarios);
-
-                } else {
-                        alert("⚠️ Error al actualizar el estado: " + data.msg)
+        .then(async res => {
+                const text = await res.text();
+                console.log("🔍 Respuesta cruda del servidor:", text);
+                try {
+                        return JSON.parse(text);
+                } catch (e) {
+                        throw new Error("Respuesta no válida del servidor: " + text);
                 }
         })
-        .catch(err => console.error("Error al guardar cambios:", err));
-
+        .then(data => {
+                if (!data.ok) {
+                        console.error("Error del servidor:", data.msg);
+                        alert(data.msg);
+                        return;
+                }
+                alert("✅ Usuario actualizado correctamente");
+                const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
+                if (idx !== -1) {
+                        usuarios[idx] = data.usuario || {
+                                ...usuarios[idx],
+                                ...Object.fromEntries(formData)
+                        };
+                }
+                const fila = document.querySelector(`[data-id="${usuarioEditando.id_empleado}"]`);
+                if (fila) {
+                        fila.querySelector(".textnombre").textContent = formData.get("nombre");
+                        fila.querySelector(".textcedula").textContent = formData.get("numero_documento");
+                }
+                document.getElementById("modaleditar").style.display = "none";
+                usuarioEditando = null;
+        })      
+        .catch(err => {
+                console.error("Error al guardar cambios:", err);
+                alert("Error en la conexión con el servidor");
+        })
+        .finally(() => {
+                resetAtributos();
+                const modal = document.getElementById("modaleditar");
+                if (modal) modal.scrollTop = 0;
+        }); 
 });
 document.getElementById("confirmarEliminar").addEventListener("click", () => {
         if (!usuarioaeliminar) return;
@@ -286,11 +363,7 @@ document.getElementById("confirmarEliminar").addEventListener("click", () => {
                                 indicador.classList.remove("activo", "inactivo");
                                 indicador.classList.add(nuevoEstado);
                         }
-
                 // Mostrar alerta o modal de éxito
-                        
-
-
                 } else {
                         alert("Error al actualizar el estado: " + data.msg);
                 }
@@ -311,42 +384,55 @@ const atributos = document.querySelectorAll('.divcadaatributo');
 
 // Mostrar / ocultar cada div con animación
 atributos.forEach(div => {
-        div.addEventListener('click', () => {
-                const abierto = div.classList.toggle('abierto');
-                const flecha = div.querySelector('.flecha');
+        div.setAttribute("tabindex", "0");
+        const flecha = div.querySelector('.flecha');
+        const contenido = div.querySelector(".div-expandido");
+        const inputs = contenido ? contenido.querySelectorAll("input, select, textarea, button") : [];
+        inputs.forEach(i => i.setAttribute("tabindex", "-1"));
+        function toggleExpand() {
+                const abierto = div.classList.toggle("abierto");
 
                 if (abierto) {
-                        
+    // primero muestra el contenido
+                        contenido.style.display = "block";
+                        inputs.forEach(i => i.removeAttribute("tabindex"));
+    // pequeño retraso para que scrollHeight se calcule correctamente
+                        requestAnimationFrame(() => {
+                                div.style.height = div.scrollHeight + "px";
+                        });
+
                         if (flecha) flecha.style.transform = "rotate(90deg)";
                 } else {
+                        inputs.forEach(i => i.setAttribute("tabindex", "-1"));
+                        div.style.height = div.scrollHeight + "px";
+                        requestAnimationFrame(() => {
+                                div.style.height = "3.5vh";
+                        });
+
                         if (flecha) flecha.style.transform = "rotate(0deg)";
+
+    // espera que termine la animación antes de ocultar el contenido
+                        setTimeout(() => {
+                                contenido.style.display = "none";
+                        }, 300);
+                }
+        }
+        div.addEventListener("click", e => {
+                if (!["input", "select", "textarea", "button"].includes(e.target.tagName.toLowerCase())) {
+                        toggleExpand();
                 }
         });
+        div.addEventListener("keydown", e => {
+                if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault(); // evita que salte al input
+                        toggleExpand();
+                }
+        });         
+        
 });
-
-// evitar que al hacer clic dentro del input se cierre el div
-document.querySelectorAll('.divcadaatributo input').forEach(input => {
-        input.addEventListener('click', (e) => e.stopPropagation());
+document.querySelectorAll(".divcadaatributo input").forEach(input => {
+        input.addEventListener("click", e => e.stopPropagation());
 });
-
-// función que filtra
-function filtrarUsuarios() {
-        const texto = inputBuscar.value.toLowerCase().trim();
-
-    // Filtramos el array completo, no las filas actuales
-        usuariosFiltrados = usuarios.filter(usuario =>
-                usuario.nombre.toLowerCase().includes(texto) ||
-                usuario.numero_documento.toLowerCase().includes(texto)
-        );
-
-    // Reiniciamos la paginación
-        paginaActual = 1;
-
-    // Volvemos a cargar la tabla con los usuarios filtrados
-        cargarUsuarios(usuariosFiltrados);
-}
-btnBuscar.addEventListener("click", filtrarUsuarios);
-inputBuscar.addEventListener("keyup", filtrarUsuarios);
 
 document.querySelectorAll(".divcadaatributo input").forEach(input => {
         input.addEventListener("input", e => {
@@ -356,5 +442,83 @@ document.querySelectorAll(".divcadaatributo input").forEach(input => {
                 e.target.setSelectionRange(start, end); // evita que el cursor salte
         });
 });
+function resetAtributos() {
+        const atributos = document.querySelectorAll(".divcadaatributo");
+        atributos.forEach(div => {
+                const contenido = div.querySelector(".div-expandido");
+                const flecha = div.querySelector(".flecha");
+                const inputs = contenido ? contenido.querySelectorAll("input, select, textarea, button") : [];
+
+                // Quitar clase abierto
+                div.classList.remove("abierto");
+
+                // Ocultar contenido
+                if (contenido) {
+                        contenido.style.display = "none";
+                }
+
+                // Bloquear inputs
+                inputs.forEach(i => i.setAttribute("tabindex", "-1"));
+
+                // Reiniciar altura y flecha
+                div.style.height = "3.5vh";
+                if (flecha) flecha.style.transform = "rotate(0deg)";
+        });
+}
+// 🔹 Función para cambiar imagen del usuario----------------------------------
+const botoncambiarimagen = document.querySelector(".cambiarimagen");
+const inputImagen = document.getElementById("input-imagen");
+const divimagenuser=document.querySelector(".divimagenuser");
+if(botoncambiarimagen && inputImagen && divimagenuser){
+        botoncambiarimagen.addEventListener("click", () => {
+                inputImagen.click();
+        });
+        inputImagen.addEventListener("change", () => {
+                const archivo = inputImagen.files[0];
+                if (!archivo) return;
+
+                if (!archivo.type.startsWith("image/")) {
+                        alert("⚠️ Por favor, selecciona un archivo de imagen válido.");
+                        inputImagen.value = ""
+                        return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                        divimagenuser.style.backgroundImage = `url(${e.target.result})`;
+                        divimagenuser.style.backgroundSize = "cover";
+                        divimagenuser.style.backgroundPosition = "center";
+                };
+                reader.readAsDataURL(archivo);
+        });
+}
+
+
+function trapFocus(modal) {
+        const focusable = modal.querySelectorAll("input, button, select, textarea, [tabindex]:not([tabindex='-1'])");
+        if (!focusable.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        modal.addEventListener("keydown", (e) => {
+                if (e.key === "Tab") {
+                        if (e.shiftKey) {
+                // Shift + Tab (retroceso)
+                                if (document.activeElement === first) {
+                                        e.preventDefault();
+                                        last.focus();
+                                }
+                        }else {
+                // Tab normal (avance)
+                                if (document.activeElement === last) {
+                                        e.preventDefault();
+                                        first.focus();
+                                }
+                        }
+                }
+        });
+}
+
+
 
 
