@@ -86,7 +86,7 @@ $id_tipo_documento = $id_tipo_documento ?: 0;
 
 $rutaImagen = null;
 
-// 🔹 Verificar si viene una imagen nueva
+// Verificar si viene una imagen nueva
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     $file = $_FILES['imagen'];
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
