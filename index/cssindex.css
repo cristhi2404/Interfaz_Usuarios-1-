@@ -213,25 +213,38 @@ nav{
     height: 20vh;
     margin-top: 50px;
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
     filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+    
 }
 .divparte1{
     background: transparent;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    overflow: hidden;
+    height: 7.5vh;
     margin-right: 10vh;
     align-items: center;
     
 }
+
 .divparte2{
     background: #0d0e0e;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 4px 4px 0px 0px ;
+    ;
+}
+.img {
+    height: 130%;
+    max-width: 100%;
+    object-fit: contain;
+}
+.img2 {
+    height: 130%;
+    max-width: 100%;
+    object-fit: contain;
 }
 .divtitulo{
     height: 15%;
@@ -246,7 +259,7 @@ nav{
     align-items: center;
 }
 .btnbuscar, .inputbuscar{
-    height: 35%;
+    height: 30%;
     font-size: 2vh;
     border: none;
     outline: none;
@@ -261,7 +274,7 @@ nav{
     background: #ff8686;
 }
 .divimagentitulo{
-    width: 15%;
+    width: 12%;
     height: 100%;
     background: #0d0e0e;
     
@@ -288,8 +301,6 @@ h1{
     padding: 20px;
     background: #e2e2e2;
     margin-bottom: 45px;
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
-    
 }
 .users{
     width: 97.5%;         
@@ -305,7 +316,6 @@ h1{
     overflow: hidden;
     align-items: center;
     height: 7vh;
-    
 }
 .divcontenidousers{
     border: 4px solid var(--color_secundario_comfanorte);
@@ -571,16 +581,8 @@ align-items: center; justify-content: flex-start;}
     
     filter: drop-shadow(2px 2px 4px rgb(224, 8, 8));
 }
-.img {
-    height: 150%;
-    max-width: 100%;
-    object-fit: contain;
-}
-.img2 {
-    height: 150%;
-    max-width: 100%;
-    object-fit: contain;
-}
+
+
 /*-------------CLASES DE LOS MODALES DE LOS BOTONES -------------------*/
 /* Fondo oscuro */
 .modal {
@@ -628,14 +630,15 @@ align-items: center; justify-content: flex-start;}
     background: gray;
     color: white;
 }
+
 /*-------------CLASES DE LOS MODALES DE LOS BOTONES -------------------*/
 .modal-contenido {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     text-align:start;
-    width: 900px;
-    height: 68vh;
+    width: 1000px;
+    height: 78vh;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     font-weight: 900;
 }
@@ -667,12 +670,12 @@ align-items: center; justify-content: flex-start;}
 }
 .divcontenidotrabajador{
     width: 100%;
-
+    
     
 }
 .divatributos{
     width: 100%;
-    height: 70%; 
+    height: 60vh; 
     display: grid;
     grid-template-columns: 1fr 4fr;
     outline: 3px solid;
@@ -710,7 +713,7 @@ align-items: center; justify-content: flex-start;}
 }
 .divimagenuser{
     width: 80%;
-    height: 22vh;
+    height: 27vh;
     background: var(--color_terciario_comfanorte);
     display: flex;
     justify-content: center;
@@ -718,8 +721,70 @@ align-items: center; justify-content: flex-start;}
     margin-top: 3vh;
     /* Sombra interna hacia adentro */
     box-shadow: inset 0 0 16px rgba(0,0,0,0.23);
+    position: relative;
+    overflow: hidden;
+}
+.btn-eliminar-foto {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 25px;
+    height: 25px;
+    background: rgb(237,50,55);
+    color: white;
+    border-radius: 0 0 5px 0;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all .35s ease-in-out;
+    transform: translate(-30px, -30px) scale(0.4); /* inicia fuera */
+}
+.divimagenuser.no-photo #btnEliminarFoto {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+.divimagenuser.no-photo {
+    background-image: url("img/fotoperfil.png") !important;
 }
 
+/* Evitar que hover lo active en modo sin foto */
+.divimagenuser.no-photo:hover #btnEliminarFoto {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+.divimagenuser:hover .btn-eliminar-foto {
+    top: -3px;
+    left: -3px;
+    opacity: 1;
+    transform: translate(0,0) scale(1);
+    outline: 2px solid white;
+}
+.no-photo .btn-eliminar-foto {
+    display: none !important;
+}
+.no-photo:hover .btn-eliminar-foto {
+    display: none !important;
+}
+.btn-eliminar-foto:hover {
+    background: rgb(200, 20, 20);
+    transform: scale(1.15);
+}
+.divimagenuser:focus-within .btn-eliminar-foto {
+    opacity: 1 !important;
+    top: -3px !important;
+    left: -3px !important;
+    transform: translate(0,0) scale(1) !important;
+}
+.btn-eliminar-foto:focus {
+    opacity: 1 !important;
+    outline: 2px solid white; /* opcional */
+}
 .atributo{
     width: 90%;
     height: 10vh;
@@ -759,17 +824,16 @@ align-items: center; justify-content: flex-start;}
     margin-left: 5vh;
 }
 .divdatosusuarios{
-    width: 91%;
-    height: 40vh;
+    width: 93%;
+    height: auto;
     background: var(--color_terciario_comfanorte);
     margin: 0 auto;
-    margin-bottom: 20px;
     padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 6px 10px rgba(0,0,0,0.7);
     border-radius: 2px;
     display: grid;
     grid-template-rows: repeat (12, 3fr);
-    max-height: 40vh;
+    max-height: 47vh;
     overflow-y: scroll;
 }
 
@@ -958,6 +1022,13 @@ align-items: center; justify-content: flex-start;}
     
     border-radius: 6px;
 }
+.cambiarimagen:hover,
+.cambiarimagen:focus,
+.cambiarimagen:focus-visible {
+    background-color: #ff4747;
+    color: #fff;
+    outline: 2px solid #ff4747;
+}
 
 /* Aplica foco visible solo a elementos interactivos dentro de la tabla */
 .filas:focus,
@@ -966,6 +1037,72 @@ align-items: center; justify-content: flex-start;}
 .buttontext:focus {
     background-color: rgba(237,50,55,0.1); /* un leve fondo rojo translúcido */
     transition: outline 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.divimagenuser.no-photo #btnEliminarFoto {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Evitar que hover lo haga aparecer */
+.divimagenuser.no-photo:hover #btnEliminarFoto {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Estilos para modal "Eliminar foto" - igual que modal de desactivar usuario */
+#modalEliminarFoto,
+.modal-eliminarfoto {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido interno del modal de eliminar foto (misma apariencia que modal-contenidoEliminar) */
+#modalEliminarFoto .modal-contenidoEliminarFoto,
+.modal-eliminarfoto .modal-contenidoEliminarFoto {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Botones dentro del modal de eliminar foto */
+#modalEliminarFoto .modal-botones,
+.modal-eliminarfoto .modal-botones {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#modalEliminarFoto .modal-botones button,
+.modal-eliminarfoto .modal-botones button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#modalEliminarFoto #confirmarEliminarFoto,
+.modal-eliminarfoto #confirmarEliminarFoto {
+    background: red;
+    color: white;
+}
+
+#modalEliminarFoto #cancelarEliminarFoto,
+.modal-eliminarfoto #cancelarEliminarFoto {
+    background: gray;
+    color: white;
 }
 
 

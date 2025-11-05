@@ -30,6 +30,37 @@ if (!$id_empleado) {
     exit;
 }
 
+// 🛑 Si se pidió eliminar la foto
+if (isset($_POST['eliminar_foto']) && $_POST['eliminar_foto'] == "1") {
+
+    // Buscar la imagen actual
+    $stmt = $conn->prepare("SELECT imagen FROM empleado WHERE id_empleado=?");
+    $stmt->bind_param("i", $id_empleado);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $usuario = $resultado->fetch_assoc();
+
+    // Eliminar archivo físico si existe
+    if ($usuario && !empty($usuario['imagen'])) {
+        $rutaFoto = $usuario['imagen'];
+        if (file_exists($rutaFoto)) {
+            unlink($rutaFoto);
+        }
+    }
+
+    // Poner la columna imagen en NULL
+    $stmt = $conn->prepare("UPDATE empleado SET imagen=NULL WHERE id_empleado=?");
+    $stmt->bind_param("i", $id_empleado);
+
+    if ($stmt->execute()) {
+        echo json_encode(["ok" => true, "msg" => "Foto eliminada"]);
+    } else {
+        echo json_encode(["ok" => false, "msg" => "Error al eliminar foto"]);
+    }
+
+    exit();
+}
+
 $estado = $_POST['estado'] ?? null;
 
 // Si el estado viene, significa que se está activando/inactivando desde el modal de desactivar
@@ -46,24 +77,26 @@ if ($estado !== null) {
     ]);
     exit;
 }
-    $stmt->bind_param("si", $estado, $id_empleado);
 
-    if ($stmt->execute()) {
-        $query = $conn->prepare("SELECT * FROM empleado WHERE id_empleado=?");
-        $query->bind_param("i", $id_empleado);
-        $query->execute();
-        $resultado = $query->get_result();
-        $usuarioActualizado = $resultado->fetch_assoc();
-        $query->close();
 
-        echo json_encode([
-            "ok" => true,
-            "msg" => "Estado actualizado correctamente",
-            "usuario" => $usuarioActualizado
-        ]);
-    } else {
-        echo json_encode(["ok" => false, "msg" => "Error al actualizar estado: " . $conn->error]);
-    }
+$stmt->bind_param("si", $estado, $id_empleado);
+
+if ($stmt->execute()) {
+    $query = $conn->prepare("SELECT * FROM empleado WHERE id_empleado=?");
+    $query->bind_param("i", $id_empleado);
+    $query->execute();
+    $resultado = $query->get_result();
+    $usuarioActualizado = $resultado->fetch_assoc();
+    $query->close();
+
+    echo json_encode([
+        "ok" => true,
+        "msg" => "Estado actualizado correctamente",
+        "usuario" => $usuarioActualizado
+    ]);
+} else {
+    echo json_encode(["ok" => false, "msg" => "Error al actualizar estado: " . $conn->error]);
+}
 
     $stmt->close();
     $conn->close();
@@ -80,7 +113,6 @@ $correo = $_POST['correo'] ?? '';
 $celular = $_POST['celular'] ?? '';
 $linea_fija = $_POST['linea_fija'] ?? '';
 $ubicacion = $_POST['ubicacion'] ?? '';
-
 $id_proceso = $id_proceso ?: 0;
 $id_tipo_documento = $id_tipo_documento ?: 0;
 

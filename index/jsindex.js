@@ -43,19 +43,36 @@ function abrirModalEdicion(usuario) {
         document.getElementById('vp-lineafija').textContent = usuario.linea_fija;
         document.getElementById('vp-ubicacion').textContent = usuario.ubicacion;
         const divimagenuser = document.querySelector(".divimagenuser");
+        const btnEliminarFoto = document.getElementById("btnEliminarFoto");
+        const tieneFoto = (
+                usuario.imagen && 
+                usuario.imagen.trim() !== "" && 
+                usuario.imagen !== "null" && 
+                usuario.imagen !== null && 
+                usuario.imagen !== undefined &&
+                !usuario.imagen.includes("fotoperfil.png")
+        );
 
-        if (divimagenuser) {
-                if (usuario.imagen && usuario.imagen.trim() !== "") {
-                        // Asegura la ruta correcta
-                        divimagenuser.style.backgroundImage = `url('./${usuario.imagen}')`;
-                } else {
-                        // Imagen por defecto
-                        divimagenuser.style.backgroundImage = "url('img/sinfoto.png')";
-                }
 
-                divimagenuser.style.backgroundSize = "cover";
-                divimagenuser.style.backgroundPosition = "center";
+        // aplicar clase segun tenga o no foto
+        
+
+        // asignar imagen real o default
+        if (tieneFoto) {
+                divimagenuser.style.backgroundImage = `url('${usuario.imagen}?v=${Date.now()}')`;
+                btnEliminarFoto.style.display = "flex";
+        } else {
+                divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
+                btnEliminarFoto.style.display = "none";
         }
+
+        // Asegurar estilo siempre
+        divimagenuser.style.backgroundSize = "cover";
+        divimagenuser.style.backgroundPosition = "center";
+
+
+        //-------------------------------------------------------------------------------
+        
 }
 //cargar usersrs________________________________________________
 
@@ -302,19 +319,28 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
                         alert(data.msg);
                         return;
                 }
-                alert("✅ Usuario actualizado correctamente");
+                
                 const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
                 if (idx !== -1) {
-                        usuarios[idx] = data.usuario || {
-                                ...usuarios[idx],
-                                ...Object.fromEntries(formData)
-                        };
+                        usuarios[idx] = { ...usuarios[idx], ...data.usuario };
+                }
+                if (data.usuario && data.usuario.imagen) {
+                        
+                        usuarioEditando.imagen = data.usuario.imagen;
+                }
+                const divimagenuser = document.querySelector(".divimagenuser");
+                if (data.usuario.imagen) {
+                        
+                        divimagenuser.style.backgroundImage = `url('${data.usuario.imagen}?v=${Date.now()}')`;
+                        document.getElementById("btnEliminarFoto").style.display = "flex";
                 }
                 const fila = document.querySelector(`[data-id="${usuarioEditando.id_empleado}"]`);
                 if (fila) {
                         fila.querySelector(".textnombre").textContent = formData.get("nombre");
                         fila.querySelector(".textcedula").textContent = formData.get("numero_documento");
                 }
+                document.getElementById("input-imagen").value = "";
+                //alert("✅ Cambios guardados correctamente");
                 document.getElementById("modaleditar").style.display = "none";
                 usuarioEditando = null;
         })      
@@ -367,6 +393,9 @@ document.getElementById("confirmarEliminar").addEventListener("click", () => {
                 } else {
                         alert("Error al actualizar el estado: " + data.msg);
                 }
+                usuarioEditando.imagen = null;
+                const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
+                if (idx !== -1) usuarios[idx].imagen = null;
         })
         .catch(err => {
                 console.error("Error al enviar estado:", err);
@@ -518,7 +547,51 @@ function trapFocus(modal) {
                 }
         });
 }
+// abrir modal de liminar foto de perfil------------------------------
+document.getElementById("btnEliminarFoto").addEventListener("click", () => {
+        document.getElementById("modalEliminarFoto").style.display = "flex";
+});
+document.getElementById("confirmarEliminarFoto").addEventListener("click", () => {
+        if (!usuarioEditando) return;
 
+        const formData = new FormData();
+        formData.append("id_empleado", usuarioEditando.id_empleado);
+        formData.append("eliminar_foto", "1");
+
+        fetch("actualizar_usuario.php", {
+                method: "POST",
+                body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+                if (data.ok) {
+                        const divimagenuser = document.querySelector(".divimagenuser");
+                        
+
+                        const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
+                        if (idx !== -1) usuarios[idx].imagen = null;
+                                document.getElementById("btnEliminarFoto").style.display = "none";
+                                usuarioEditando.imagen = null;
+                                divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
+                                document.getElementById("btnEliminarFoto").style.display = "none";
+                                divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
+                                document.getElementById("input-imagen").value = "";
+                                //alert("✅ ");
+                } else {
+                        alert("⚠️ Error: " + data.msg);
+                }
+        })
+        .catch(err => {
+                console.error(err);
+                alert("Error al conectar con el servidor");
+        })
+        .finally(() => {
+                document.getElementById("modalEliminarFoto").style.display = "none";
+        });
+        });
+        document.getElementById("cancelarEliminarFoto").addEventListener("click", () => {
+                document.getElementById("modalEliminarFoto").style.display = "none";
+        });
 
 
 

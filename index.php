@@ -201,9 +201,9 @@
                     </div>
                     <div class="divparte2">
                         
-                        <input style="border-radius: 3px 3px 3px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
+                        <input style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
                         <button style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" id="btnbuscar" class="btnbuscar">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60.000000pt" height="60.000000pt" viewBox="0 0 500.000000 500.000000">
                                 <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  
                                         s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  
                                         C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"/>
@@ -241,7 +241,7 @@
     </div>
 </div>
 <!--            MODAL DE Editar Trabajador          -->
-<div id="modaleditar" class="modal" aria-modal="true" aria-labelledby="tituloeditar " role="dialog">
+<div  id="modaleditar" class="modal" aria-modal="true" aria-labelledby="tituloeditar " role="dialog">
     <div class="modal-contenido">
         <div class="divtitulousermodal">
             <p>Vista de Usuario</p>
@@ -249,7 +249,14 @@
         <div class="divcontenidotrabajador">
             <div class="divatributos">
                 <div class="column1usuario">
-                    <div style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));" class="divimagenuser"></div>
+                    <div style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));" class="divimagenuser">
+                        <div class="btn-eliminar-foto " id="btnEliminarFoto" tabindex="0">
+                            ✖
+                        </div>
+
+
+                        
+                    </div>
                     <div class="atributo">
                         <p>Cambiar Imagen de user?</p>
                         <button class="cambiarimagen">Click aqui</button>
@@ -363,10 +370,10 @@
                 </div>
             </div>
         </div>
-        <div class="modal-botones">
-                <button id="confirmareditar">Sí, confirmar</button>
-                <button id="cancelareditar">Cancelar</button>
-        </div>
+<div class="modal-botones">
+    <button id="confirmareditar">Sí, confirmar</button>
+    <button id="cancelareditar">Cancelar</button>
+</div>
     </div>   
 </div>        
 <!--    --------------------------------------------------------      -->
@@ -421,6 +428,19 @@
             </div>
             
         </div>
+<!--            MODAL DE DESACTIVAR Trabajador         -->
+
+<div id="modalEliminarFoto" class="modal">
+    <div class="modal-contenidoEliminar">
+        <p>¿Seguro que deseas eliminar la foto de perfil?</p>
+        <div class="modal-botones">
+            <button id="confirmarEliminarFoto">Eliminar</button>
+            <button id="cancelarEliminarFoto">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-------------------------------------------------------------- -->        
     </section>
     <footer>
 
