@@ -201,8 +201,8 @@
                     </div>
                     <div class="divparte2">
                         
-                        <input style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
-                        <button style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" id="btnbuscar" class="btnbuscar">
+                        <input title="Ingresa el Nombre o Cedula del Usuario" style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
+                        <button title="Buscar..." style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" id="btnbuscar" class="btnbuscar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60.000000pt" height="60.000000pt" viewBox="0 0 500.000000 500.000000">
                                 <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  
                                         s4.486,10,10,10c2.035,0,3.928-0.614,5.509-1.663l5.077,5.077c0.78,0.781,2.048,0.781,2.828,0  
@@ -213,7 +213,7 @@
                 </div>
                 
                 <div class="divusers">
-                    <div class="users">
+                    <div class="users filter">
                         <div class="titulousers">
                             <div style="margin-left: 10vh;" class="divimagentitulo">
                                 <img class="img2" src="img/usuarios_img.png" alt="">
@@ -226,7 +226,7 @@
                                 <div class="cuadro">Estado</div>
                                 <div class="cuadro1">Acciones </div>
                             </div>
-                            <div class="contenido_tabla">
+                            <div id="contenedorUsuarios" class="contenido_tabla">
                                 
                             </div> 
                         </div>    
@@ -235,8 +235,8 @@
     <div class="modal-contenidoEliminar">
         <p>¿Seguro que deseas cambiar el estado de este usuario?</p>
         <div class="modal-botones">
-            <button id="confirmarEliminar">Sí, confirmar</button>
-            <button id="cancelarEliminar">Cancelar</button>
+            <button title="Desactivar Usuario" id="confirmarEliminar">Sí, confirmar</button>
+            <button title="Cancelar" id="cancelarEliminar">Cancelar</button>
         </div>
     </div>
 </div>
@@ -249,8 +249,8 @@
         <div class="divcontenidotrabajador">
             <div class="divatributos">
                 <div class="column1usuario">
-                    <div style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));" class="divimagenuser">
-                        <div class="btn-eliminar-foto " id="btnEliminarFoto" tabindex="0">
+                    <div title="Imagen del Usuario" id="contenedor-foto" style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 4px 5px rgba(0,0,0,0.8));" class="divimagenuser">
+                        <div class="btn-eliminar-foto " id="btnEliminarFoto" tabindex="-1" title="Elimiar Foto del Usuario">
                             ✖
                         </div>
 
@@ -259,15 +259,15 @@
                     </div>
                     <div class="atributo">
                         <p>Cambiar Imagen de user?</p>
-                        <button class="cambiarimagen">Click aqui</button>
-                        <input type="file" id="input-imagen" accept="image/*" style="display:none;">
+                        <button class="cambiarimagen" title="Cambiar Foto de Perfil del Usuario">Click aqui</button>
+                        <input = type="file" id="input-imagen" accept="image/*" style="display:none;">
                     </div>    
                 </div>
                 <div class="column2usuario">
                     <div class="divtodosatributos">
                         <h1>Datos de Usuario:</h1>
                         <div class="divdatosusuarios">
-                            <div class="vista-previa">
+                            <div   class="vista-previa" id="vistaprevia">
                                 <h2>Vista Previa del Usuario</h2>
                                 <div class="dato"><strong>Nombre:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-nombre">---</span></div>
                                 <div class="dato"><strong>Cargo:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-cargo">---</span></div>
@@ -371,8 +371,8 @@
             </div>
         </div>
 <div class="modal-botones">
-    <button id="confirmareditar">Sí, confirmar</button>
-    <button id="cancelareditar">Cancelar</button>
+    <button id="confirmareditar" title="Confirmar">Sí, confirmar</button>
+    <button id="cancelareditar" title="Cancelar">Cancelar</button>
 </div>
     </div>   
 </div>        
@@ -434,8 +434,8 @@
     <div class="modal-contenidoEliminar">
         <p>¿Seguro que deseas eliminar la foto de perfil?</p>
         <div class="modal-botones">
-            <button id="confirmarEliminarFoto">Eliminar</button>
-            <button id="cancelarEliminarFoto">Cancelar</button>
+            <button id="confirmarEliminarFoto" tabindex="0">Eliminar</button>
+            <button id="cancelarEliminarFoto" tabindex="0">Cancelar</button>
         </div>
     </div>
 </div>

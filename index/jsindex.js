@@ -44,6 +44,8 @@ function abrirModalEdicion(usuario) {
         document.getElementById('vp-ubicacion').textContent = usuario.ubicacion;
         const divimagenuser = document.querySelector(".divimagenuser");
         const btnEliminarFoto = document.getElementById("btnEliminarFoto");
+        const vistaprevia = document.getElementById("vistaprevia");
+        vistaprevia.setAttribute("title", "Vista previa de "+usuario.nombre);
         const tieneFoto = (
                 usuario.imagen && 
                 usuario.imagen.trim() !== "" && 
@@ -61,9 +63,11 @@ function abrirModalEdicion(usuario) {
         if (tieneFoto) {
                 divimagenuser.style.backgroundImage = `url('${usuario.imagen}?v=${Date.now()}')`;
                 btnEliminarFoto.style.display = "flex";
+                btnEliminarFoto.setAttribute("tabindex", "0");
         } else {
                 divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
                 btnEliminarFoto.style.display = "none";
+                btnEliminarFoto.setAttribute("tabindex", "-1");
         }
 
         // Asegurar estilo siempre
@@ -85,6 +89,7 @@ function cargarUsuarios(Listausers) {
                 const fila = document.createElement("div");
                 fila.classList.add("filas");
                 fila.setAttribute("data-id", usuario.id_empleado);
+                fila.setAttribute("data-nombre", usuario.nombre);
                 fila.setAttribute("tabindex", "0"); // para accesibilidad
         //------------------ div nombre ---------------------
                 const divnombre = document.createElement("div");
@@ -143,6 +148,7 @@ function cargarUsuarios(Listausers) {
                 fila.appendChild(divbotones);
                 const botoneditar = document.createElement("button");
                 botoneditar.setAttribute("tabindex", "0");
+                botoneditar.setAttribute("title", "Editar usuario");
                 botoneditar.classList.add("botoneditar");
                 botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; ">';       
                 divbotones.appendChild(botoneditar);
@@ -153,13 +159,13 @@ function cargarUsuarios(Listausers) {
                         const modal=document.getElementById("modaleditar");
                         modal.style.display = "flex";
                         modal.scrollTop = 0;
-                        const primerElemento = modal.querySelector("input, button, select, textarea, [tabindex]:not([tabindex='-1'])");
-                        if (primerElemento) primerElemento.focus();
+                        document.getElementById("vistaprevia").focus(); // ✅ primer foco correcto
                         trapFocus(modal);
 
                 });
                 const botoneliminar = document.createElement("button");
                 botoneliminar.setAttribute("tabindex", "0");
+                botoneliminar.setAttribute("title", "Cambiar estado del usuario");
                 botoneliminar.classList.add("botoneliminar");
                 botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px;">';
                 
@@ -252,7 +258,6 @@ document.getElementById("cancelarEliminar").addEventListener("click", () => {
         const modal = document.getElementById("modalEliminar");
         modal.style.display = "none";
         modal.scrollTop = 0;
-
   // 🔹 Reinicia los divs de atributos
         resetAtributos(); // cerramos el modal
 });
@@ -306,7 +311,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
         })
         .then(async res => {
                 const text = await res.text();
-                console.log("🔍 Respuesta cruda del servidor:", text);
+                
                 try {
                         return JSON.parse(text);
                 } catch (e) {
@@ -393,9 +398,7 @@ document.getElementById("confirmarEliminar").addEventListener("click", () => {
                 } else {
                         alert("Error al actualizar el estado: " + data.msg);
                 }
-                usuarioEditando.imagen = null;
-                const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
-                if (idx !== -1) usuarios[idx].imagen = null;
+                
         })
         .catch(err => {
                 console.error("Error al enviar estado:", err);
@@ -548,8 +551,28 @@ function trapFocus(modal) {
         });
 }
 // abrir modal de liminar foto de perfil------------------------------
+const modalEliminarFoto = document.getElementById("modalEliminarFoto");
+
 document.getElementById("btnEliminarFoto").addEventListener("click", () => {
-        document.getElementById("modalEliminarFoto").style.display = "flex";
+        ultimoFoco = document.activeElement;
+        modalEliminarFoto.style.display = "flex";
+
+        const firstEl = modalEliminarFoto.querySelector("button, [tabindex]:not([tabindex='-1'])");
+        if (firstEl) firstEl.focus();
+
+        trapFocus(modalEliminarFoto);
+});
+
+document.getElementById("btnEliminarFoto").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+                e.preventDefault();
+                modalEliminarFoto.style.display = "flex";
+
+                const firstEl = modalEliminarFoto.querySelector("button, [tabindex]:not([tabindex='-1'])");
+                if (firstEl) firstEl.focus();
+
+                trapFocus(modalEliminarFoto);
+        }
 });
 document.getElementById("confirmarEliminarFoto").addEventListener("click", () => {
         if (!usuarioEditando) return;
@@ -571,6 +594,9 @@ document.getElementById("confirmarEliminarFoto").addEventListener("click", () =>
                         const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
                         if (idx !== -1) usuarios[idx].imagen = null;
                                 document.getElementById("btnEliminarFoto").style.display = "none";
+                                const vistap = document.getElementById("vistaprevia");
+                                if (vistap) vistap.focus();
+                                trapFocus(document.getElementById("modaleditar"));
                                 usuarioEditando.imagen = null;
                                 divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
                                 document.getElementById("btnEliminarFoto").style.display = "none";
@@ -589,9 +615,30 @@ document.getElementById("confirmarEliminarFoto").addEventListener("click", () =>
                 document.getElementById("modalEliminarFoto").style.display = "none";
         });
         });
-        document.getElementById("cancelarEliminarFoto").addEventListener("click", () => {
-                document.getElementById("modalEliminarFoto").style.display = "none";
-        });
+document.getElementById("cancelarEliminarFoto").addEventListener("click", () => {
+        document.getElementById("modalEliminarFoto").style.display = "none";
+});
+
+// Crear un solo tooltip global
+const tooltip = document.createElement("div");
+tooltip.className = "tooltip";
+document.body.appendChild(tooltip);
+
+// Mostrar tooltip al hacer hover sobre una fila
+document.addEventListener("mousemove", (e) => {
+        const fila = e.target.closest(".filas");
+
+        if (fila && fila.dataset.nombre) {
+                tooltip.textContent = fila.dataset.nombre+"  "+"  "+"("+fila.dataset.id+")";
+                tooltip.style.left = (e.pageX+12) + "px";
+                tooltip.style.top = (e.pageY+ 5) + "px";
+                tooltip.style.opacity = "1";
+        } else {
+                tooltip.style.opacity = "0";
+        }
+});
+
+
 
 
 

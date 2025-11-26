@@ -307,7 +307,9 @@ h1{
     height: 95%;
     display: grid;
     grid-template-rows: 1fr 7fr;
+    
 }
+
 .titulousers{
     background: transparent;
     display: flex;
@@ -324,6 +326,7 @@ h1{
     display: grid;
     grid-template-rows: 1fr 7fr;
     height: 47vh;
+    
 
 }
 
@@ -332,7 +335,7 @@ h1{
     
     display: grid;
     grid-template-columns: 4.3fr 5fr 1fr 1.3fr;
-    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+    
 }
 
 .cuadro{
@@ -341,7 +344,7 @@ h1{
     align-items: center;
     font-weight: 900;
     color: var(--color_terciario_comfanorte);
-    border-right: 1px solid;
+    border-right: 2px solid rgb(33, 33, 33);
     
 }
 .cuadro1{
@@ -722,7 +725,7 @@ align-items: center; justify-content: flex-start;}
     /* Sombra interna hacia adentro */
     box-shadow: inset 0 0 16px rgba(0,0,0,0.23);
     position: relative;
-    overflow: hidden;
+    overflow: hidden ;
 }
 .btn-eliminar-foto {
     position: absolute;
@@ -743,6 +746,13 @@ align-items: center; justify-content: flex-start;}
     transition: all .35s ease-in-out;
     transform: translate(-30px, -30px) scale(0.4); /* inicia fuera */
 }
+
+
+
+
+
+
+
 .divimagenuser.no-photo #btnEliminarFoto {
     display: none !important;
     opacity: 0 !important;
@@ -782,7 +792,7 @@ align-items: center; justify-content: flex-start;}
     transform: translate(0,0) scale(1) !important;
 }
 .btn-eliminar-foto:focus {
-    opacity: 1 !important;
+    opacity: 1 !important;                      
     outline: 2px solid white; /* opcional */
 }
 .atributo{
@@ -1020,7 +1030,7 @@ align-items: center; justify-content: flex-start;}
 
 :focus { 
     
-    border-radius: 6px;
+    border-radius: 5px;
 }
 .cambiarimagen:hover,
 .cambiarimagen:focus,
@@ -1035,6 +1045,7 @@ align-items: center; justify-content: flex-start;}
 .botoneditar:focus,
 .botoneliminar:focus,
 .buttontext:focus {
+    outline: 1px solid var(--color_secundario_comfanorte);
     background-color: rgba(237,50,55,0.1); /* un leve fondo rojo translúcido */
     transition: outline 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
@@ -1107,7 +1118,28 @@ align-items: center; justify-content: flex-start;}
 
 
 
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -120%);
+    transition: opacity 0.1s ease;
+    z-index: 9999;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+}
 
+.fade-in {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+}
 
 
 
