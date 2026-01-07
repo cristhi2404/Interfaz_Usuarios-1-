@@ -249,7 +249,7 @@ function resetearImagenAgg() {
 // ==========================================================
 
 async function agregarUsuario() {
-    alert("Agregando usuario...");
+    
     
     // Obtener valores
     const nombre = document.getElementById("nombreagguser").value;
@@ -292,21 +292,19 @@ async function agregarUsuario() {
             const resultado = JSON.parse(textresponse);
             
             if (resultado.ok) {
-                alert('Usuario agregado exitosamente');
+                
                 cerrarModalAgg(); // Cerramos modal antes de recargar
                 location.reload();
             } else {
                 console.error('Error lógico:', resultado.msg);
-                alert('Error del servidor: ' + resultado.msg);
+                
             }
         } catch (jsonError) {
             console.error("No se pudo leer JSON. Error real PHP:", textresponse);
-            alert("Error fatal en base de datos. Ver consola.");
         }
 
     } catch (error) {
         console.error('Error de red:', error);
-        alert('Error de conexión al intentar agregar usuario');
     }
 }
 

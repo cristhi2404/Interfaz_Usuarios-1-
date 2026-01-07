@@ -323,7 +323,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
         .then(data => {
                 if (!data.ok) {
                         console.error("Error del servidor:", data.msg);
-                        alert(data.msg);
+                        
                         return;
                 }
                 
@@ -479,7 +479,7 @@ document.querySelectorAll(".divcadaatributo input").forEach(input => {
                 const start = e.target.selectionStart; // guarda la posición del cursor
                 const end = e.target.selectionEnd;
                 e.target.value = e.target.value.toUpperCase();
-                e.target.setSelectionRange(start, end); // evita que el cursor salte
+                e.target.setSelectionRange(start, end); //evita que el cursor salte
         });
 });
 function resetAtributos() {
@@ -505,7 +505,7 @@ function resetAtributos() {
                 if (flecha) flecha.style.transform = "rotate(0deg)";
         });
 }
-// 🔹 Función para cambiar imagen del usuario----------------------------------
+//  Función para cambiar imagen del usuario----------------------------------
 const botoncambiarimagen = document.querySelector(".cambiarimagen");
 const inputImagen = document.getElementById("input-imagen");
 const divimagenuser=document.querySelector(".divimagenuser");
@@ -610,9 +610,7 @@ document.getElementById("confirmarEliminarFoto").addEventListener("click", () =>
                                 document.getElementById("btnEliminarFoto").style.display = "none";
                                 divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
                                 document.getElementById("input-imagen").value = "";
-                                //alert("✅ ");
-                } else {
-                        alert("⚠️ Error: " + data.msg);
+                                
                 }
         })
         .catch(err => {
