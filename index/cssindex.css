@@ -619,7 +619,7 @@ h1{
 }
 
 .filas{
-    background: rgb(187, 187, 187);
+    
     display: grid;
     grid-template-columns: 5fr 5.5fr 1.5fr 1fr; /* nombre - cedula - estado - botones */
     height: 4vh;
@@ -631,7 +631,7 @@ h1{
 
 }
 .filas:hover{
-    background: #f9bdbd;
+    background: #e7d6ff !important;
     cursor: pointer;
 }
 /*------------------ clases del javascript ---------------------*/
@@ -718,10 +718,10 @@ align-items: center; justify-content: flex-start;}
     transition: background 0.5s ease;
 }
 .botoneditar:hover{
-    background: #ff8787;
+    background: #e7d6ff !important;
 }
 .botoneliminar:hover{
-    background: #ff8787;
+    background: #e7d6ff !important;
 }
 
 
@@ -965,6 +965,21 @@ align-items: center; justify-content: flex-start;}
     opacity: 0;
     transition: all .35s ease-in-out;
     transform: translate(-30px, -30px) scale(0.4); /* inicia fuera */
+}
+.divimagenuseragg:hover .btn-eliminar-fotoagg {
+    top: -3px;
+    left: -3px;
+    opacity: 1;
+    transform: translate(0,0) scale(1);
+    outline: 2px solid white;
+}
+
+/* (Opcional) Hace visible la X si usas tabulador para navegar */
+.divimagenuseragg:focus-within .btn-eliminar-fotoagg {
+    opacity: 1 !important;
+    top: -3px !important;
+    left: -3px !important;
+    transform: translate(0,0) scale(1) !important;
 }
 
 

@@ -23,15 +23,18 @@
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
         $file = $_FILES['imagen'];
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $nombreArchivo = "img_" . uniqid() . "." . $ext;
-        $carpetaDestino = __DIR__ . "/imgusers/";
+        
+        $nombreLimpio = preg_replace('/[^a-zA-Z0-9]/', '_', $nombre);
+        $nombreCarpetaUsuario = $nombreLimpio . "_" . $documento;
+        $carpetaDestino = __DIR__ . "/imgusers/" . $nombreCarpetaUsuario . "/"; 
+        
         
         if (!file_exists($carpetaDestino)) {
             mkdir($carpetaDestino, 0777, true);
         }
-        
+        $nombreArchivo = "perfil_" . uniqid() . "." . $ext;
         if (move_uploaded_file($file['tmp_name'], $carpetaDestino . $nombreArchivo)) {
-            $rutaImagen = "imgusers/" . $nombreArchivo;
+            $rutaImagen = "imgusers/" . $nombreCarpetaUsuario . "/" . $nombreArchivo;
         }
         
     }

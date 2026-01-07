@@ -127,8 +127,9 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
     $file = $_FILES['imagen'];
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
     $nombreLimpio = preg_replace('/[^a-zA-Z0-9_]/', '_', $nombre);
-    $nombreArchivo = "img_" . $nombreLimpio . "_" . uniqid() . "." . strtolower($ext);
-    $carpetaDestino = __DIR__ . "/imgusers/";
+    $nombreArchivo = "perfil_" . uniqid() . "." . strtolower($ext);
+    $nombreCarpetaUsuario = $nombreLimpio . "_" . $numero_documento;
+    $carpetaDestino = __DIR__ . "/imgusers/" . $nombreCarpetaUsuario . "/";
     $rutaDestino = $carpetaDestino . $nombreArchivo; 
     $permitidos = ['image/jpeg', 'image/png', 'image/webp'];
     if (!in_array($file['type'], $permitidos)) {

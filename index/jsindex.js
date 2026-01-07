@@ -26,13 +26,13 @@ function abrirModalEdicion(usuario) {
     // Rellenar los campos del modal con la info actual
         document.getElementById('input-nombre').value = usuario.nombre;
         document.getElementById('input-cargo').value = usuario.cargo;
-        document.getElementById('input-tipoDoc').value = usuario.id_tipo_documento;
+        document.getElementById('input-tipoDoc').value = usuario.id_tipo_documento || "0";
         document.getElementById('input-docId').value = usuario.numero_documento;
         document.getElementById('input-correo').value = usuario.correo;
         document.getElementById('input-celular').value = usuario.celular;
         document.getElementById('input-lineafija').value = usuario.linea_fija;
-        document.getElementById('input-ubicacion').value = usuario.id_ubicacion;
-        document.getElementById('select_procesoactualizar').value= usuario.id_proceso;
+        document.getElementById('input-ubicacion').value = usuario.Id_ubicacion || "0";
+        document.getElementById('select_procesoactualizar').value= usuario.id_proceso || "0";
         document.getElementById('vp-nombre').textContent = usuario.nombre;
         document.getElementById('vp-cargo').textContent = usuario.cargo;
         document.getElementById('vp-proceso').textContent = usuario.proceso;
@@ -136,8 +136,10 @@ function cargarUsuarios(Listausers) {
                 // Cambia la clase según el estado
                 if (estado === "activo") {
                         indicadoraccion.classList.add("activo");
+                        fila.style.backgroundColor = "#c1ecc1ff"; // color de fondo para activo
                 } else if(estado === "inactivo") {
                         indicadoraccion.classList.add("inactivo");
+                        fila.style.backgroundColor = "#f4bcbc"; // color de fondo para inactivo
                 }
                 divIndicador.appendChild(indicadoraccion);
                 fila.appendChild(divIndicador);
@@ -393,6 +395,12 @@ document.getElementById("confirmarEliminar").addEventListener("click", () => {
                                 const indicador = fila.querySelector(".indicadoraccion");
                                 indicador.classList.remove("activo", "inactivo");
                                 indicador.classList.add(nuevoEstado);
+                                // Cambiar color de fondo según el nuevo estado
+                                if (nuevoEstado === "activo") {
+                                        fila.style.backgroundColor = "#c1ecc1ff"; // color de fondo para activo
+                                } else if (nuevoEstado === "inactivo") {
+                                        fila.style.backgroundColor = "#f4bcbc"; // color de fondo para inactivo
+                                }
                         }
                 // Mostrar alerta o modal de éxito
                 } else {
