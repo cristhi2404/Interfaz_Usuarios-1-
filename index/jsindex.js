@@ -11,7 +11,7 @@ let usuarioEditando= null;
 const inputBuscar = document.querySelector(".inputbuscar") || document.getElementById("inputbuscar");
 const btnBuscar = document.querySelector(".btnbuscar") || document.getElementById("btnbuscar");
 // 🔻 Cargar los usuarios desde PHP/MySQL
-fetch("obtener_users.php")
+fetch("obtener_users.php") 
         .then(response => response.json())
         .then(data => {
                 usuarios = data;
@@ -21,7 +21,7 @@ fetch("obtener_users.php")
         .catch(error => console.error("Error al cargar usuarios:", error));
 //cargar inputs ________________________________________________
 function abrirModalEdicion(usuario) {
-        usuarioEditando = usuario;
+        usuarioEditando = usuario;  
 
     // Rellenar los campos del modal con la info actual
         document.getElementById('input-nombre').value = usuario.nombre;
@@ -31,12 +31,12 @@ function abrirModalEdicion(usuario) {
         document.getElementById('input-correo').value = usuario.correo;
         document.getElementById('input-celular').value = usuario.celular;
         document.getElementById('input-lineafija').value = usuario.linea_fija;
-        document.getElementById('input-ubicacion').value = usuario.ubicacion;
-
-        // Actualizar la vista previa arriba
+        document.getElementById('input-ubicacion').value = usuario.id_ubicacion;
+        document.getElementById('select_procesoactualizar').value= usuario.id_proceso;
         document.getElementById('vp-nombre').textContent = usuario.nombre;
         document.getElementById('vp-cargo').textContent = usuario.cargo;
-        document.getElementById('vp-tipoDoc').textContent = usuario.id_tipo_documento;
+        document.getElementById('vp-proceso').textContent = usuario.proceso;
+        document.getElementById('vp-tipoDoc').textContent = usuario.tipo_documento;
         document.getElementById('vp-docId').textContent = usuario.numero_documento;
         document.getElementById('vp-correo').textContent = usuario.correo;
         document.getElementById('vp-celular').textContent = usuario.celular;
@@ -85,7 +85,7 @@ function cargarUsuarios(Listausers) {
         const inicio = (paginaActual - 1) * usuariosPorPagina;
         const fin = inicio + usuariosPorPagina;
         const usuariosPagina = Listausers.slice(inicio, fin);
-        usuariosPagina.forEach((usuario, index) => {
+        usuariosPagina.forEach((usuario) => {
                 const fila = document.createElement("div");
                 fila.classList.add("filas");
                 fila.setAttribute("data-id", usuario.id_empleado);
@@ -183,7 +183,7 @@ function cargarUsuarios(Listausers) {
                 tablaContenido.appendChild(fila);
         })
 
-    // 🔻 luego de renderizar filas:
+    //  luego de renderizar filas:
         renderPaginacion(Listausers);
 }   
 // funcion paginacion ____________________________________________
@@ -290,7 +290,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
     // Tomar valores del formulario
         const formData = new FormData();
         formData.append("id_empleado", usuarioEditando.id_empleado);
-        formData.append("id_proceso", usuarioEditando.id_proceso || 1);
+        formData.append("id_proceso", document.getElementById("select_procesoactualizar").value);
         formData.append("nombre", nombre);
         formData.append("cargo", document.getElementById("input-cargo").value);
         formData.append("id_tipo_documento", document.getElementById("input-tipoDoc").value);

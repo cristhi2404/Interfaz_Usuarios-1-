@@ -1,17 +1,18 @@
 <?php
 include 'conexion.php';
-ob_clean();
+ob_start();
 header('Content-Type: application/json; charset=utf-8');
 
-error_reporting(0);
+error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/errores.log');
 
-set_error_handler(function($errno, $errstr, $errfile, $errline) {
+set_error_handler(function($errno,$errstr, $errfile, $errline) {
+    if (ob_get_length()) ob_clean();
     echo json_encode([
         "ok" => false,
-        "msg" => " Error interno: $errstr en $errfile:$errline"
+        "msg" => "Error interno ($errno): $errstr en línea $errline"
     ]);
     exit;
 });
@@ -114,9 +115,10 @@ $numero_documento = $_POST['numero_documento'] ?? '';
 $correo = $_POST['correo'] ?? '';
 $celular = $_POST['celular'] ?? '';
 $linea_fija = $_POST['linea_fija'] ?? '';
-$ubicacion = $_POST['ubicacion'] ?? '';
+$ubicacion = $_POST['ubicacion'] ?? null;
 $id_proceso = $id_proceso ?: 0;
 $id_tipo_documento = $id_tipo_documento ?: 0;
+$ubicacion = $ubicacion ?: 0;
 
 $rutaImagen = null;
 
@@ -153,7 +155,7 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 // 🔹 Si hay imagen nueva, actualiza también la columna 'imagen'
 if ($rutaImagen) {
     $sql = "UPDATE empleado 
-            SET id_proceso=?, nombre=?, cargo=?, id_tipo_documento=?, numero_documento=?, correo=?, celular=?, linea_fija=?, ubicacion=?, imagen=?
+            SET id_proceso=?, nombre=?, cargo=?, id_tipo_documento=?, numero_documento=?, correo=?, celular=?, linea_fija=?, id_ubicacion=?, imagen=?
             WHERE id_empleado=?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
@@ -167,7 +169,7 @@ if ($rutaImagen) {
 } else {
     // Si no hay imagen nueva, mantener la actual
     $sql = "UPDATE empleado 
-            SET id_proceso=?, nombre=?, cargo=?, id_tipo_documento=?, numero_documento=?, correo=?, celular=?, linea_fija=?, ubicacion=?
+            SET id_proceso=?, nombre=?, cargo=?, id_tipo_documento=?, numero_documento=?, correo=?, celular=?, linea_fija=?, id_ubicacion=?
             WHERE id_empleado=?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {

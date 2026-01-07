@@ -2,7 +2,7 @@
 include 'conexion.php';
 
 header('Content-Type: application/json; charset=utf-8');
-$sql = "SELECT * FROM empleado"; 
+$sql = "SELECT e.*, p.nombre AS proceso, t.nombre AS tipo_documento, u.nombre AS ubicacion FROM empleado e LEFT JOIN proceso p ON e.id_proceso = p.id_proceso LEFT JOIN tipo_documento t ON e.id_tipo_documento = t.id_tipo_documento LEFT JOIN ubicacion u ON e.id_ubicacion = u.id_ubicacion"; 
 $result = $conn->query($sql);
 $usuarios = [];
 if ($result && $result->num_rows > 0) {

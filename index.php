@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -193,7 +194,7 @@
             <div class="content_Buscarusers">
                 <div class="divBuscador">
                     <div class="divparte1">
-                        <h1 style=" color: var(); font-size: 2.5vh; margin-right: 500px;" > Digite el Nombre o el ID para Enconntrar Usuario  </h1>
+                        <h1 style=" color: var(); font-size: 2.4vh; margin-right: 500px;" > Digite el Nombre o el ID para Enconntrar Usuario  </h1>
                         <div class="divimagentitulo">
                             <img class="img" src="img/Buscar_users-removebg-.png" alt="">
                         </div>
@@ -218,6 +219,217 @@
                             <div style="margin-left: 10vh;" class="divimagentitulo">
                                 <img class="img2" src="img/usuarios_img.png" alt="">
                             </div>
+                            
+                            <div class="divbotonaggusers" id="divbotonaggusers" title="Agregar Usuario Nuevo">
+                                <div  class="divbotonagg" id="divbotonagg">
+                                    Agregar Usuario
+                                    <svg style="width: 16px; margin-left:3px ;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="var(color_terciario_comfanorte)"><path d="M720-400v-120H600v-80h120v-120h80v120h120v80H800v120h-80Zm-360-80q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm80-80h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0-80Zm0 400Z"/></svg>
+                                </div>
+
+                                <div class="divbotonestiraraggusers" id="divbotonestiraraggusers" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="70px" viewBox="0 -960 960 960" width="70px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+<!--            MODAL DE Agregar Trabajador          -->
+<div class="modal" id="ModalaggUser">
+    <div class="modal-agguser">
+        <div class="divtitulousermodal">
+            <p>Agregar Usuario</p>
+        </div>
+        <div class="divcontenidotrabajador">
+            <div class="divatributos2">
+                <div class="column1agguser">
+                    <div title="Imagen del Usuario" id="contenedor-fotoagg" style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 4px 5px rgba(0,0,0,0.8));" class="divimagenuseragg">
+                        <div class="btn-eliminar-fotoagg " id="btnEliminarFotoagg" tabindex="-1" title="Elimiar Foto del Usuario">
+                            ✖
+                        </div>
+
+
+                        
+                    </div>
+                    <div class="atributo" >
+                        <p style=" font-size: 10.5px;">Agregar imagen al Usuario?</p>
+                        <p style="margin-top: 4px; font-size: 8px;">Opcional*</p>
+                        <button class="cambiarimagenagg" title="Cambiar Foto de Perfil del Usuario">Click aqui</button>
+                        <input type="file" id="input-imagenagg" accept="image/*" style="display:none;">
+                    </div>
+                </div>
+                <form class="formagguser" action="">
+                    <div class="divpreguntas">
+                        <div class="divpreguntasdobles">
+                            <!--   pregunta 1   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="nombreagguser" style="width: 50px; ">
+                                        Nombre* </label>
+                                </div>        
+                                <div class="inputagg">
+                                    <input id="nombreagguser" placeholder="Ingrese el Nombre" class="inputagg" type="text">
+                                </div>    
+                            </div>
+                            
+                            <!--   pregunta 2   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="tipo_documento" style="width: 100px; margin-bottom: 5px;">
+                                        Tipo de Documento* </label>
+                                </div>          
+                                <div id="tipodocumentoagguser" class="inputagg">
+                                    <select style="border: none;"   name="" class="inputagg" id="tipo_documento">
+                                        <option value="0">Ingrese el Tipo de Documento</option>
+                                        <option value="1">Carnet Diplomatico</option>
+                                        <option value="2">Cedula de Ciudadania</option>
+                                        <option value="3">Cedula de Extranjeria</option>
+                                        <option value="4">Documento de Identificacion Extranjero</option>
+                                        <option value="5">Numerio de Identificacion Tributaria</option>
+                                        <option value="6">NUIP</option>
+                                        <option value="7">Pasaporte</option>
+                                        <option value="8">Permiso Especial de Permanecia (P.E.P)</option>
+                                        <option value="9">Permiso de Proteccion Temporal</option>
+                                        <option value="10">Registro Civil</option>
+                                        <option value="11">Salvo Conducto </option>
+                                        <option value="12">Tarjeta de Extranjeria </option>
+                                        <option value="13">Tarjeta de Identidad </option>
+                                        <option value="14">Sin Documento</option>
+                                        <option value="15">Otros Documentos</option>
+                                    </select>
+                                </div>    
+                            </div>
+                            
+                        </div>  
+                        <div class="divpreguntasdobles">
+                            <!--   pregunta 1   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="tipo_procesoselect" style="width: 100px; margin-bottom: 5px;">
+                                        Tipo de Proceso* </label>
+                                </div>          
+                                <div id="tipo_proceso" class="inputagg">
+                                    <select style="border: none ; cursor: pointer;"   name="" class="inputagg" id="tipo_procesoselect">
+                                        <option value="0">Ingrese el Tipo de Proceso</option>
+                                        <option value="1">Educacion Colegio</option>
+                                        <option value="2">Educacion Instituto</option>
+                                        <option value="3">Gestion Administrativa</option>
+                                        <option value="4">Gestion Comercial y Mercadeo</option>
+                                        <option value="5">Gestion Contable</option>
+                                        <option value="6">Gestion de Auditorias</option>
+                                        <option value="7">Gestion de Riesgos</option>
+                                        <option value="8">Gestion Financiera</option>
+                                        <option value="9">Gestion Humana</option>
+                                        <option value="10">Gestion Juridica</option>
+                                        <option value="11">Gestion Social </option>
+                                        <option value="12">Gestion Tecnologica</option>
+                                        <option value="13">Gestion de Tesoreria y Cartera </option>
+                                        <option value="14">Mecanismo de Proteccion al Cesante</option>
+                                        <option value="15">Planeacion</option>
+                                        <option value="16">Recreacion</option>
+                                        <option value="17">Subsidio</option>
+                                        <option value="18">UISC Ocaña</option>
+                                        <option value="19">UISC Pamplona</option>
+                                        <option value="20">UISC Tibu</option>
+                                        <option value="21">Vivienda y Credito Social</option>
+                                    </select>
+                                </div>    
+                            </div>
+                            
+                            <!--   pregunta 2   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="NumeroDocagguser" style="width: 120px; ">
+                                        Numero del Documento* </label>
+                                </div>          
+                                <div class="inputagg">
+                                    <input id="NumeroDocagguser1" placeholder="Ingrese el Numero del Documento" class="inputagg" type="text">
+                                </div>    
+                            </div>
+                            
+                        </div> 
+                        <div class="divpreguntasdobles">
+                            <!--   pregunta 1   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="ubicacionagguser" style="width: 50px; margin-bottom: 5px; ">
+                                        Ubicacion* </label>
+                                </div>        
+                                <div class="inputagg">
+                                    <select style="border: none;"   name="" class="inputagg " id="ubicacionagguser">
+                                        <option value="0">Ingrese la Ubicacion</option>
+                                        <option value="1">Edifico-Sede</option>
+                                        <option value="2">Colegio</option>
+                                        <option value="3">Ecoparque</option>
+                                        <option value="4">Guayabales</option>
+                                        <option value="5">Pamplona</option>
+                                        <option value="6">Ocana</option>
+                                        <option value="7">Tibu</option>
+                                        <option value="8">Salazar</option>
+                                        <option value="9">Villa del Rosario</option>
+                                    </select>
+                                </div>    
+                            </div>
+                            
+                            <!--   pregunta 2   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px;  height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="cargoagguser" style="width: 50px; ">
+                                        Cargo* </label>
+                                </div>          
+                                <div class="inputagg">
+                                    <input id="cargoagguser" placeholder="Ingrese el Cargo" class="inputagg" type="text">
+                                </div>    
+                            </div>
+                            
+                        </div> 
+                        <div class="divpreguntasdobles">
+                            <!--   pregunta 1   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="celularagguser" style="width: 40px; ">
+                                        Celular* </label>
+                                </div>        
+                                <div class="inputagg">
+                                    <input id="celularagguser"  placeholder="Ingrese el Numero Celular" class="inputagg" type="tel">
+                                </div>    
+                            </div>
+                            <!--   pregunta 2   -->
+                            <div class="pregunta">
+                                <div class="enunciado">
+                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
+                                        </svg>
+                                    <label for="correoagguser" style="width: 40px; ">
+                                        Correo* </label>
+                                </div>          
+                                <div class="inputagg">
+                                    <input id="correoagguser" placeholder="Ingrese el Correo del Usuario" class="inputagg" type="email">
+                                </div>    
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-botones">
+            <button id="confirmaraggtrabajador" title="Confirmar">Sí, confirmar</button>
+            <button id="cancelaraggtrabajador" title="Cancelar">Cancelar</button>
+        </div>    
+    </div>
+</div>
                         </div>
                         <div class="divcontenidousers">
                             <div class="encabezado_tabla">
@@ -260,7 +472,7 @@
                     <div class="atributo">
                         <p>Cambiar Imagen de user?</p>
                         <button class="cambiarimagen" title="Cambiar Foto de Perfil del Usuario">Click aqui</button>
-                        <input = type="file" id="input-imagen" accept="image/*" style="display:none;">
+                        <input type="file" id="input-imagen" accept="image/*" style="display:none;">
                     </div>    
                 </div>
                 <div class="column2usuario">
@@ -270,11 +482,14 @@
                             <div   class="vista-previa" id="vistaprevia">
                                 <h2>Vista Previa del Usuario</h2>
                                 <div class="dato"><strong>Nombre:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-nombre">---</span></div>
-                                <div class="dato"><strong>Cargo:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-cargo">---</span></div>
                                 <div class="datosuser_compartidos">
-                                    <div class="dato1"><strong>Tipo de Documento:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-tipoDoc">---</span></div>
-                                    <div class="dato2"><strong>Documento ID:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-docId">---</span></div>
+                                    <div class="dato1"><strong>Cargo :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-cargo">---</span></div>
+                                    <div class="dato2"><strong>Proceso :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-proceso">---</span></div>
                                 </div>
+                                
+                                <div class="dato"><strong>Tipo de Documento:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-tipoDoc">---</span></div>
+                                <div class="dato"><strong>Documento ID:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-docId">---</span></div>
+                                
                                 <div class="datosuser_compartidos">
                                     <div class="dato1"><strong>Linea Fija:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-lineafija">---</span></div>
                                     <div class="dato2"><strong>Celular:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-celular">---</span></div>
@@ -305,13 +520,64 @@
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
+                                <div class="atributoyflecha">
+                                    <span>Proceso</span>
+                                    <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    
+                                    <select style="border: none ; cursor: pointer;"   name="" class="size" id="select_procesoactualizar">
+                                        <option value="0">Ingrese el Tipo de Proceso</option>
+                                        <option value="1">Educacion Colegio</option>
+                                        <option value="2">Educacion Instituto</option>
+                                        <option value="3">Gestion Administrativa</option>
+                                        <option value="4">Gestion Comercial y Mercadeo</option>
+                                        <option value="5">Gestion Contable</option>
+                                        <option value="6">Gestion de Auditorias</option>
+                                        <option value="7">Gestion de Riesgos</option>
+                                        <option value="8">Gestion Financiera</option>
+                                        <option value="9">Gestion Humana</option>
+                                        <option value="10">Gestion Juridica</option>
+                                        <option value="11">Gestion Social </option>
+                                        <option value="12">Gestion Tecnologica</option>
+                                        <option value="13">Gestion de Tesoreria y Cartera </option>
+                                        <option value="14">Mecanismo de Proteccion al Cesante</option>
+                                        <option value="15">Planeacion</option>
+                                        <option value="16">Recreacion</option>
+                                        <option value="17">Subsidio</option>
+                                        <option value="18">UISC Ocaña</option>
+                                        <option value="19">UISC Pamplona</option>
+                                        <option value="20">UISC Tibu</option>
+                                        <option value="21">Vivienda y Credito Social</option>
+                                    </select>
+                                </div>    
+                            </div>
+                            <div class="divcadaatributo card">
                                 <div style="gap: 370px;" class="atributoyflecha">
                                     <span style="width: 120px;">Tipo de Documento</span>
                                     <span class="flecha">▶</span>
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-tipoDoc">
+                                    <select style="border: none;"   name="" class="size" id="input-tipoDoc">
+                                        <option value="0">Ingrese el Tipo de Documento</option>
+                                        <option value="1">Carnet Diplomatico</option>
+                                        <option value="2">Cedula de Ciudadania</option>
+                                        <option value="3">Cedula de Extranjeria</option>
+                                        <option value="4">Documento de Identificacion Extranjero</option>
+                                        <option value="5">Numerio de Identificacion Tributaria</option>
+                                        <option value="6">NUIP</option>
+                                        <option value="7">Pasaporte</option>
+                                        <option value="8">Permiso Especial de Permanecia (P.E.P)</option>
+                                        <option value="9">Permiso de Proteccion Temporal</option>
+                                        <option value="10">Registro Civil</option>
+                                        <option value="11">Salvo Conducto </option>
+                                        <option value="12">Tarjeta de Extranjeria </option>
+                                        <option value="13">Tarjeta de Identidad </option>
+                                        <option value="14">Sin Documento</option>
+                                        <option value="15">Otros Documentos</option>
+                                    </select>
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
@@ -361,7 +627,18 @@
                                 </div> 
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-ubicacion">
+                                    <select style="border: none;"   name="" class="size" id="input-ubicacion">
+                                        <option value="0">Ingrese la Ubicacion</option>
+                                        <option value="1">Edifico-Sede</option>
+                                        <option value="2">Colegio</option>
+                                        <option value="3">Ecoparque</option>
+                                        <option value="4">Guayabales</option>
+                                        <option value="5">Pamplona</option>
+                                        <option value="6">Ocana</option>
+                                        <option value="7">Tibu</option>
+                                        <option value="8">Salazar</option>
+                                        <option value="9">Villa del Rosario</option>
+                                    </select>
                                 </div>
                             </div>
                             
@@ -370,11 +647,12 @@
                 </div>
             </div>
         </div>
-<div class="modal-botones">
-    <button id="confirmareditar" title="Confirmar">Sí, confirmar</button>
-    <button id="cancelareditar" title="Cancelar">Cancelar</button>
-</div>
+        <div class="modal-botones">
+            <button id="confirmareditar" title="Confirmar">Sí, confirmar</button>
+            <button id="cancelareditar" title="Cancelar">Cancelar</button>
+        </div>
     </div>   
+    
 </div>        
 <!--    --------------------------------------------------------      -->
                         
@@ -446,6 +724,7 @@
 
     </footer>
     <script src="index/jsindex.js"></script>
+    <script src="index/jsaggusers.js"></script>
     <script>
 document.querySelectorAll('.divcadaatributo').forEach(function(card) {
     card.addEventListener('click', function() {
