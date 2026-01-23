@@ -1,17 +1,16 @@
 let usuarios = [];
 let usuariosFiltrados = [];
-const tablaContenido = document.querySelector(".contenido_tabla");
+const tablaContenido = document.querySelector(".contenido_tabla_apps") || document.getElementById("contenedorUsuarios");
 let ultimoFoco = null;
 
 
 let paginaActual = 1;
-const usuariosPorPagina = 50;
-let usuarioaeliminar= null;
-let usuarioEditando= null;
+const usuariosPorPagina = 9;
+let usuarioaeliminar = null;
+let usuarioEditando = null;
 const inputBuscar = document.querySelector(".inputbuscar") || document.getElementById("inputbuscar");
 const btnBuscar = document.querySelector(".btnbuscar") || document.getElementById("btnbuscar");
-// 🔻 Cargar los usuarios desde PHP/MySQL
-fetch("obtener_users.php") 
+fetch("obtener_apps.php")
         .then(response => response.json())
         .then(data => {
                 usuarios = data;
@@ -21,44 +20,38 @@ fetch("obtener_users.php")
         .catch(error => console.error("Error al cargar usuarios:", error));
 //cargar inputs ________________________________________________
 function abrirModalEdicion(usuario) {
-        usuarioEditando = usuario;  
+        usuarioEditando = usuario;
 
-    // Rellenar los campos del modal con la info actual
+        // Rellenar los campos del modal con la info actual
         document.getElementById('input-nombre').value = usuario.nombre;
-        document.getElementById('input-cargo').value = usuario.cargo;
-        document.getElementById('input-tipoDoc').value = usuario.id_tipo_documento || "0";
-        document.getElementById('input-docId').value = usuario.numero_documento;
-        document.getElementById('input-correo').value = usuario.correo;
-        document.getElementById('input-celular').value = usuario.celular;
-        document.getElementById('input-lineafija').value = usuario.linea_fija;
-        document.getElementById('input-ubicacion').value = usuario.Id_ubicacion || "0";
-        document.getElementById('select_procesoactualizar').value= usuario.id_proceso || "0";
+        document.getElementById('textarea-descripcion').value = usuario.descripcion || "";
+        document.getElementById('select_tipoaplicacion').value = usuario.id_tipo_aplicacion || "0";
+        document.getElementById('input-forma_acceso').value = usuario.forma_acceso || "";
+        document.getElementById('input-url').value = usuario.url || "";
+               
+        // Vista previa
         document.getElementById('vp-nombre').textContent = usuario.nombre;
-        document.getElementById('vp-cargo').textContent = usuario.cargo;
-        document.getElementById('vp-proceso').textContent = usuario.proceso;
-        document.getElementById('vp-tipoDoc').textContent = usuario.tipo_documento;
-        document.getElementById('vp-docId').textContent = usuario.numero_documento;
-        document.getElementById('vp-correo').textContent = usuario.correo;
-        document.getElementById('vp-celular').textContent = usuario.celular;
-        document.getElementById('vp-lineafija').textContent = usuario.linea_fija || "Sin Especificacion";
-        document.getElementById('vp-ubicacion').textContent = usuario.ubicacion ;
+        document.getElementById('vp-Descripcion').textContent = usuario.descripcion;
+        document.getElementById('vp-Tipoapp').textContent = usuario.nombre_tipo_app;
+        document.getElementById('vp-Formaacceso').textContent = usuario.forma_acceso;
+        document.getElementById('vp-url').textContent = usuario.url;
         document.getElementById('vp-estado').textContent = usuario.estado;
         const divimagenuser = document.querySelector(".divimagenuser");
         const btnEliminarFoto = document.getElementById("btnEliminarFoto");
         const vistaprevia = document.getElementById("vistaprevia");
-        vistaprevia.setAttribute("title", "Vista previa de "+usuario.nombre);
+        vistaprevia.setAttribute("title", "Vista previa de " + usuario.nombre);
         const tieneFoto = (
-                usuario.imagen && 
-                usuario.imagen.trim() !== "" && 
-                usuario.imagen !== "null" && 
-                usuario.imagen !== null && 
+                usuario.imagen &&
+                usuario.imagen.trim() !== "" &&
+                usuario.imagen !== "null" &&
+                usuario.imagen !== null &&
                 usuario.imagen !== undefined &&
-                !usuario.imagen.includes("fotoperfil.png")
+                !usuario.imagen.includes("logo_defecto.png")
         );
 
 
         // aplicar clase segun tenga o no foto
-        
+
 
         // asignar imagen real o default
         if (tieneFoto) {
@@ -66,7 +59,7 @@ function abrirModalEdicion(usuario) {
                 btnEliminarFoto.style.display = "flex";
                 btnEliminarFoto.setAttribute("tabindex", "0");
         } else {
-                divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
+                divimagenuser.style.backgroundImage = `url('./img/logo_defecto.png')`;
                 btnEliminarFoto.style.display = "none";
                 btnEliminarFoto.setAttribute("tabindex", "-1");
         }
@@ -77,7 +70,7 @@ function abrirModalEdicion(usuario) {
 
 
         //-------------------------------------------------------------------------------
-        
+
 }
 //cargar usersrs________________________________________________
 
@@ -88,21 +81,33 @@ function cargarUsuarios(Listausers) {
         const usuariosPagina = Listausers.slice(inicio, fin);
         usuariosPagina.forEach((usuario) => {
                 const fila = document.createElement("div");
-                fila.classList.add("filas");
-                fila.setAttribute("data-id", usuario.id_empleado);
+                fila.classList.add("filasapps");
+                fila.style.setProperty("height", "50px", "important"); // Fuerza la altura
+
+                fila.setAttribute("data-id", usuario.id_aplicacion);
                 fila.setAttribute("data-nombre", usuario.nombre);
-                fila.setAttribute("tabindex", "0"); // para accesibilidad
-        //------------------ div nombre ---------------------
+                fila.setAttribute("tabindex", "0");
+                // para accesibilidad
+                //------------------ div nombre ---------------------
                 const divnombre = document.createElement("div");
                 divnombre.classList.add("nombre");
                 //  div iamgen-------------------------------------------------
                 const imgnombre = document.createElement("div");
                 imgnombre.classList.add("imgnombre");
                 const nombreimg = document.createElement("img");
-                nombreimg.src = "img/usuario.svg";
-                nombreimg.alt = "Usuario";
-                nombreimg.style.width = "13px";
-                nombreimg.style.height = "13px";
+                const carpetalogos = "public/img/";
+                let archivoImagen = usuario.ubicacion_imagen;
+                if (!archivoImagen || archivoImagen.trim() === "" || archivoImagen.includes("logo_defecto")) {
+                    // Si no tiene imagen o es la por defecto del PHP, ponemos un icono genérico
+                    nombreimg.src = "img/logo_defecto.png"; 
+                } else {
+                    // Si tiene un nombre de archivo (ej: "logo_seven.png"), le pegamos la carpeta delante
+                    // Quedaría: "public/img/logo_seven.png"
+                    nombreimg.src = carpetalogos + archivoImagen;
+                }
+                nombreimg.alt = "logo";
+                nombreimg.style.width = "40px";
+                nombreimg.style.height = "40px";
                 imgnombre.appendChild(nombreimg);
                 divnombre.appendChild(imgnombre);
                 // div nombre-------------------------------------------------
@@ -111,24 +116,24 @@ function cargarUsuarios(Listausers) {
                 textnombre.textContent = usuario.nombre;
                 divnombre.appendChild(textnombre);
                 fila.appendChild(divnombre);
-        //------------------ div cedula ----------------------
+                //------------------ div TIPO APP (QUE ANTES ERA CEDULA) ----------------------
                 const divcedula = document.createElement("div");
                 divcedula.classList.add("cedula");
                 const imgcedula = document.createElement("div");
                 imgcedula.classList.add("imgcedula");
                 const cedulaimg = document.createElement("img");
-                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview_1.svg";
+                cedulaimg.src = "img/tarjeta-de-identificacion-removebg-preview_1.png";
                 cedulaimg.alt = "Cédula";
-                cedulaimg.style.width = "13px";
-                cedulaimg.style.height = "13px";
+                cedulaimg.style.width = "40px";
+                cedulaimg.style.height = "40px";
                 imgcedula.appendChild(cedulaimg);
                 divcedula.appendChild(imgcedula);
                 const textcedula = document.createElement("div");
-                textcedula.classList.add("textcedula");
-                textcedula.textContent = usuario.numero_documento;
+                textcedula.classList.add("textapp");
+                textcedula.textContent = usuario.nombre_tipo_app || "Sin Asignar";
                 divcedula.appendChild(textcedula);
                 fila.appendChild(divcedula);
-        //------------------ div Indicador de accion ----------------------
+                //------------------ div Indicador de accion ----------------------
                 const divIndicador = document.createElement("div");
                 divIndicador.classList.add("Indicador");
                 const indicadoraccion = document.createElement("div");
@@ -138,28 +143,28 @@ function cargarUsuarios(Listausers) {
                 if (estado === "activo") {
                         indicadoraccion.classList.add("activo");
                         fila.style.backgroundColor = "#c1ecc1ff"; // color de fondo para activo
-                } else if(estado === "inactivo") {
+                } else if (estado === "inactivo") {
                         indicadoraccion.classList.add("inactivo");
                         fila.style.backgroundColor = "#f4bcbc"; // color de fondo para inactivo
                 }
                 divIndicador.appendChild(indicadoraccion);
                 fila.appendChild(divIndicador);
-        //------------------ div botones ----------------------
+                //------------------ div botones ----------------------
                 const divbotones = document.createElement("div");
                 divbotones.classList.add("divbotones");
-                 // para accesibilidad
+                // para accesibilidad
                 fila.appendChild(divbotones);
                 const botoneditar = document.createElement("button");
                 botoneditar.setAttribute("tabindex", "0");
                 botoneditar.setAttribute("title", "Editar usuario");
                 botoneditar.classList.add("botoneditar");
-                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:15px; height:16px; ">';       
+                botoneditar.innerHTML = '<img src="img/ojo-abierto.svg" alt="Editar" style="width:20px; height:21px; ">';
                 divbotones.appendChild(botoneditar);
-                
+
                 botoneditar.addEventListener("click", () => {
                         ultimoFoco = document.activeElement;
                         abrirModalEdicion(usuario);
-                        const modal=document.getElementById("modaleditar");
+                        const modal = document.getElementById("modaleditar");
                         modal.style.display = "flex";
                         modal.scrollTop = 0;
                         document.getElementById("vistaprevia").focus(); // ✅ primer foco correcto
@@ -170,36 +175,36 @@ function cargarUsuarios(Listausers) {
                 botoneliminar.setAttribute("tabindex", "0");
                 botoneliminar.setAttribute("title", "Cambiar estado del usuario");
                 botoneliminar.classList.add("botoneliminar");
-                botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 13px; height:13px;">';
-                
+                botoneliminar.innerHTML = '<img src="img/tacho-de-reciclaje.svg" alt="Eliminar" style="width: 19px; height:19px;">';
+
                 divbotones.appendChild(botoneliminar);
                 botoneliminar.addEventListener("click", () => {
                         ultimoFoco = document.activeElement;
                         usuarioaeliminar = usuario;
-                        const modaleliminar=document.getElementById("modalEliminar");
+                        const modaleliminar = document.getElementById("modalEliminar");
                         modaleliminar.style.display = "flex";
                         const primerElemento = modaleliminar.querySelector("input, button, select, textarea, [tabindex]:not([tabindex='-1'])");
                         if (primerElemento) primerElemento.focus();
                         trapFocus(modaleliminar);
                 });
-                
+
                 tablaContenido.appendChild(fila);
         })
 
-    //  luego de renderizar filas:
+        //  luego de renderizar filas:
         renderPaginacion(Listausers);
-}   
+}
 // funcion paginacion ____________________________________________
 function renderPaginacion(Listausers) {
         const totalPaginas = Math.ceil(Listausers.length / usuariosPorPagina);
         const contenedorPaginas = document.querySelector(".paginasusers");
         contenedorPaginas.innerHTML = "";
 
-    // Botón anterior
+        // Botón anterior
         const btnAnterior = document.querySelector(".divanterior button");
         const btnSiguiente = document.querySelector(".siguiente button");
 
-    // Desactivar si estás en el límite
+        // Desactivar si estás en el límite
         btnAnterior.disabled = paginaActual === 1;
         btnSiguiente.disabled = paginaActual === totalPaginas;
 
@@ -217,7 +222,7 @@ function renderPaginacion(Listausers) {
                 }
         };
 
-    // Números de página
+        // Números de página
         for (let i = 1; i <= totalPaginas; i++) {
                 const boton = document.createElement("button");
                 boton.textContent = i;
@@ -229,21 +234,21 @@ function renderPaginacion(Listausers) {
                 };
                 contenedorPaginas.appendChild(boton);
         }
-} 
+}
 
 // funcion filtrar usuarios ____________________________________________
 function filtrarUsuarios() {
         const texto = inputBuscar.value.toLowerCase().trim();
 
-    // Filtramos el array completo, no las filas actuales
+        // Filtramos el array completo, no las filas actuales
         usuariosFiltrados = usuarios.filter(usuario =>
                 usuario.nombre.toLowerCase().includes(texto) ||
                 usuario.numero_documento.toLowerCase().includes(texto)
         );
-    // Reiniciamos la paginación
+        // Reiniciamos la paginación
         paginaActual = 1;
 
-    // Volvemos a cargar la tabla con los usuarios filtrados
+        // Volvemos a cargar la tabla con los usuarios filtrados
         cargarUsuarios(usuariosFiltrados);
 }
 btnBuscar.addEventListener("click", filtrarUsuarios);
@@ -261,19 +266,19 @@ document.getElementById("cancelarEliminar").addEventListener("click", () => {
         const modal = document.getElementById("modalEliminar");
         modal.style.display = "none";
         modal.scrollTop = 0;
-  // 🔹 Reinicia los divs de atributos
+        // 🔹 Reinicia los divs de atributos
         resetAtributos(); // cerramos el modal
 });
 document.getElementById("cancelareditar").addEventListener("click", () => {
         usuarioEditando = null;
-        const modal=document.getElementById("modaleditar")
-        modal .style.display = "none";
+        const modal = document.getElementById("modaleditar")
+        modal.style.display = "none";
         resetAtributos();
         modal.scrollTop = 0;
-         // cerramos el modal
+        // cerramos el modal
 });
 //Funcion boton editar perfil------------------------------------------
-document.getElementById("confirmareditar").addEventListener("click", () => { 
+document.getElementById("confirmareditar").addEventListener("click", () => {
         if (!usuarioEditando) return;
         const nombre = document.getElementById("input-nombre").value.trim();
         const documento = document.getElementById("input-docId").value.trim();
@@ -290,7 +295,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
                 alert("⚠️ Ingrese un correo electrónico válido");
                 return;
         }
-    // Tomar valores del formulario
+        // Tomar valores del formulario
         const formData = new FormData();
         formData.append("id_empleado", usuarioEditando.id_empleado);
         formData.append("id_proceso", document.getElementById("select_procesoactualizar").value);
@@ -312,62 +317,62 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
                 method: "POST",
                 body: formData
         })
-        .then(async res => {
-                const text = await res.text();
-                
-                try {
-                        return JSON.parse(text);
-                } catch (e) {
-                        throw new Error("Respuesta no válida del servidor: " + text);
-                }
-        })
-        .then(data => {
-                if (!data.ok) {
-                        console.error("Error del servidor:", data.msg);
-                        
-                        return;
-                }
-                
-                const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
-                if (idx !== -1) {
-                        usuarios[idx] = { ...usuarios[idx], ...data.usuario };
-                }
-                if (data.usuario && data.usuario.imagen) {
-                        
-                        usuarioEditando.imagen = data.usuario.imagen;
-                }
-                const divimagenuser = document.querySelector(".divimagenuser");
-                if (data.usuario.imagen) {
-                        
-                        divimagenuser.style.backgroundImage = `url('${data.usuario.imagen}?v=${Date.now()}')`;
-                        document.getElementById("btnEliminarFoto").style.display = "flex";
-                }
-                const fila = document.querySelector(`[data-id="${usuarioEditando.id_empleado}"]`);
-                if (fila) {
-                        fila.querySelector(".textnombre").textContent = formData.get("nombre");
-                        fila.querySelector(".textcedula").textContent = formData.get("numero_documento");
-                }
-                document.getElementById("input-imagen").value = "";
-                //alert("✅ Cambios guardados correctamente");
-                document.getElementById("modaleditar").style.display = "none";
-                usuarioEditando = null;
-        })      
-        .catch(err => {
-                console.error("Error al guardar cambios:", err);
-                alert("Error en la conexión con el servidor");
-        })
-        .finally(() => {
-                resetAtributos();
-                const modal = document.getElementById("modaleditar");
-                if (modal) modal.scrollTop = 0;
-        }); 
+                .then(async res => {
+                        const text = await res.text();
+
+                        try {
+                                return JSON.parse(text);
+                        } catch (e) {
+                                throw new Error("Respuesta no válida del servidor: " + text);
+                        }
+                })
+                .then(data => {
+                        if (!data.ok) {
+                                console.error("Error del servidor:", data.msg);
+
+                                return;
+                        }
+
+                        const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
+                        if (idx !== -1) {
+                                usuarios[idx] = { ...usuarios[idx], ...data.usuario };
+                        }
+                        if (data.usuario && data.usuario.imagen) {
+
+                                usuarioEditando.imagen = data.usuario.imagen;
+                        }
+                        const divimagenuser = document.querySelector(".divimagenuser");
+                        if (data.usuario.imagen) {
+
+                                divimagenuser.style.backgroundImage = `url('${data.usuario.imagen}?v=${Date.now()}')`;
+                                document.getElementById("btnEliminarFoto").style.display = "flex";
+                        }
+                        const fila = document.querySelector(`[data-id="${usuarioEditando.id_empleado}"]`);
+                        if (fila) {
+                                fila.querySelector(".textnombre").textContent = formData.get("nombre");
+                                fila.querySelector(".textcedula").textContent = formData.get("numero_documento");
+                        }
+                        document.getElementById("input-imagen").value = "";
+                        //alert("✅ Cambios guardados correctamente");
+                        document.getElementById("modaleditar").style.display = "none";
+                        usuarioEditando = null;
+                })
+                .catch(err => {
+                        console.error("Error al guardar cambios:", err);
+                        alert("Error en la conexión con el servidor");
+                })
+                .finally(() => {
+                        resetAtributos();
+                        const modal = document.getElementById("modaleditar");
+                        if (modal) modal.scrollTop = 0;
+                });
 });
 document.getElementById("confirmarEliminar").addEventListener("click", () => {
         if (!usuarioaeliminar) return;
 
         const idEmpleado = usuarioaeliminar.id_empleado;
 
-    // Normalizamos el estado actual
+        // Normalizamos el estado actual
         const estadoActual = (usuarioaeliminar.estado || "").toString().trim().toLowerCase();
         const nuevoEstado = estadoActual === "activo" ? "inactivo" : "activo";
 
@@ -379,46 +384,46 @@ document.getElementById("confirmarEliminar").addEventListener("click", () => {
                 method: "POST",
                 body: formData
         })
-        .then((response) => response.json())
-        .then((data) => {
-                console.log("Respuesta del servidor:", data);
-                if (data.ok) {
-            // Actualizamos el usuario en el arreglo local
-                        usuarioaeliminar.estado = nuevoEstado;
-                        const index = usuarios.findIndex(u => u.id_empleado === idEmpleado);
-                        if (index !== -1) {
-                                usuarios[index].estado = nuevoEstado;
+                .then((response) => response.json())
+                .then((data) => {
+                        console.log("Respuesta del servidor:", data);
+                        if (data.ok) {
+                                // Actualizamos el usuario en el arreglo local
+                                usuarioaeliminar.estado = nuevoEstado;
+                                const index = usuarios.findIndex(u => u.id_empleado === idEmpleado);
+                                if (index !== -1) {
+                                        usuarios[index].estado = nuevoEstado;
+                                }
+
+                                // Actualizamos visualmente en la tabla sin recargar
+                                const fila = document.querySelector(`[data-id="${idEmpleado}"]`);
+                                if (fila) {
+                                        const indicador = fila.querySelector(".indicadoraccion");
+                                        indicador.classList.remove("activo", "inactivo");
+                                        indicador.classList.add(nuevoEstado);
+                                        // Cambiar color de fondo según el nuevo estado
+                                        if (nuevoEstado === "activo") {
+                                                fila.style.backgroundColor = "#c1ecc1ff"; // color de fondo para activo
+                                        } else if (nuevoEstado === "inactivo") {
+                                                fila.style.backgroundColor = "#f4bcbc"; // color de fondo para inactivo
+                                        }
+                                }
+                                // Mostrar alerta o modal de éxito
+                        } else {
+                                alert("Error al actualizar el estado: " + data.msg);
                         }
 
-                // Actualizamos visualmente en la tabla sin recargar
-                        const fila = document.querySelector(`[data-id="${idEmpleado}"]`);
-                        if (fila) {
-                                const indicador = fila.querySelector(".indicadoraccion");
-                                indicador.classList.remove("activo", "inactivo");
-                                indicador.classList.add(nuevoEstado);
-                                // Cambiar color de fondo según el nuevo estado
-                                if (nuevoEstado === "activo") {
-                                        fila.style.backgroundColor = "#c1ecc1ff"; // color de fondo para activo
-                                } else if (nuevoEstado === "inactivo") {
-                                        fila.style.backgroundColor = "#f4bcbc"; // color de fondo para inactivo
-                                }
-                        }
-                // Mostrar alerta o modal de éxito
-                } else {
-                        alert("Error al actualizar el estado: " + data.msg);
-                }
-                
-        })
-        .catch(err => {
-                console.error("Error al enviar estado:", err);
-                
-                alert("Error en la conexión con el servidor");
-        })
-        .finally(() => {
-                document.getElementById("modalEliminar").style.display = "none";
-                usuarioaeliminar = null;
-        });
-        
+                })
+                .catch(err => {
+                        console.error("Error al enviar estado:", err);
+
+                        alert("Error en la conexión con el servidor");
+                })
+                .finally(() => {
+                        document.getElementById("modalEliminar").style.display = "none";
+                        usuarioaeliminar = null;
+                });
+
 });
 //Funcion toggle de atributos------------------------------------------
 const atributos = document.querySelectorAll('.divcadaatributo');
@@ -434,10 +439,10 @@ atributos.forEach(div => {
                 const abierto = div.classList.toggle("abierto");
 
                 if (abierto) {
-    // primero muestra el contenido
+                        // primero muestra el contenido
                         contenido.style.display = "block";
                         inputs.forEach(i => i.removeAttribute("tabindex"));
-    // pequeño retraso para que scrollHeight se calcule correctamente
+                        // pequeño retraso para que scrollHeight se calcule correctamente
                         requestAnimationFrame(() => {
                                 div.style.height = div.scrollHeight + "px";
                         });
@@ -452,7 +457,7 @@ atributos.forEach(div => {
 
                         if (flecha) flecha.style.transform = "rotate(0deg)";
 
-    // espera que termine la animación antes de ocultar el contenido
+                        // espera que termine la animación antes de ocultar el contenido
                         setTimeout(() => {
                                 contenido.style.display = "none";
                         }, 300);
@@ -468,8 +473,8 @@ atributos.forEach(div => {
                         e.preventDefault(); // evita que salte al input
                         toggleExpand();
                 }
-        });         
-        
+        });
+
 });
 document.querySelectorAll(".divcadaatributo input").forEach(input => {
         input.addEventListener("click", e => e.stopPropagation());
@@ -509,8 +514,8 @@ function resetAtributos() {
 //  Función para cambiar imagen del usuario----------------------------------
 const botoncambiarimagen = document.querySelector(".cambiarimagen");
 const inputImagen = document.getElementById("input-imagen");
-const divimagenuser=document.querySelector(".divimagenuser");
-if(botoncambiarimagen && inputImagen && divimagenuser){
+const divimagenuser = document.querySelector(".divimagenuser");
+if (botoncambiarimagen && inputImagen && divimagenuser) {
         botoncambiarimagen.addEventListener("click", () => {
                 inputImagen.click();
         });
@@ -544,13 +549,13 @@ function trapFocus(modal) {
         modal.addEventListener("keydown", (e) => {
                 if (e.key === "Tab") {
                         if (e.shiftKey) {
-                // Shift + Tab (retroceso)
+                                // Shift + Tab (retroceso)
                                 if (document.activeElement === first) {
                                         e.preventDefault();
                                         last.focus();
                                 }
-                        }else {
-                // Tab normal (avance)
+                        } else {
+                                // Tab normal (avance)
                                 if (document.activeElement === last) {
                                         e.preventDefault();
                                         first.focus();
@@ -594,14 +599,14 @@ document.getElementById("confirmarEliminarFoto").addEventListener("click", () =>
                 method: "POST",
                 body: formData
         })
-        .then(res => res.json())
-        .then(data => {
-                if (data.ok) {
-                        const divimagenuser = document.querySelector(".divimagenuser");
-                        
+                .then(res => res.json())
+                .then(data => {
+                        if (data.ok) {
+                                const divimagenuser = document.querySelector(".divimagenuser");
 
-                        const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
-                        if (idx !== -1) usuarios[idx].imagen = null;
+
+                                const idx = usuarios.findIndex(u => u.id_empleado === usuarioEditando.id_empleado);
+                                if (idx !== -1) usuarios[idx].imagen = null;
                                 document.getElementById("btnEliminarFoto").style.display = "none";
                                 const vistap = document.getElementById("vistaprevia");
                                 if (vistap) vistap.focus();
@@ -611,17 +616,17 @@ document.getElementById("confirmarEliminarFoto").addEventListener("click", () =>
                                 document.getElementById("btnEliminarFoto").style.display = "none";
                                 divimagenuser.style.backgroundImage = `url('./img/fotoperfil.png')`;
                                 document.getElementById("input-imagen").value = "";
-                                
-                }
-        })
-        .catch(err => {
-                console.error(err);
-                alert("Error al conectar con el servidor");
-        })
-        .finally(() => {
-                document.getElementById("modalEliminarFoto").style.display = "none";
-        });
-        });
+
+                        }
+                })
+                .catch(err => {
+                        console.error(err);
+                        alert("Error al conectar con el servidor");
+                })
+                .finally(() => {
+                        document.getElementById("modalEliminarFoto").style.display = "none";
+                });
+});
 document.getElementById("cancelarEliminarFoto").addEventListener("click", () => {
         document.getElementById("modalEliminarFoto").style.display = "none";
 });
@@ -633,19 +638,14 @@ document.body.appendChild(tooltip);
 
 // Mostrar tooltip al hacer hover sobre una fila
 document.addEventListener("mousemove", (e) => {
-        const fila = e.target.closest(".filas");
+        const fila = e.target.closest(".filasapps");
 
         if (fila && fila.dataset.nombre) {
-                tooltip.textContent = fila.dataset.nombre+"  "+"  "+"("+fila.dataset.id+")";
-                tooltip.style.left = (e.pageX+12) + "px";
-                tooltip.style.top = (e.pageY+ 5) + "px";
+                tooltip.textContent = fila.dataset.nombre + "  " + "  " + "(" + fila.dataset.id + ")";
+                tooltip.style.left = (e.pageX + 12) + "px";
+                tooltip.style.top = (e.pageY + 5) + "px";
                 tooltip.style.opacity = "1";
         } else {
                 tooltip.style.opacity = "0";
         }
 });
-
-
-
-
-

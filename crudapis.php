@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caja De Compensacion Familiar - COMFANORTE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index/cssindex.css">
-
+    
+    
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
@@ -15,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dosis:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index/cssindex.css">
+    <link rel="stylesheet" href="crudapis/Ccscrudapis.css">
 </head>
 <body>
     <header>
@@ -191,18 +195,19 @@
     </header>
     <section>
         <div class="tbody">
-            <div class="content_Buscarusers">
+            <div class="content_Buscaraplicaciones">
                 <div class="divBuscador">
-                    <div class="divparte1">
-                        <h1 style=" color: var(); font-size: 2.4vh; margin-right: 500px;" > Digite el Nombre o el ID para Enconntrar Usuario  </h1>
-                         <div class="divimagentitulo">
-                            <img class="img" src="img/buscar_usuarios.svg" alt="">
+                    <div class="divparte1apps">
+                        
+                        <div class="divimagentituloapps">
+                            <img class="imgapp" src="img/buscar_aplicaciones.svg" alt="">
                         </div>
+                        <h1 style=" color: var(); font-size: 2.4vh; margin-left: 500px;" > Digite el Nombre o el ID para Encontrar la Aplicación  </h1>
                         
                     </div>
-                    <div class="divparte2">
+                    <div class="divparte2apps">
                         
-                        <input title="Ingresa el Nombre o Cedula del Usuario" style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
+                        <input title="Ingresa el Nombre o Id de la Aplicacion" style="border-radius: 3px 0px 0px 3px; width: 80%; padding-left: 5px;" type="text" class="inputbuscar" placeholder="Buscar..." id="inputbuscar">
                         <button title="Buscar..." style="border-radius: 0px 3px 3px 0px; width: 10%;  color: var(--color_terciario_comfanorte); cursor: pointer;" id="btnbuscar" class="btnbuscar">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60.000000pt" height="60.000000pt" viewBox="0 0 500.000000 500.000000">
                                 <path d="M27.414,24.586l-5.077-5.077C23.386,17.928,24,16.035,24,14c0-5.514-4.486-10-10-10S4,8.486,4,14  
@@ -211,8 +216,9 @@
                             </svg>
                         </button>
                     </div>
+
+
                 </div>
-                
                 <div class="divusers">
                     <div class="users filter">
                         <div class="titulousers">
@@ -431,20 +437,20 @@
 </div>
                         </div>
                         <div class="divcontenidousers">
-                            <div class="encabezado_tabla">
+                            <div class="encabezado_tabla_apps">
                                 <div class="cuadro">Nombre</div>
-                                <div class="cuadro">Cedula </div>
+                                <div class="cuadro">Tipo de Aplicacion </div>
                                 <div class="cuadro">Estado</div>
                                 <div class="cuadro1">Acciones </div>
                             </div>
-                            <div id="contenedorUsuarios" class="contenido_tabla">
+                            <div id="contenedorUsuarios" class="contenido_tabla_apps">
                                 
                             </div> 
                         </div>    
 <!--            MODAL DE DESACTIVAR Trabajador         -->
 <div id="modalEliminar" class="modal">
     <div class="modal-contenidoEliminar">
-        <p>¿Seguro que deseas cambiar el estado de este usuario?</p>
+        <p>¿Seguro que deseas cambiar el estado de esta Aplicacion?</p>
         <div class="modal-botones">
             <button title="Desactivar Usuario" id="confirmarEliminar">Sí, confirmar</button>
             <button title="Cancelar" id="cancelarEliminar">Cancelar</button>
@@ -455,7 +461,7 @@
 <div  id="modaleditar" class="modal" aria-modal="true" aria-labelledby="tituloeditar " role="dialog">
     <div class="modal-contenido">
         <div class="divtitulousermodal">
-            <p>Vista de Usuario</p>
+            <p>Informacion de Aplicacion</p>
         </div>
         <div class="divcontenidotrabajador">
             <div class="divatributos">
@@ -468,34 +474,28 @@
 
                         
                     </div>
-                    <div class="atributo">
-                        <p>Cambiar Imagen de user?</p>
+                    <div class="atributoapp">
+                        <p style="align-items: center;">Cambiar Imagen de la Aplicacion?</p>
                         <button class="cambiarimagen" title="Cambiar Foto de Perfil del Usuario">Click aqui</button>
                         <input type="file" id="input-imagen" accept="image/*" style="display:none;">
                     </div>    
                 </div>
                 <div class="column2usuario">
                     <div class="divtodosatributos">
-                        <h1>Datos de Usuario:</h1>
+                        <h1>Datos de Aplicacion:</h1>
                         <div class="divdatosusuarios">
                             <div   class="vista-previa" id="vistaprevia">
-                                <h2>Vista Previa del Usuario</h2>
-                                <div class="dato"><strong>Nombre:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-nombre">---</span></div>
-                                <div class="datosuser_compartidos">
-                                    <div class="dato1"><strong>Cargo :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-cargo">---</span></div>
-                                    <div class="dato2"><strong>Proceso :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-proceso">---</span></div>
-                                </div>
+                                <h2>Vista Previa de la Aplicacion</h2>
+                                <div class="datoapp"><strong>Nombre:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-nombre">---</span></div>
                                 
-                                <div class="dato"><strong>Tipo de Documento:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-tipoDoc">---</span></div>
-                                <div class="dato"><strong>Documento ID:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-docId">---</span></div>
                                 
-                                <div class="datosuser_compartidos">
-                                    <div class="dato1"><strong>Linea Fija:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-lineafija">---</span></div>
-                                    <div class="dato2"><strong>Celular:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-celular">---</span></div>
-                                </div>
-                                <div class="dato"><strong>Correo:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-correo">---</span></div>
-                                <div class="dato"><strong>Ubicación:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-ubicacion">---</span></div>
-                                <div class="dato"><strong>Estado :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-estado">---</span></div>
+                                <div class="datoappdescripcion"><strong>Descripcion :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-Descripcion">---</span></div>
+                                <div class="datoapptipoapp"><strong>Tipo de Aplicacion:</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-Tipoapp">---</span></div>
+                                
+                                
+                                <div class="datoappdescripcion"><strong>Forma de Acceso :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-Formaacceso">---</span></div>
+                                <div class="datoappdescripcion"><strong>Url :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-url">---</span></div>
+                                <div class="datoappdescripcion"><strong>Estado :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-estado">---</span></div>
                             </div>
 
 
@@ -510,138 +510,52 @@
                                 </div>    
                             </div>
                             <div class="divcadaatributo card">
-                                <div style="gap: 460px;" class="atributoyflecha">
-                                    <span>Cargo</span>
+                                <div style="gap: 430px !important;" class="atributoyflecha">
+                                    <span>Descripcion</span>
                                     <span class="flecha">▶</span>
                                 </div>
                                 <div class="div-expandido">
-                                    <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-cargo">
+                                    <p>Ingrese el texto nuevo:</p>
+                                    <textarea class="sizeapp" type="text" placeholder="Nuevo valor" id="textarea-descripcion"></textarea>
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Proceso</span>
+                                <div style="gap: 390px;" class="atributoyflecha">
+                                    <span>Tipo de Aplicacion</span>
                                     <span class="flecha">▶</span>
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
                                     
-                                    <select style="border: none ; cursor: pointer;"   name="" class="size" id="select_procesoactualizar">
-                                        <option value="0">Ingrese el Tipo de Proceso</option>
-                                        <option value="1">Educacion Colegio</option>
-                                        <option value="2">Educacion Instituto</option>
-                                        <option value="3">Gestion Administrativa</option>
-                                        <option value="4">Gestion Comercial y Mercadeo</option>
-                                        <option value="5">Gestion Contable</option>
-                                        <option value="6">Gestion de Auditorias</option>
-                                        <option value="7">Gestion de Riesgos</option>
-                                        <option value="8">Gestion Financiera</option>
-                                        <option value="9">Gestion Humana</option>
-                                        <option value="10">Gestion Juridica</option>
-                                        <option value="11">Gestion Social </option>
-                                        <option value="12">Gestion Tecnologica</option>
-                                        <option value="13">Gestion de Tesoreria y Cartera </option>
-                                        <option value="14">Mecanismo de Proteccion al Cesante</option>
-                                        <option value="15">Planeacion</option>
-                                        <option value="16">Recreacion</option>
-                                        <option value="17">Subsidio</option>
-                                        <option value="18">UISC Ocaña</option>
-                                        <option value="19">UISC Pamplona</option>
-                                        <option value="20">UISC Tibu</option>
-                                        <option value="21">Vivienda y Credito Social</option>
+                                    <select style="border: none ; cursor: pointer;"   name="" class="size" id="select_tipoaplicacion">
+                                        <option value="0">Ingrese el Tipo de Aplicacion</option>
+                                        <option value="1">Aplicacion de Escritorio</option>
+                                        <option value="2">Aplicacion Web en Local</option>
+                                        <option value="3">Aplicacion Web en la Nube</option>
+                                        
                                     </select>
                                 </div>    
                             </div>
                             <div class="divcadaatributo card">
-                                <div style="gap: 370px;" class="atributoyflecha">
-                                    <span style="width: 120px;">Tipo de Documento</span>
+                                <div style="gap: 380px;" class="atributoyflecha">
+                                    <span style="width: 120px;">Forma de Acceso</span>
                                     <span class="flecha">▶</span>
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <select style="border: none;"   name="" class="size" id="input-tipoDoc">
-                                        <option value="0">Ingrese el Tipo de Documento</option>
-                                        <option value="1">Carnet Diplomatico</option>
-                                        <option value="2">Cedula de Ciudadania</option>
-                                        <option value="3">Cedula de Extranjeria</option>
-                                        <option value="4">Documento de Identificacion Extranjero</option>
-                                        <option value="5">Numerio de Identificacion Tributaria</option>
-                                        <option value="6">NUIP</option>
-                                        <option value="7">Pasaporte</option>
-                                        <option value="8">Permiso Especial de Permanecia (P.E.P)</option>
-                                        <option value="9">Permiso de Proteccion Temporal</option>
-                                        <option value="10">Registro Civil</option>
-                                        <option value="11">Salvo Conducto </option>
-                                        <option value="12">Tarjeta de Extranjeria </option>
-                                        <option value="13">Tarjeta de Identidad </option>
-                                        <option value="14">Sin Documento</option>
-                                        <option value="15">Otros Documentos</option>
-                                    </select>
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-forma_acceso">
                                 </div> 
                             </div>
                             <div class="divcadaatributo card">
-                                <div style="gap: 370px;" class="atributoyflecha">
-                                    <span style="width: 120px;" >Documento Id</span>
+                                <div style="gap: 485px;" class="atributoyflecha">
+                                    <span style="width: auto;" >Url</span>
                                     <span class="flecha">▶</span>
                                 </div>
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-docId">
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-url">
                                 </div> 
                             </div>
-                            <div class="divcadaatributo card">
-                                <div class="atributoyflecha">
-                                    <span>Correo</span>
-                                    <span class="flecha">▶</span>
-                                </div>
-                                <div class="div-expandido">
-                                    <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-correo">
-                                </div> 
-                            </div>
-                            <div class="divcadaatributo card" >
-                                <div class="atributoyflecha">
-                                    <span>Celular</span>
-                                    <span class="flecha">▶</span>
-                                </div>
-                                <div class="div-expandido">
-                                    <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-celular">
-                                </div> 
-                            </div>
-                            <div class="divcadaatributo card">
-                                <div style="gap: 370px;" class="atributoyflecha">
-                                    <span style="width: 120px;" >Linea Fija</span>
-                                    <span class="flecha">▶</span>
-                                </div> 
-                                <div class="div-expandido">
-                                    <p>Ingrese el dato nuevo:</p>
-                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-lineafija">
-                                </div>
-                            </div>
-                            <div class="divcadaatributo card">
-                                <div style="gap: 435px;" class="atributoyflecha">
-                                    <span>Ubicacion</span>
-                                    <span class="flecha">▶</span>
-                                </div> 
-                                <div class="div-expandido">
-                                    <p>Ingrese el dato nuevo:</p>
-                                    <select style="border: none;"   name="" class="size" id="input-ubicacion">
-                                        <option value="0">Ingrese la Ubicacion</option>
-                                        <option value="1">Edifico-Sede</option>
-                                        <option value="2">Colegio</option>
-                                        <option value="3">Ecoparque</option>
-                                        <option value="4">Guayabales</option>
-                                        <option value="5">Pamplona</option>
-                                        <option value="6">Ocana</option>
-                                        <option value="7">Tibu</option>
-                                        <option value="8">Salazar</option>
-                                        <option value="9">Villa del Rosario</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -702,12 +616,8 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
-            
         </div>
-<!--            MODAL DE DESACTIVAR Trabajador         -->
-
 <div id="modalEliminarFoto" class="modal">
     <div class="modal-contenidoEliminar">
         <p>¿Seguro que deseas eliminar la foto de perfil?</p>
@@ -717,13 +627,11 @@
         </div>
     </div>
 </div>
-
-<!-------------------------------------------------------------- -->        
     </section>
     <footer>
 
     </footer>
-    <script src="index/jsindex.js"></script>
+    <script src="index/jscrudapis.js"></script>
     <script src="index/jsaggusers.js"></script>
     <script>
 document.querySelectorAll('.divcadaatributo').forEach(function(card) {

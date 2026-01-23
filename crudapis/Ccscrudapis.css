@@ -1,0 +1,177 @@
+
+*{
+    outline: 1px solid green;
+}
+.content_Buscaraplicaciones {
+    width: 95%;
+    height: auto;
+    max-height: 100%;
+    min-height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color_terciario_comfanorte);
+    overflow: hidden;
+
+}
+
+/* contenido del section tbody */
+.divparte1apps {
+    background: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 7.5vh;
+    margin-left: 10vh;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.divparte2apps {
+    background: #0d0e0e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.divimagentituloapps {
+    width: 12%;
+    height: 100%;
+    background: #0d0e0e;
+
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgapp {
+    height: 100%;
+    width: 85%;
+    max-width: 100%;
+    object-fit: contain;
+
+
+}
+
+.filasapps {
+
+    display: grid;
+    grid-template-columns: 3.5fr 5.1fr 1fr 1.25fr;
+    /* nombre - cedula - estado - botones */
+    border-radius: 3px;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
+    margin-bottom: 15px;
+    padding: 0;
+    width: 100%;
+    /*La altura que quieres*/
+    flex-shrink: 0;
+    /* ¡ESTO ES LA CLAVE! Evita que se aplaste */
+
+
+}
+
+.encabezado_tabla_apps {
+    background: var(--color_secundario_comfanorte);
+    display: grid;
+    grid-template-columns: 3.5fr 5fr 1fr 1.3fr;
+}
+
+.contenido_tabla_apps {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    overflow-y: auto;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 40vh;
+    /* altura relativa para activar el overflow */
+    max-height: 60vh;
+    /* altura máxima para el scroll */
+}
+
+.imgcedula {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.textapp {
+    height: 100%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.dato1app {
+    margin-bottom: 8px;
+    background: #ddd;
+
+    
+    width: 25%;
+    height: 3vh;
+}
+
+.dato2app {
+    margin-bottom: 8px;
+    background: #ddd;
+
+    
+    width: 42%;
+    height: 3vh;
+}
+
+.datoapp {
+    margin-bottom: 8px;
+    background: #ddd;
+
+    
+    width: 70%;
+    height: 4vh;
+}
+.datoappdescripcion {
+    margin-bottom: 8px;
+    background: #ddd;
+
+    
+    width: 70%;
+    flex-shrink: 0;
+    height: auto !important;
+}
+.datoapptipoapp {
+    margin-bottom: 8px;
+    background: #ddd;
+
+    
+    width: 70%;
+    flex-shrink: 0;
+    height: auto !important;
+}
+.sizeapp {
+    width: 90%;
+    height: 15vh;
+    margin-top: 10px;
+    background: #d8d8d8;
+}
+
+.atributoapp {
+    width: 95%;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 1.6vh;
+    font-weight: 900;
+
+}
