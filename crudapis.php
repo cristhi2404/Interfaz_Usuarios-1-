@@ -200,7 +200,24 @@
                     <div class="divparte1apps">
                         
                         <div class="divimagentituloapps">
-                            <img class="imgapp" src="img/buscar_aplicaciones.svg" alt="">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 600">
+                                    <defs>
+                                        <style>
+                                        .texto {
+                                            font-family: "Varela Round", sans-serif;
+                                            font-weight: 900;
+                                            
+                                            fill: #FFFFFF;
+                                        }
+                                        </style>
+                                    </defs>
+
+                                    <rect width="100%" height="100%" fill="none"/>
+
+                                    <text x="50%" y="55%" text-anchor="middle" class="texto" font-size="310">
+                                        Buscar Aplicaciones
+                                    </text>
+                            </svg>
                         </div>
                         <h1 style=" color: var(); font-size: 2.4vh; margin-left: 500px;" > Digite el Nombre o el ID para Encontrar la Aplicación  </h1>
                         
@@ -215,7 +232,7 @@
                                         C28.195,26.633,28.195,25.367,27.414,24.586z M7,14c0-3.86,3.14-7,7-7s7,3.14,7,7s-3.14,7-7,7S7,17.86,7,14z"/>
                             </svg>
                         </button>
-                    </div>
+                    </div> 
 
 
                 </div>
@@ -223,12 +240,30 @@
                     <div class="users filter">
                         <div class="titulousers">
                             <div style="margin-left: 10vh;" class="divimagentitulo">
-                                <img class="img2" src="img/usuarios_img.png" alt="">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 600">
+                                    <defs>
+                                        <style>
+                                        .texto {
+                                            font-family: "Varela Round", sans-serif;
+                                            font-weight: 900;
+                                            
+                                            fill: #FFFFFF;
+                                        }
+                                        </style>
+                                    </defs>
+
+                                    <rect width="100%" height="100%" fill="none"/>
+
+                                    <text x="50%" y="55%" text-anchor="middle" class="texto" font-size="420">
+                                        Aplicaciones
+                                    </text>
+                                </svg>
+
                             </div>
                             
                             <div class="divbotonaggusers" id="divbotonaggusers" title="Agregar Usuario Nuevo" tabindex="0" role="button"   >
                                 <div  class="divbotonagg" id="divbotonagg" tabindex="0" role="button">
-                                    Agregar Usuario
+                                    Agregar Aplicacion
                                     
                                 </div>
 
@@ -262,17 +297,17 @@
                 </div>
                 <form class="formagguser" action="">
                     <div class="divpreguntas">
-                        <div class="divpreguntasdobles">
+                        <div class="divpreguntasdoblesapis">
                             <!--   pregunta 1   -->
                             <div class="pregunta">
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="nombreagguser" style="width: 50px; ">
+                                    <label for="nombreagguser" style="width: 100px; margin-bottom: 5px;">
                                         Nombre* </label>
                                 </div>        
                                 <div class="inputagg">
-                                    <input id="nombreagguser" placeholder="Ingrese el Nombre" class="inputagg" type="text">
+                                    <input id="nombreagguser" placeholder="Ingrese el Nombre" class="inputagg colorinput" type="text">
                                 </div>    
                             </div>
                             
@@ -281,133 +316,51 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="tipo_documento" style="width: 100px; margin-bottom: 5px;">
-                                        Tipo de Documento* </label>
+                                    <label for="tipo_Aplicacion" style="width: 100px; margin-bottom: 5px;">
+                                        Tipo de Aplicacion* </label>
                                 </div>          
                                 <div id="tipodocumentoagguser" class="inputagg">
-                                    <select style="border: none;"   name="" class="inputagg" id="tipo_documento">
-                                        <option value="0">Ingrese el Tipo de Documento</option>
-                                        <option value="1">Carnet Diplomatico</option>
-                                        <option value="2">Cedula de Ciudadania</option>
-                                        <option value="3">Cedula de Extranjeria</option>
-                                        <option value="4">Documento de Identificacion Extranjero</option>
-                                        <option value="5">Numerio de Identificacion Tributaria</option>
-                                        <option value="6">NUIP</option>
-                                        <option value="7">Pasaporte</option>
-                                        <option value="8">Permiso Especial de Permanecia (P.E.P)</option>
-                                        <option value="9">Permiso de Proteccion Temporal</option>
-                                        <option value="10">Registro Civil</option>
-                                        <option value="11">Salvo Conducto </option>
-                                        <option value="12">Tarjeta de Extranjeria </option>
-                                        <option value="13">Tarjeta de Identidad </option>
-                                        <option value="14">Sin Documento</option>
-                                        <option value="15">Otros Documentos</option>
+                                    <select style="border: none;"   name="" class="inputagg colorinput" id="tipo_Aplicacion">
+                                        <option value="0">Ingrese el Tipo de Aplicacion</option>
+                                        <option value="1">APLICACIÓN DE ESCRITORIO</option>
+                                        <option value="2">APLICACIÓN WEB EN LOCAL</option>
+                                        <option value="3">APLICACIÓN WEB EN LA NUBE</option>
+                                        
                                     </select>
                                 </div>    
                             </div>
                             
                         </div>  
-                        <div class="divpreguntasdobles">
+                        <div class="divpreguntaslargas" >
                             <!--   pregunta 1   -->
-                            <div class="pregunta">
+                            <div class="pregunta2">
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="tipo_procesoselect" style="width: 100px; margin-bottom: 5px;">
-                                        Tipo de Proceso* </label>
+                                    <label for="tipo_procesoselect" style="width: 150px;">
+                                        Descripcionb de la Aplicacion* </label>
                                 </div>          
                                 <div id="tipo_proceso" class="inputagg">
-                                    <select style="border: none ; cursor: pointer;"   name="" class="inputagg" id="tipo_procesoselect">
-                                        <option value="0">Ingrese el Tipo de Proceso</option>
-                                        <option value="1">Educacion Colegio</option>
-                                        <option value="2">Educacion Instituto</option>
-                                        <option value="3">Gestion Administrativa</option>
-                                        <option value="4">Gestion Comercial y Mercadeo</option>
-                                        <option value="5">Gestion Contable</option>
-                                        <option value="6">Gestion de Auditorias</option>
-                                        <option value="7">Gestion de Riesgos</option>
-                                        <option value="8">Gestion Financiera</option>
-                                        <option value="9">Gestion Humana</option>
-                                        <option value="10">Gestion Juridica</option>
-                                        <option value="11">Gestion Social </option>
-                                        <option value="12">Gestion Tecnologica</option>
-                                        <option value="13">Gestion de Tesoreria y Cartera </option>
-                                        <option value="14">Mecanismo de Proteccion al Cesante</option>
-                                        <option value="15">Planeacion</option>
-                                        <option value="16">Recreacion</option>
-                                        <option value="17">Subsidio</option>
-                                        <option value="18">UISC Ocaña</option>
-                                        <option value="19">UISC Pamplona</option>
-                                        <option value="20">UISC Tibu</option>
-                                        <option value="21">Vivienda y Credito Social</option>
-                                    </select>
+                                    <textarea placeholder="Ingrese la Descripcion de la Aplicacion" name="" class="textareaagguser" id="textareadescripcion"></textarea>
                                 </div>    
                             </div>
                             
                             <!--   pregunta 2   -->
-                            <div class="pregunta">
-                                <div class="enunciado">
-                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
-                                        </svg>
-                                    <label for="NumeroDocagguser" style="width: 120px; ">
-                                        Numero del Documento* </label>
-                                </div>          
-                                <div class="inputagg">
-                                    <input id="NumeroDocagguser1" placeholder="Ingrese el Numero del Documento" class="inputagg" type="text">
-                                </div>    
-                            </div>
+                            
                             
                         </div> 
-                        <div class="divpreguntasdobles">
+                         
+                        <div class="divpreguntasdoblesapis" style="margin-top: 5px;">
                             <!--   pregunta 1   -->
                             <div class="pregunta">
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="ubicacionagguser" style="width: 50px; margin-bottom: 5px; ">
-                                        Ubicacion* </label>
+                                    <label for="celularagguser" style="width: 100px; margin-bottom: 5px; ">
+                                        Forma de Acceso* </label>
                                 </div>        
                                 <div class="inputagg">
-                                    <select style="border: none;"   name="" class="inputagg " id="ubicacionagguser">
-                                        <option value="0">Ingrese la Ubicacion</option>
-                                        <option value="1">Edifico-Sede</option>
-                                        <option value="2">Colegio</option>
-                                        <option value="3">Ecoparque</option>
-                                        <option value="4">Guayabales</option>
-                                        <option value="5">Pamplona</option>
-                                        <option value="6">Ocana</option>
-                                        <option value="7">Tibu</option>
-                                        <option value="8">Salazar</option>
-                                        <option value="9">Villa del Rosario</option>
-                                    </select>
-                                </div>    
-                            </div>
-                            
-                            <!--   pregunta 2   -->
-                            <div class="pregunta">
-                                <div class="enunciado">
-                                    <svg style="width: 10px;  height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
-                                        </svg>
-                                    <label for="cargoagguser" style="width: 50px; ">
-                                        Cargo* </label>
-                                </div>          
-                                <div class="inputagg">
-                                    <input id="cargoagguser" placeholder="Ingrese el Cargo" class="inputagg" type="text">
-                                </div>    
-                            </div>
-                            
-                        </div> 
-                        <div class="divpreguntasdobles">
-                            <!--   pregunta 1   -->
-                            <div class="pregunta">
-                                <div class="enunciado">
-                                    <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
-                                        </svg>
-                                    <label for="celularagguser" style="width: 40px; ">
-                                        Celular* </label>
-                                </div>        
-                                <div class="inputagg">
-                                    <input id="celularagguser"  placeholder="Ingrese el Numero Celular" class="inputagg" type="tel">
+                                    <input id="forma_accesoagguser"  placeholder="Ingrese la Forma de Acceso" class="inputagg" type="text">
                                 </div>    
                             </div>
                             <!--   pregunta 2   -->
@@ -415,11 +368,11 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="correoagguser" style="width: 40px; ">
-                                        Correo* </label>
+                                    <label for="correoagguser" style="width: 40px; margin-bottom: 5px;">
+                                        Url* </label>
                                 </div>          
                                 <div class="inputagg">
-                                    <input id="correoagguser" placeholder="Ingrese el Correo del Usuario" class="inputagg" type="email">
+                                    <input id="urlagguser" placeholder="Ingrese la Url de la Aplicacion" class="inputagg" type="text">
                                 </div>    
                             </div>
                             
@@ -466,7 +419,7 @@
         <div class="divcontenidotrabajador">
             <div class="divatributos">
                 <div class="column1usuario">
-                    <div title="Imagen del Usuario" id="contenedor-foto" style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 4px 5px rgba(0,0,0,0.8));" class="divimagenuser">
+                    <div  id="contenedor-foto" style="border-radius: 2px; outline: 3px solid var(--color_secundario_comfanorte);filter: drop-shadow(0 4px 5px rgba(0,0,0,0.8));" class="divimagenuser">
                         <div class="btn-eliminar-foto " id="btnEliminarFoto" tabindex="-1" title="Elimiar Foto del Usuario">
                             ✖
                         </div>
@@ -478,7 +431,12 @@
                         <p style="align-items: center;">Cambiar Imagen de la Aplicacion?</p>
                         <button class="cambiarimagen" title="Cambiar Foto de Perfil del Usuario">Click aqui</button>
                         <input type="file" id="input-imagen" accept="image/*" style="display:none;">
-                    </div>    
+                    </div> 
+                    <div class="atributoapp">
+                        <p style="font-size: 1.5vh; align-items: center;">Click para Acceder a la Capacitacion</p>
+                        <button class="cambiarimagen" title="Redireccion a Capacitacion">Capacitacion</button>
+
+                    </div>
                 </div>
                 <div class="column2usuario">
                     <div class="divtodosatributos">
@@ -528,10 +486,10 @@
                                     <p>Ingrese el dato nuevo:</p>
                                     
                                     <select style="border: none ; cursor: pointer;"   name="" class="size" id="select_tipoaplicacion">
-                                        <option value="0">Ingrese el Tipo de Aplicacion</option>
-                                        <option value="1">Aplicacion de Escritorio</option>
-                                        <option value="2">Aplicacion Web en Local</option>
-                                        <option value="3">Aplicacion Web en la Nube</option>
+                                        <option value="0">INGRESE EL TIPO DE APLICACION</option>
+                                        <option value="1">APLICACION DE ESCRITORIO</option>
+                                        <option value="2">APLICACION WEB EN LOCAL</option>
+                                        <option value="3">APLICACION WEB EN LA NUBE/option>
                                         
                                     </select>
                                 </div>    
@@ -632,7 +590,7 @@
 
     </footer>
     <script src="index/jscrudapis.js"></script>
-    <script src="index/jsaggusers.js"></script>
+    <script src="index/jsaggapis.js"></script>
     <script>
 document.querySelectorAll('.divcadaatributo').forEach(function(card) {
     card.addEventListener('click', function() {

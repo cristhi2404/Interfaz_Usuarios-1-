@@ -1,6 +1,9 @@
 
 *{
-    outline: 1px solid green;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
 }
 .content_Buscaraplicaciones {
     width: 95%;
@@ -36,7 +39,7 @@
 }
 
 .divimagentituloapps {
-    width: 12%;
+    width: 15%;
     height: 100%;
     background: #0d0e0e;
 
@@ -173,5 +176,83 @@
     border-radius: 4px;
     font-size: 1.6vh;
     font-weight: 900;
+    border: none;
+    outline: none;
+}
 
+.textareaagguser{
+    width: 100%;             /* Se ajusta al ancho del contenedor */
+    height: auto;       /* Altura inicial decente */
+    padding: 3px;
+    
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    resize: vertical;        /* ¡IMPORTANTE! Solo permite estirar hacia abajo */
+    outline: none;
+    margin-top: 5px;
+}
+.divpreguntaslargas {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vh;
+    font-weight: 600;
+    background: transparent;
+    margin-top: 2px;
+    
+    flex-shrink: 0;
+}
+
+.divpreguntasdoblesapis {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5vh;
+    font-weight: 600;
+    background: transparent;
+    margin-top: 5px;
+    gap: 10px;
+}
+.pregunta2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.5vh;
+    font-weight: 600;
+    background: transparent;
+    flex-direction: column;
+    
+}
+.content_Buscaraplicaciones {
+    width: 95%;       /* Ocupa todo el ancho */
+    max-width: none;   /* Sin límites externos */
+    
+    /* CAMBIO AQUÍ: Usamos tu color blanco institucional o transparent */
+    background: var(--color_terciario_comfanorte); 
+    /* O simplemente borra la línea de background si el padre ya es blanco */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Esto es lo que centra el contenido mágicamente */
+    
+    /* Mantén el resto igual */
+    height: auto;
+    min-height: 80%;
+    overflow: hidden;
+}
+.divBuscador {
+    width: 95%; /* Puedes subirlo al 95% o 100% porque el padre (.content_Buscaraplicaciones) ya tiene el límite */
+    max-width: none; /* Opcional: seguridad extra */
+    /* ... resto de tu código ... */
+    
+}
+
+.divusers {
+    width: 95%; /* Igual que arriba, aprovecha el espacio del contenedor limitado */
+    /* ... resto de tu código ... */
 }

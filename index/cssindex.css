@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-
+    
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
 }
@@ -393,18 +393,20 @@ h1 {
     align-items: center;
     gap: 5px;
     background: #e4e4e4;
-
+    overflow: hidden;
 }
 
 .divpreguntas {
     width: 90%;
-    height: 90%;
+    height: 95%;
     background: #cacaca;
     display: flex;
     font-size: 1.8vh;
     font-weight: 900;
-    padding: 2vh;
+    padding: 1vh;
     flex-direction: column;
+    flex-shrink: 0;
+    overflow-y: auto;
 }
 
 .divpreguntasdobles {
@@ -419,9 +421,11 @@ h1 {
     gap: 10px;
 }
 
+
 .inputagg {
     background: transparent;
     width: 50%;
+    height: 100% !important;
 }
 
 .inputagg input {
@@ -449,9 +453,9 @@ h1 {
 }
 
 .pregunta {
-    background: #000;
+    background: transparent;
     width: 100%;
-    height: 30px;
+    height: 45px;
     display: flex;
     justify-content: flex-start;
     font-size: 1.5vh;
@@ -464,7 +468,7 @@ h1 {
 
 .enunciado {
     width: 90%;
-    height: 100%;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     font-size: 1.5vh;
@@ -472,24 +476,39 @@ h1 {
     background: transparent;
     margin-right: 10px;
 }
-
+ .inputagg input, .inputagg select{
+    background: var(--color_terciario_comfanorte);
+ }
 .inputagg {
     width: 100%;
-    height: 20px;
+    height: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    
     font-size: 1.5vh;
     font-weight: 600;
-    background: #ffffff;
+    
     color: #777;
 }
+.colorinput{
+    background: #ffffff;
+}
 
+.inputagg:focus,
+.colorinput:focus{
+    outline: none;
+    border-radius: none;
+}
+.divbotonaggusers:focus,
+.divbotonagg:focus,
+.divbotonestiraraggusers:focus {
+    outline: none;
+    border: none;
+}
 .inputagg:focus {
     outline: none;
     border-radius: none;
 }
-
 .inputagg select:focus {
     outline: none;
     border-radius: none;
@@ -733,7 +752,6 @@ h1 {
 }
 
 .imgnombre {
-    width: 15%;
     height: 100%;
     display: flex;
     justify-content: center;
