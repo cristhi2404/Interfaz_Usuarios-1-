@@ -98,6 +98,7 @@ $descripcion = $_POST['descripcion'] ?? '';
 $id_tipo_aplicacion = $_POST['id_tipo_aplicacion'] ?? 0;
 $forma_acceso = $_POST['forma_acceso'] ?? '';
 $url = $_POST['url'] ?? '';
+$capacitacion = $_POST['link_capacitacion'] ?? '';
 
 if (empty($nombre) || !$id_aplicacion) {
     echo json_encode(["ok" => false, "msg" => "El nombre es obligatorio"]);
@@ -151,17 +152,17 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 // 🔹 Si hay imagen nueva, actualiza también la columna 'imagen'
 if ($nombreArchivoFinal) {
     $sql = "UPDATE aplicacion 
-            SET nombre=?, descripcion=?, id_tipo_aplicacion=?, forma_acceso=?, url=?, ubicacion_imagen=?
+            SET nombre=?, descripcion=?, id_tipo_aplicacion=?, forma_acceso=?, url=?, link_capacitacion=?, ubicacion_imagen=?
             WHERE id_aplicacion=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisssi", $nombre, $descripcion, $id_tipo_aplicacion, $forma_acceso, $url, $nombreArchivoFinal, $id_aplicacion);
+    $stmt->bind_param("ssissssi", $nombre, $descripcion, $id_tipo_aplicacion, $forma_acceso, $url, $capacitacion, $nombreArchivoFinal, $id_aplicacion);
 } else {
     // Si no hay imagen nueva, mantener la actual
     $sql = "UPDATE aplicacion 
-            SET nombre=?, descripcion=?, id_tipo_aplicacion=?, forma_acceso=?, url=?
+            SET nombre=?, descripcion=?, id_tipo_aplicacion=?, forma_acceso=?, url=?, link_capacitacion=?
             WHERE id_aplicacion=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssissi", $nombre, $descripcion, $id_tipo_aplicacion, $forma_acceso, $url, $id_aplicacion);
+    $stmt->bind_param("ssisssi", $nombre, $descripcion, $id_tipo_aplicacion, $forma_acceso, $url, $capacitacion, $id_aplicacion);
 
 }
 

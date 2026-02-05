@@ -28,14 +28,16 @@ function abrirModalEdicion(usuario) {
         document.getElementById('select_tipoaplicacion').value = usuario.id_tipo_aplicacion || "0";
         document.getElementById('input-forma_acceso').value = usuario.forma_acceso || "";
         document.getElementById('input-url').value = usuario.url || "";
+        document.getElementById('input-capacitacion').value = usuario.link_capacitacion || "---";
                
         // Vista previa
         document.getElementById('vp-nombre').textContent = usuario.nombre;
-        document.getElementById('vp-Descripcion').textContent = usuario.descripcion;
-        document.getElementById('vp-Tipoapp').textContent = usuario.nombre_tipo_app;
-        document.getElementById('vp-Formaacceso').textContent = usuario.forma_acceso;
-        document.getElementById('vp-url').textContent = usuario.url;
+        document.getElementById('vp-Descripcion').textContent = usuario.descripcion || "---";
+        document.getElementById('vp-Tipoapp').textContent = usuario.nombre_tipo_app || "0" ;
+        document.getElementById('vp-Formaacceso').textContent = usuario.forma_acceso || "---" ;
+        document.getElementById('vp-url').textContent = usuario.url || "---" ;
         document.getElementById('vp-estado').textContent = usuario.estado;
+        document.getElementById('vp-capacitacion').textContent = usuario.link_capacitacion || "---" ; 
         const divimagenuser = document.querySelector(".divimagenuser");
         const btnEliminarFoto = document.getElementById("btnEliminarFoto");
         const vistaprevia = document.getElementById("vistaprevia");
@@ -286,6 +288,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
         const tipoapp = document.getElementById("select_tipoaplicacion").value.trim();
         const Formadeacceso = document.getElementById("input-forma_acceso").value.trim();
         const url = document.getElementById("input-url").value.trim();
+        const capacitacion = document.getElementById("input-capacitacion").value.trim();
         if (!nombre) {
                 alert("⚠️ El nombre no puede estar vacío");
                 return;
@@ -314,6 +317,7 @@ document.getElementById("confirmareditar").addEventListener("click", () => {
         formData.append("id_tipo_aplicacion", tipoapp);
         formData.append("forma_acceso", Formadeacceso);
         formData.append("url", url);
+        formData.append("link_capacitacion", capacitacion);
         // 🔹 Adjuntar la imagen si el usuario seleccionó una
         const inputImagen = document.getElementById("input-imagen");
         if (inputImagen && inputImagen.files[0]) {

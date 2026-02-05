@@ -423,7 +423,7 @@
                         <div class="btn-eliminar-foto " id="btnEliminarFoto" tabindex="-1" title="Elimiar Foto del Usuario">
                             ✖
                         </div>
-
+ 
 
                         
                     </div>
@@ -432,11 +432,7 @@
                         <button class="cambiarimagen" title="Cambiar Foto de Perfil del Usuario">Click aqui</button>
                         <input type="file" id="input-imagen" accept="image/*" style="display:none;">
                     </div> 
-                    <div class="atributoapp">
-                        <p style="font-size: 1.5vh; align-items: center;">Click para Acceder a la Capacitacion</p>
-                        <button class="cambiarimagen" title="Redireccion a Capacitacion">Capacitacion</button>
-
-                    </div>
+                    
                 </div>
                 <div class="column2usuario">
                     <div class="divtodosatributos">
@@ -454,6 +450,8 @@
                                 <div class="datoappdescripcion"><strong>Forma de Acceso :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-Formaacceso">---</span></div>
                                 <div class="datoappdescripcion"><strong>Url :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-url">---</span></div>
                                 <div class="datoappdescripcion"><strong>Estado :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-estado">---</span></div>
+                                <div class="datoappdescripcion"><strong>Capacitacion :</strong> <span style="color:var(--color_cuaternario_comfanorte)" id="vp-capacitacion">---</span></div>
+                                
                             </div>
 
 
@@ -512,6 +510,16 @@
                                 <div class="div-expandido">
                                     <p>Ingrese el dato nuevo:</p>
                                     <input class="size" type="text" placeholder="Nuevo valor" id="input-url">
+                                </div> 
+                            </div>
+                            <div class="divcadaatributo card">
+                                <div style="gap: 425px;" class="atributoyflecha">
+                                    <span style="width: auto;" >Capacitacion</span>
+                                    <span class="flecha">▶</span>
+                                </div>
+                                <div class="div-expandido">
+                                    <p>Ingrese el dato nuevo:</p>
+                                    <input class="size" type="text" placeholder="Nuevo valor" id="input-capacitacion">
                                 </div> 
                             </div>
                         </div>
