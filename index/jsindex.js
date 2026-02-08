@@ -464,8 +464,17 @@ atributos.forEach(div => {
                 }
         });
         div.addEventListener("keydown", e => {
+                // 1. Detectamos si el foco está en un campo de texto
+                const esCampoTexto = ["input", "select", "textarea"].includes(e.target.tagName.toLowerCase());
+
+                // 2. Si es un campo de texto y la tecla es ESPACIO, no hacemos nada (dejamos escribir)
+                if (esCampoTexto && e.key === " ") {
+                        return; 
+                }
+
+                // 3. Solo si NO es un campo de texto (o es Enter), activamos el acordeón
                 if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault(); // evita que salte al input
+                        e.preventDefault(); 
                         toggleExpand();
                 }
         });         

@@ -219,7 +219,7 @@
                                     </text>
                             </svg>
                         </div>
-                        <h1 style=" color: var(); font-size: 2.4vh; margin-left: 500px;" > Digite el Nombre o el ID para Encontrar la Aplicación  </h1>
+                        <h1 style=" color: var(); font-size: 2.2vh; margin-left: 500px;" > Digite el Nombre o el ID para Encontrar la Aplicación  </h1>
                         
                     </div>
                     <div class="divparte2apps">
@@ -233,8 +233,6 @@
                             </svg>
                         </button>
                     </div> 
-
-
                 </div>
                 <div class="divusers">
                     <div class="users filter">
@@ -389,17 +387,19 @@
     </div>
 </div>
                         </div>
-                        <div class="divcontenidousers">
-                            <div class="encabezado_tabla_apps">
-                                <div class="cuadro">Nombre</div>
-                                <div class="cuadro">Tipo de Aplicacion </div>
-                                <div class="cuadro">Estado</div>
-                                <div class="cuadro1">Acciones </div>
-                            </div>
-                            <div id="contenedorUsuarios" class="contenido_tabla_apps">
-                                
-                            </div> 
-                        </div>    
+                        <div class="contenido">
+                            <div class="divcontenidousers">
+                                <div class="encabezado_tabla_apps">
+                                    <div class="cuadro">Nombre</div>
+                                    <div class="cuadro">Tipo de Aplicacion </div>
+                                    <div class="cuadro">Estado</div>
+                                    <div class="cuadro1">Acciones </div>
+                                </div>
+                                <div id="contenedorUsuarios" class="contenido_tabla_apps">
+                                    
+                                </div> 
+                            </div>   
+                        </div>     
 <!--            MODAL DE DESACTIVAR Trabajador         -->
 <div id="modalEliminar" class="modal">
     <div class="modal-contenidoEliminar">

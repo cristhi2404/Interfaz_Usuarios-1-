@@ -8,7 +8,7 @@
 .content_Buscaraplicaciones {
     width: 95%;
     height: auto;
-    max-height: 100%;
+    max-height: 90%;
     min-height: 80%;
     display: flex;
     align-items: center;
@@ -24,10 +24,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    height: 7.5vh;
+    height: auto;
     margin-left: 10vh;
     align-items: center;
     margin-bottom: 0;
+    flex-shrink: 0;
 }
 
 .divparte2apps {
@@ -36,6 +37,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px 4px 0px 0px;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .divimagentituloapps {
