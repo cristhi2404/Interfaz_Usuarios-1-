@@ -148,7 +148,7 @@ if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
 
     // Mover el archivo al directorio final
     if (move_uploaded_file($file['tmp_name'], $rutaDestino)) {
-        $rutaImagen = "imgusers/" . $nombreArchivo;
+        $rutaImagen = "imgusers/" . $nombreCarpetaUsuario . "/" . $nombreArchivo;
     }
 
 }
