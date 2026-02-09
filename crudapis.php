@@ -314,7 +314,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="tipo_Aplicacion" style="width: 100px; margin-bottom: 5px;">
+                                    <label for="tipo_Aplicacion" style="width: 150px; margin-bottom: 5px;">
                                         Tipo de Aplicacion* </label>
                                 </div>          
                                 <div id="tipodocumentoagguser" class="inputagg">
@@ -354,7 +354,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="celularagguser" style="width: 100px; margin-bottom: 5px; ">
+                                    <label for="celularagguser" style="width: auto; margin-bottom: 5px; ">
                                         Forma de Acceso* </label>
                                 </div>        
                                 <div class="inputagg">

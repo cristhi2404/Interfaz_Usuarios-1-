@@ -262,7 +262,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="nombreagguser" style="width: 50px; ">
+                                    <label for="nombreagguser" style="width: 50%; ">
                                         Nombre* </label>
                                 </div>        
                                 <div class="inputagg">
@@ -275,7 +275,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="tipo_documento" style="width: 100px; margin-bottom: 5px;">
+                                    <label for="tipo_documento" style="width: 50%; margin-bottom: 5px;">
                                         Tipo de Documento* </label>
                                 </div>          
                                 <div id="tipodocumentoagguser" class="inputagg">
@@ -307,7 +307,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="tipo_procesoselect" style="width: 100px; margin-bottom: 5px;">
+                                    <label for="tipo_procesoselect" style="width:50%; margin-bottom: 5px;">
                                         Tipo de Proceso* </label>
                                 </div>          
                                 <div id="tipo_proceso" class="inputagg">
@@ -343,7 +343,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="NumeroDocagguser" style="width: 120px; ">
+                                    <label for="NumeroDocagguser" style="width: 80%; ">
                                         Numero del Documento* </label>
                                 </div>          
                                 <div class="inputagg">
@@ -358,7 +358,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="ubicacionagguser" style="width: 50px; margin-bottom: 5px; ">
+                                    <label for="ubicacionagguser" style="width: 50%; margin-bottom: 5px; ">
                                         Ubicacion* </label>
                                 </div>        
                                 <div class="inputagg">
@@ -382,7 +382,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px;  height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="cargoagguser" style="width: 50px; ">
+                                    <label for="cargoagguser" style="width: 50%; ">
                                         Cargo* </label>
                                 </div>          
                                 <div class="inputagg">
@@ -397,7 +397,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="celularagguser" style="width: 40px; ">
+                                    <label for="celularagguser" style="width: 50%; ">
                                         Celular* </label>
                                 </div>        
                                 <div class="inputagg">
@@ -409,7 +409,7 @@
                                 <div class="enunciado">
                                     <svg style="width: 10px; height: 12px;" xmlns="http://www.w3.org/2000/svg" height="1px" viewBox="0 -960 960 960" width="1px" fill="#000000ff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/>
                                         </svg>
-                                    <label for="correoagguser" style="width: 40px; ">
+                                    <label for="correoagguser" style="width: 50%; ">
                                         Correo* </label>
                                 </div>          
                                 <div class="inputagg">

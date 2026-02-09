@@ -210,7 +210,7 @@ nav {
 
 .tbody {
     width: 100%;
-    height: 113.5vh;
+    height: 105vh;
     min-height: 70vh;
     max-height: 100%;
     background: rgb(255, 255, 255);
@@ -223,6 +223,7 @@ nav {
 
 .content_Buscarusers {
     width: 95%;
+    max-width: none;
     height: auto;
     max-height: 100%;
     min-height: 80%;
@@ -233,9 +234,21 @@ nav {
     overflow: hidden;
 
 }
+.divBuscador {
+    width: 95%; /* Puedes subirlo al 95% o 100% porque el padre (.content_Buscaraplicaciones) ya tiene el límite */
+    max-width: none; /* Opcional: seguridad extra */
+    /* ... resto de tu código ... */
+    
+}
+
+.divusers {
+    width: 95%; /* Igual que arriba, aprovecha el espacio del contenedor limitado */
+    /* ... resto de tu código ... */
+}
+
 
 .divBuscador {
-    width: 85%;
+    width: 95%;
     height: auto;
     margin-top: 50px;
     background: transparent;
@@ -311,6 +324,9 @@ nav {
 
 .divimagentitulo {
     width: 12%;
+    max-width: 20%;
+    min-width: 12%;
+    min-height: 7vh;
     height: 100%;
     background: #0d0e0e;
 
@@ -329,7 +345,7 @@ h1 {
 
 /*------------------ div users mostrar ---------------------*/
 .divusers {
-    width: 85%;
+    width: 95%;
     height: 70vh;
     display: flex;
     justify-content: center;
@@ -413,13 +429,14 @@ h1 {
 
 .divpreguntasdobles {
     width: 100%;
-    height: 45px;
+    height: 65px;
     display: flex;
     justify-content: space-between;
     font-size: 1.5vh;
     font-weight: 600;
     background: transparent;
     margin-top: 3px;
+    margin-bottom: 20px ;
     gap: 10px;
 }
 
@@ -457,7 +474,7 @@ h1 {
 .pregunta {
     background: transparent;
     width: 100%;
-    height: 45px;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     font-size: 1.5vh;
@@ -872,7 +889,7 @@ h1 {
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    width: 800px;
+    width: 60%;
     height: 60vh;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 
